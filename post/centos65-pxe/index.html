@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Centos6.5 PXE | Asolmn</title>
+<meta name="description" content="随便写写，佛系更新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1557124188411">
+<link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Asolmn.github.io">
+        <img src="https://Asolmn.github.io/images/avatar.png?v=1557124188411" class="site-logo">
+        <h1 class="site-title">Asolmn</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="/post/friend" class="site-nav">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Asolmn" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      随便写写，佛系更新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Centos6.5 PXE</h2>
+            <div class="post-date">2019-05-06</div>
+            
+            <div class="post-content">
+              <hr>
+<h2 id="title-centos6-pxe远程安装自动化脚本date-2018-06-13tags-linuxtype-categoriescomments-false">title: centos6 pxe远程安装+自动化脚本
+date: 2018-06-13
+tags: [linux]
+type: &quot;categories&quot;
+comments: false</h2>
+<h1 id="centos6-pxe自动远程安装服务客户端完全自动化脚本">Centos6 PXE自动远程安装服务+客户端完全自动化脚本</h1>
+<h2 id="环境">环境:</h2>
+<h3 id="server108060105">Server:10.80.60.105</h3>
+<h3 id="clients108060106">Clients:10.80.60.106</h3>
+<h3 id="今天因文档混乱需要总结一下在此情况下这篇博客就怎么诞生了本人文笔不好博文生硬请见谅嘿嘿">今天因文档混乱，需要总结一下，在此情况下这篇博客就怎么诞生了（本人文笔不好，博文生硬，请见谅(嘿嘿)）。</h3>
+<pre><code>PXE是一个远程网络安装服务，通过dhcp的网络自动分配，vsftp提供安装的镜像文件，然后tftp服务负责boot部分。可以通过编写ks.cfg脚本文件实现客户端的完全自动化。当然PXE的镜像提供服务并没有一定要求vsftpd，HTTP和NFS一样可以胜任这项工作。但是注意vsftpd比起其它两个服务j具有不错的权限设置。
+接着废话少说，直接开始上实操吧
+</code></pre>
+<h3 id="server-操作">Server----操作:</h3>
+<p>安装服务包</p>
+<pre><code>yum install vsftpd dhcp  tftp-server syslinux -y
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsg7fcc105c19ai2qcftu1j2pa.png-w.jpg" alt="此处输入图片的描述">
+开始进行dhcp的操作
+输入命令:</p>
+<pre><code>cp /usr/share/doc/dhcp-4.1.1/dhcpd.conf.sample /etc/dhcp/dhcpd.conf
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsgdlrj91q12j4bub1k1d332a.jpg-w.jpg" alt="此处输入图片的描述">
+开始修改dhcp配置文件</p>
+<pre><code>vim /etc/dhcp/dhcp.conf
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsjvjp8o0lk71tfr1gi1ts7a.jpg-w.jpg" alt="此处输入图片的描述">
+启动dhcp</p>
+<pre><code>service dhcpd restart
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsk2thak6p1ocssl4b1unk6a.jpg-w.jpg" alt="此处输入图片的描述">
+dhcp至此配置完毕
+开始配置tftp服务内容</p>
+<pre><code>vim  /etc/xinetd.d/tftp
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfskaivm1f6jkcib6u15n9oc9a.jpg-w.jpg" alt="此处输入图片的描述">
+输入如下命令：</p>
+<pre><code>mkdir /tftpboot  创建tftp服务主目录
+</code></pre>
+<p>复制挂载在mnt目录下镜像的引导程序</p>
+<pre><code>cp -rp /mnt/isolinux/* /tftpboot   
+</code></pre>
+<p>pxelinux.0是一个bootload 可以通过它来装载内核(load kernel)</p>
+<pre><code>cp -rp /usr/share/syslinux/pxelinux.0 /tftpboot
+</code></pre>
+<p>进入到tftpboot目录
+在此目录下创建pxelinux.cfg目录，然后将isolinux.cfg文件复制到pxelinux.cfg中，并改名为default</p>
+<pre><code>cd /tftpboot
+mkdir pxelinux.cfg
+cp isolinux.cfg pxelinux.cfg/default
+</code></pre>
+<p>启动xinetd</p>
+<pre><code>service xinetd restart
+</code></pre>
+<p>到这一步tftp的已经基本完成，开始vsftpd的配置
+修改vsftpd配置文件vsftpd.conf</p>
+<pre><code>vim /etc/vsftpd/vsftpd.conf
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfskuu46mp4ean1jdg8ldqika.jpg-w.jpg" alt="此处输入图片的描述">
+将系统镜像复制到vsftpd服务的匿名用户下(注意本实验使用的是vsftpd的匿名用户默认目录)</p>
+<pre><code>cp -rp /mnt/* /var/ftp/pub
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsm52rgvp7136j14j212fa44ua.jpg-w.jpg" alt="此处输入图片的描述">
+开始添加ks.cfg自动化脚本
+将root目录下的anaconds-ks.cfg当模板</p>
+<pre><code>cp /root/anaconda-ks.cfg /var/ftp/pub/ks.cfg
+vim /var/ftp/pub/ks.cfg
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsnita51s1ju9kv2h566sora.jpg-w.jpg" alt="此处输入图片的描述">
+<img src="http://t1.aixinxi.net/o_1cfsnhbld12nkno7gs54a91jpta.jpg-w.jpg" alt="此处输入图片的描述">
+vsftpd部分内容基本配置完毕
+对目录权限进行修改，以防客户端安装过程中会出现问题</p>
+<pre><code>chmod 777 /var/ftp/pub/*
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsmltfhgfb7717pb18m312l1a.jpg-w.jpg" alt="此处输入图片的描述">
+重启vsftpd服务</p>
+<pre><code>service vsftpd restart
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsmnijd19kb3rv14cosqfna2a.jpg-w.jpg" alt="此处输入图片的描述">
+server端的最后一步就是配置default文件了，这个是客户端引导的关键</p>
+<pre><code>vim /tftpboot/pxelinux.cfg/default
+</code></pre>
+<p><img src="http://t1.aixinxi.net/o_1cfsnbujihl71o7u1s6f1odngfma.jpg-w.jpg" alt="此处输入图片的描述">
+至此server的配置就全部完成
+最后注意不要忘记关闭防火墙和selinux</p>
+<pre><code>service iptables stop
+setenforce 0
+</code></pre>
+<h2 id="clients-操作">Clients-----操作</h2>
+<p>创建一个测试的虚拟机
+<img src="http://t1.aixinxi.net/o_1cfsn0eji1lje1dk5q3u25utj5a.jpg-w.jpg" alt="此处输入图片的描述">
+开机进入网络安装模式(开机按esc健)
+<img src="http://t1.aixinxi.net/o_1cfsn2mlvssi2965r193v5fua.jpg-w.jpg" alt="此处输入图片的描述">
+然后就不需要动了，会自动到安装系统步骤
+<img src="http://t1.aixinxi.net/o_1cfsnm8g61e9e1ton11gel3k1c5aa.jpg-w.jpg" alt="此处输入图片的描述">
+安装完成后就是一个全新的系统了</p>
+<h2 id="end">End</h2>
+
+            </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

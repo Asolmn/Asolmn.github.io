@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>SMTPLIB(2) | Asolmn</title>
+<meta name="description" content="随便写写，佛系更新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1557124188411">
+<link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Asolmn.github.io">
+        <img src="https://Asolmn.github.io/images/avatar.png?v=1557124188411" class="site-logo">
+        <h1 class="site-title">Asolmn</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="/post/friend" class="site-nav">
+            友链
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Asolmn" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      随便写写，佛系更新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">SMTPLIB(2)</h2>
+            <div class="post-date">2019-05-06</div>
+            
+            <div class="post-content">
+              <hr>
+<h2 id="title-python-smtplib2date-2018-10-24tags-python3smtpcategories-开发type-categoriescomments-false">title: python-smtplib2
+date: 2018-10-24
+tags: [python3,smtp]
+categories: 开发
+type: &quot;categories&quot;
+comments: false</h2>
+<h1 id="python3-smptlib2">python3-smptlib2</h1>
+<hr>
+<h2 id="0x01">0x01</h2>
+<h3 id="smtplib-显示主题发送人等">smtplib-显示主题，发送人等...</h3>
+<h3 id="更新">更新:</h3>
+<p>发现一个尴尬的事实
+我是用qq邮件测试的，就算我没写主题和发送人这些话，如果你是对方的好友也会自动显示（哭），但如果是一个的邮箱服务器发送到另一个邮箱服务器就可以出现</p>
+<p>这次直接上代码吧，稍微写一下笔记，原谅我的懒惰（嘿嘿）
+一个完整的邮件，要有主题和发送人，收件人等信息，smtplib同样提供这样的功能，功能实现如下。</p>
+<pre><code class="language-python">/usr/bin/env python
+
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.utils import parseaddr,formataddr
+import smtplib
+
+#格式化邮箱地址
+def format_addr(s):
+        name,addr = parseaddr(s)
+        return formataddr((Header(name,'utf-8').encode(),addr))
+
+'''
+这个设置就不用多说了吧,和上次一样，都是用户，授权码，发送地址和接受地址。
+'''
+user = input('User:')
+password = input('Password:')
+send = input('Send:')
+receivers = list(input('Receivers:'))
+smtp_server = input('SMTP server:')
+
+
+#构造邮件
+msg = MIMEText('test python smtp','plain','utf-8')
+#构造发件人的头部信息
+msg['From'] = format_addr('python lover'%user)
+#构造收件人的头部信息
+msg['To']=format_addr('administrator&lt;%s&gt;'%receivers)
+#构造邮件主题头部信息
+msg['Subject'] = (Header('from smtp....','utf-8').encode())
+
+#发送邮件
+server = smtplib.SMTP(smtp_server,465)
+server.set_debuglevel(1)
+server.login(user,password)
+server.sendmail(send,[receivers],msg.as_string())
+server.quit
+</code></pre>
+<p>def format_addr(s)是照网上写的，作用是格式化邮件地址,没看懂parseaddr()和formataddr。等理解再补上
+（补充内容：
+format_addrs函数接受到邮件地址后，使用parseaddr()方法将user和send的值，分为(name,addr)格式的元组，再将分解后的值分别赋予给name和addr两个变量，如果这个地址连接错误或者不存在，就相当于解析失败，这会返回(&quot;&quot;,&quot;&quot;)形式的一个元组信息。formataddr()与parseaddr()的方法相反，需要元组的信息，然后返回适合与smtp协议的To和Cc的字符串值，所以使用这个对象的前提条件是，name和addr为元组，所以这个函数使用了parseaddr()方法，将user转换一下可以适用于formataddr()对象可以接受的值，再由formataddr()进行转换。
+）</p>
+<p>不能简单的传入一个name<a href="mailto:addr@example.com">addr@example.com</a>格式，因为如果包含中文，要使用Header对象。Header()对象可以进行编码，msg['To']接受的是字符串而不是list</p>
+<p>['From']和['To']和['Subject']是标准邮件的三个头部信息。这是smtp协议中定义的格式。</p>
+<p>发送格式部分与上次并无差别
+这个程序的与上个程序的差别，基本就在于显示smtp标准协议中三个头部信息</p>
+<p>剩下的明日更新~</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Asolmn.github.io/post/smtplib1">
+                  <h3 class="post-title">
+                    SMTPLIB(1)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
