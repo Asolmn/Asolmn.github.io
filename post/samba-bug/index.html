@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>友链 | Asolmn</title>
+<title>Samba报错 | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -101,28 +101,53 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">友链</h2>
-            <div class="post-date">2019-05-06</div>
+            <h2 class="post-title">Samba报错</h2>
+            <div class="post-date">2019-05-08</div>
             
             <div class="post-content">
-              <blockquote>
-<p><a href="http://blog.Ernket.top">E神(安全巨佬)</a></p>
-</blockquote>
-<blockquote>
-<p><a href="http://blog.hsojo.com">弱窝(全能工程师)</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://xqinger.com">XuQing(算法专家，深职网红)</a></p>
-</blockquote>
-<blockquote>
-<p><a href="http://getshell.top">Cany(CD ONE)</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://coder-sakura.github.io/blog"> Coder_樱(HCIE师兄)</a></p>
-</blockquote>
+              <h3 id="记一次samba的报错报错体现在远程挂载超时始终不能访问其问题在于域名解析">记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。</h3>
+<!-- more -->
+<h4 id="samba配置文件内容如下">Samba配置文件内容如下</h4>
+<pre><code>[webdata]
+						path = /data/web_dat
+						writable = yes
+						hosts allow = 192.168.101.0/24
+						hosts deny = all
+						public = yes
+</code></pre>
+<p>使用用户为apache，添加用户</p>
+<pre><code>smbpasswd -a apache
+</code></pre>
+<p>重启服务</p>
+<pre><code>systemctl restart nmb smb
+</code></pre>
+<p>报错内容如下
+使用命令<code>smbclient -L //192.168.101.22/webdata -U apache</code>用来测试
+报错显示:</p>
+<pre><code>protocol negotiation failed: NT_STATUS_IO_TIMEOUT
+</code></pre>
+<p>造成原因，是因为服务器本身是DNS服务，所以要对dns服务进行停止<code>systemctl stop named</code></p>
+<p>第二种的话，则是/etc/resolv.conf文件中的nameserver参数为114.114.114.114，将其注释掉就行</p>
 
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Asolmn.github.io/post/smtplib2">
+                  <h3 class="post-title">
+                    SMTPLIB(2)
+                  </h3>
+                </a>
+              </div>
             
 
             
