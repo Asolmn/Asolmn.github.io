@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | Asolmn</title>
+<title>记DNS的子域转发 | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -100,14 +100,49 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="tags-container">
+          <div class="post-detail">
+            <h2 class="post-title">记DNS的子域转发</h2>
+            <div class="post-date">2019-05-09</div>
             
-              <a class="tag" href="https://Asolmn.github.io/tag/iXXlS5ARq">Linux</a>
+            <div class="post-content">
+              <h3 id="因为刚好做题的时候碰到就顺便记录一下">因为刚好做题的时候碰到，就顺便记录一下</h3>
+<!-- more -->
+<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数
+行数一般为31和32行</p>
+<h6 id="将yes改成no">将yes改成no</h6>
+<pre><code>dnssec-enable no;
+dnssec-validation no;
+</code></pre>
+<p>dnssec-enable 是否支持DNSSEC开关
+dnssec-validation 是否进行DNSSEC确认开关</p>
+<p>DNSSEC技术主要用于DNS数据的完整性，存在，来源三个方面进行验证</p>
+<p>所以关掉DNSSEC功能，可以取消对子域名的验证</p>
+<p>向正向区域中添加胶水记录
+其实就是在父区域中添加一条NS记录和A记录</p>
+<pre><code>gz             IN            NS            serverB.gz
+serverB.gz          IN         A        192.168.101.33
+</code></pre>
+<h4 id="扩展">扩展：</h4>
+<p>如果客户端的请求超出子域的解析范围，则可以使用定义转发服务器</p>
+<p><code>zone &quot;zone_name&quot; IN { 	 type forward; 	 forward only; 	 forwarders { IP; }; };</code></p>
+
+            </div>
             
-              <a class="tag" href="https://Asolmn.github.io/tag/FS2dWeAVH">Python</a>
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Asolmn.github.io/post/samba-bug">
+                  <h3 class="post-title">
+                    Samba报错
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
       </div>
     </div>
