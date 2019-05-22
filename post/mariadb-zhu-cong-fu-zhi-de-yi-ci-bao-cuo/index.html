@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1558495726091">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1558509015700">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1558495726091" class="site-logo">
+        <img src="https://Asolmn.github.io/images/avatar.png?v=1558509015700" class="site-logo">
         <h1 class="site-title">Asolmn</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -112,7 +112,8 @@
 <pre><code>Slave_IO_Running:Connecting
 </code></pre>
 <p>查看一些报错信息</p>
-<pre><code>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+<pre><code>error connecting to master 'slave@192.168.116.22:3306' - retry-time: 60  retries: 86400  message: Host '192.168.116.33' is not allowed to connect to this MariaDB server
+
 </code></pre>
 <p>问题出在访问连接权限上面。
 解决方法:</p>
