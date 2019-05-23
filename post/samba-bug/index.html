@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1558509015700">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1558597188001">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1558509015700" class="site-logo">
+        <img src="https://Asolmn.github.io/images/avatar.png?v=1558597188001" class="site-logo">
         <h1 class="site-title">Asolmn</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -128,6 +128,8 @@
 </code></pre>
 <p>造成原因，是因为服务器本身是DNS服务，所以要对dns服务进行停止<code>systemctl stop named</code></p>
 <p>第二种的话，则是/etc/resolv.conf文件中的nameserver参数为114.114.114.114，将其注释掉就行</p>
+<h4 id="还可以在客户端的host文件中添加服务端的主机名记录">还可以在客户端的host文件中添加服务端的主机名记录</h4>
+<p>例如:添加<code>192.168.116.22 serverA.rj.com</code></p>
 
             </div>
             
