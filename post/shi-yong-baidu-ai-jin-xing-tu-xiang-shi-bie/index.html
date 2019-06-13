@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Samba报错 | Asolmn</title>
+<title>使用Baidu-AI进行图像识别 | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -101,52 +101,61 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Samba报错</h2>
-            <div class="post-date">2019-05-08</div>
+            <h2 class="post-title">使用Baidu-AI进行图像识别</h2>
+            <div class="post-date">2019-06-13</div>
             
             <div class="post-content">
-              <h3 id="记一次samba的报错报错体现在远程挂载超时始终不能访问其问题在于域名解析">记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。</h3>
+              <pre><code>因为专业课作业，所以有了这个程序，现在基本已经写完。顺便水一遍，整体并没有什么特别有技术含量的地方，基本都是调用API
+</code></pre>
 <!-- more -->
-<h4 id="samba配置文件内容如下">Samba配置文件内容如下</h4>
-<pre><code>[webdata]
-						path = /data/web_dat
-						writable = yes
-						hosts allow = 192.168.101.0/24
-						hosts deny = all
-						public = yes
+<h3 id="图像识别-货币">图像识别-货币</h3>
+<pre><code>   首先是图像识别的代码，要先在百度AI创建应用，然后获取到APP_ID,API_KEY，SECRET_KEY三个值
+	 
+	 因为使用的货币识别，目前并没有封装到SDK中，所以我们需要手动发送调用api请求。获取到&quot;access_token&quot;
 </code></pre>
-<p>使用用户为apache，添加用户</p>
-<pre><code>smbpasswd -a apache
+<p>具体代码如下:</p>
+<pre><code>#获取access_token
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id='+API_KEY+'&amp;client_secret='+SECRET_KEY
+request = urllib.request.Request(host)
+request.add_header('Content-Type','application/json;charset=UTF-8')
+response = urllib.request.urlopen(request)
+content = response.read()
+if (content):
+	print(content)
 </code></pre>
-<p>重启服务</p>
-<pre><code>systemctl restart nmb smb
+<p>定义一个url的变量，变量的值为api的接口地址</p>
+<pre><code>requestUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/currency'
 </code></pre>
-<p>报错内容如下
-使用命令<code>smbclient -L //192.168.101.22/webdata -U apache</code>用来测试
-报错显示:</p>
-<pre><code>protocol negotiation failed: NT_STATUS_IO_TIMEOUT
+<p>读取图片，并且转换为二进制Base64</p>
+<pre><code>fileName = str(input('图片名称:'))
+with open(fileName,'rb') as f:
+    img = base64.b64encode(f.read())
 </code></pre>
-<p>造成原因，是因为服务器本身是DNS服务，所以要对dns服务进行停止<code>systemctl stop named</code></p>
-<p>第二种的话，则是/etc/resolv.conf文件中的nameserver参数为114.114.114.114，将其注释掉就行</p>
-<h4 id="还可以在客户端的host文件中添加服务端的主机名记录">还可以在客户端的host文件中添加服务端的主机名记录</h4>
-<p>例如:添加<code>192.168.116.22 serverA.rj.com</code></p>
+<p>对图片进行转码</p>
+<pre><code>params = {'image':img}
+params = urllib.parse.urlencode(params).encode('utf-8')
+</code></pre>
+<p>完成这些步骤后，就可以调用api了
+前面获取的content中，把access_token提取出来
+添加到url上面</p>
+<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
+</code></pre>
+<p>后面就是发送了，使用python的标准库urllib发送数据</p>
+<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
+req = urllib.request.Request(url=requestUrl,data=params)
+req.add_header('Content-Type',&quot;application/x-www-form-urlencoded&quot;)
+res = urllib.request.urlopen(req)
+con = res.read()
+</code></pre>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="tag">
-                    Linux
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/smtplib2">
+                <a href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">
                   <h3 class="post-title">
-                    SMTPLIB(2)
+                    Mariadb主从复制的一次报错
                   </h3>
                 </a>
               </div>
