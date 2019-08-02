@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Mariadb主从复制的一次报错 | Asolmn</title>
+<title>Mysql | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -100,53 +100,28 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Mariadb主从复制的一次报错</h2>
-            <div class="post-date">2019-05-22</div>
-            
-            <div class="post-content">
-              <h3 id="slave体现不了master的数据更新">slave体现不了master的数据更新</h3>
-<p>刚刚解决，趁机水一篇博客</p>
-<!-- more -->
-<p>报错体现</p>
-<pre><code>Slave_IO_Running:Connecting
-</code></pre>
-<p>查看一些报错信息</p>
-<pre><code>error connecting to master 'slave@192.168.116.22:3306' - retry-time: 60  retries: 86400  message: Host '192.168.116.33' is not allowed to connect to this MariaDB server
-
-</code></pre>
-<p>问题出在访问连接权限上面。
-解决方法:</p>
-<pre><code>grant replication slave on *.* to 'slave'@'192.168.116.%';
-</code></pre>
-<pre><code>grant replication user_name on *.* to  'user_name'@'ip'
-</code></pre>
-<p>user_name用户名，ip可以使用%通配符</p>
-
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="tag">
-                    Linux
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa">
-                  <h3 class="post-title">
-                    记DNS的子域转发
-                  </h3>
+          <h2 class="current-tag">标签: Mysql</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
+                  <h2 class="post-title">Flask-Migrate进行数据库的迁移</h2>
                 </a>
+                <div class="post-date">
+                  2019-08-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
               </div>
-            
+              
+            </article>
+          
 
-            
-
-          </div>
+          <div class="pagination-container">
+  
+  
+</div>
 
         </div>
       </div>
