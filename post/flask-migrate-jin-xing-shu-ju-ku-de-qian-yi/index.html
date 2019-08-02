@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>使用Baidu-AI进行图像识别 | Asolmn</title>
+<title>Flask-Migrate进行数据库的迁移 | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -101,49 +101,38 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">使用Baidu-AI进行图像识别</h2>
-            <div class="post-date">2019-06-13</div>
+            <h2 class="post-title">Flask-Migrate进行数据库的迁移</h2>
+            <div class="post-date">2019-08-02</div>
             
             <div class="post-content">
-              <p>因为专业课作业，所以有了这个程序，现在基本已经写完。顺便水一遍，整体并没有什么特别有技术含量的地方，基本都是调用API</p>
-<!-- more -->
-<h3 id="图像识别-货币">图像识别-货币</h3>
-<p>首先是图像识别的代码，要先在百度AI创建应用，然后获取到APP_ID,API_KEY，SECRET_KEY三个值</p>
-<p>因为使用的货币识别，目前并没有封装到SDK中，所以我们需要手动发送调用api请求。获取到&quot;access_token&quot;</p>
-<p>具体代码如下:</p>
-<pre><code>#获取access_token
-host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id='+API_KEY+'&amp;client_secret='+SECRET_KEY
-request = urllib.request.Request(host)
-request.add_header('Content-Type','application/json;charset=UTF-8')
-response = urllib.request.urlopen(request)
-content = response.read()
-if (content):
-	print(content)
+              <h5 id="更新数据库的原有">更新数据库的原有</h5>
+<p>如果碰到需要修改数据库模型同时进行更新</p>
+<p>flask-sqlalchemy的机制是数据库表不存在的时候，才会根据模型进行创建数据库</p>
+<p>所以造成了如果要更新模型，只能将原有的表进行删除，再重新进行创建</p>
+<p>这样会丢失原有表中的所有数据，而数据库迁移框架则可以解决</p>
+<h5 id="创建迁移仓库">创建迁移仓库</h5>
+<p>首先安装flask-Migrate</p>
+<p><code>pip install flask-Migrate</code></p>
+<p>初始化Flask-Migrate</p>
+<pre><code class="language-python">from flask-migrate import Migrate
+
+pass
+
+migrate=Mirgrate(app,db)
 </code></pre>
-<p>定义一个url的变量，变量的值为api的接口地址</p>
-<pre><code>requestUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/currency'
+<p>接着当前目录的命令行中使用<code>flask db init</code></p>
+<p>这条命令会创建migrations目录，所有迁移脚本都存放在这个文件里面</p>
+<h5 id="创建迁移脚本">创建迁移脚本</h5>
+<p>为了测试先对模型类进行一个修改</p>
+<p>例如：</p>
+<pre><code class="language-python">	class User():
+        ....
+    	age = db.Column(db.Integer,nullable=True)
 </code></pre>
-<p>读取图片，并且转换为二进制Base64</p>
-<pre><code>fileName = str(input('图片名称:'))
-with open(fileName,'rb') as f:
-    img = base64.b64encode(f.read())
-</code></pre>
-<p>对图片进行转码</p>
-<pre><code>params = {'image':img}
-params = urllib.parse.urlencode(params).encode('utf-8')
-</code></pre>
-<p>完成这些步骤后，就可以调用api了
-前面获取的content中，把access_token提取出来
-添加到url上面</p>
-<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
-</code></pre>
-<p>后面就是发送了，使用python的标准库urllib发送数据</p>
-<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
-req = urllib.request.Request(url=requestUrl,data=params)
-req.add_header('Content-Type',&quot;application/x-www-form-urlencoded&quot;)
-res = urllib.request.urlopen(req)
-con = res.read()
-</code></pre>
+<p>在<code>class User()</code>中添加<code>age = db.Column(db.Integer,nullable=True)</code></p>
+<p>执行<code>flask db migrate &quot;initial migration&quot;</code>命令</p>
+<p>自动创建的迁移脚本并不一定正确，所有要手动检查一下，失误的地方手动更改</p>
+<p>执行<code>flask db upgrade</code>更新数据库</p>
 
             </div>
             
@@ -158,9 +147,9 @@ con = res.read()
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">
+                <a href="https://Asolmn.github.io/post/shi-yong-baidu-ai-jin-xing-tu-xiang-shi-bie">
                   <h3 class="post-title">
-                    Mariadb主从复制的一次报错
+                    使用Baidu-AI进行图像识别
                   </h3>
                 </a>
               </div>
