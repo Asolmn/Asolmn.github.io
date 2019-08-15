@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>SMTPLIB(1) | Asolmn</title>
+<title>Misc-亚萨西 | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -101,69 +101,38 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">SMTPLIB(1)</h2>
-            <div class="post-date">2019-05-06</div>
+            <h2 class="post-title">Misc-亚萨西</h2>
+            <div class="post-date">2019-08-15</div>
             
             <div class="post-content">
-              <h3 id="使用smtplib发送qq邮件">使用SMTPLIB发送QQ邮件</h3>
-<!-- more -->
-<h1 id="python-smtplib">Python  smtplib</h1>
-<hr>
-<h2 id="0x00">0x00</h2>
-<h3 id="smtplib学习笔记">smtplib学习笔记</h3>
-<p>基础：
-smtp是发送邮件的协议，在python中有两个模块用来支持发送邮件，smtplib负责发送邮件，而email模块这是负责构造邮件。email可以构造纯文本文件，也可以HTML邮件和带附件的邮件。首先先从纯文本文件开始构造</p>
-<pre><code class="language-python">from email.mime.text import MIMEText
-msg = MIMEText('test python email','plain','utf-8')
-</code></pre>
-<p>导入email模块中的MIMEText类
-然后构造email纯文本邮件
-语法为</p>
-<pre><code class="language-python">msg = MIMEText('要发送的文本内容','发送邮件类型','设置编码')
-</code></pre>
-<p>刚刚例子中，plain指的是纯文本，然后utf-8为邮件内容编码。使用utf-8可以保证编码的兼容性</p>
-<p>邮件内容构造完成后，就是发送邮件，这一块是由smtplib模块负责</p>
-<pre><code class="language-python">import smtplib
-server = smtplib.SMTP(服务器地址，端口)
-#可以打印出与smtp服务器的交互信息
-server.set_debuglevel(1)
-server.login(发件人email地址,smtp服务器授权码)
-server.sendmail(发件人地址，收件人地址，构造的邮件)
-server.quit
-</code></pre>
-<p>接着可以使用QQ的smtp服务器来写一个发送邮件的程序</p>
-<pre><code class="language-python">from email.mime.text import MIMEText
-import smtplib
-
-#构造邮件
-email_information = input(&quot;邮件内容&quot;)
-msg = MIMEText(email_information,'plain','utf-8')
-
-#设置server和user,password
-server = input(&quot;服务器:&quot;)
-user = input(&quot;用户:&quot;)
-password = input(&quot;授权码:&quot;)
-
-#设置收发地址
-send = input(&quot;发件人:&quot;)
-receivers = list(input(&quot;收件人:&quot;))
-
-#发送邮件,注：QQ的smtp服务器端口为465
-sm = smtplib.SMTP(server,465)
-sm.set_debuglevel(1)
-sm.login(user,password)
-sm.sendmail(send,receivers,msg.as_string())
-sm.quit()
-
-</code></pre>
-<p>剩下明日更新~~~~~</p>
+              <h5 id="一道misc题目">一道Misc题目</h5>
+<h5 id="网络与信息安全领域转项赛一如既往的自闭赛哈哈哈哈">网络与信息安全领域转项赛，一如既往的自闭赛哈哈哈哈</h5>
+<p>记录一道Misc题，下载下来首先是一个jpg文件。</p>
+<h6 id="图片如下">图片如下：</h6>
+<p><img src="D:%5CGridea%5Cresources%5Capp%5Cdefault-files%5Cpost-images%5Ctimg-1565867218843.jpg" alt="timg"></p>
+<p>右击属性，然后并没有发现有啥信息</p>
+<p><img src="D:%5CGridea%5Cresources%5Capp%5Cdefault-files%5Cpost-images%5C1565867266092.png" alt="1565867266092"></p>
+<p>接着使用WinHex打开图片，然后一路查看，可以看到最后一部分有一连串类似加密字符。</p>
+<p><img src="D:%5CGridea%5Cresources%5Capp%5Cdefault-files%5Cpost-images%5C1565867462894.png" alt="1565867462894"></p>
+<p>为Ook！加密类型，以.!?五个一组</p>
+<p>然后找一个在线解密网站</p>
+<p>网址在这:https://www.splitbrain.org/services/ook</p>
+<p><img src="D:%5CGridea%5Cresources%5Capp%5Cdefault-files%5Cpost-images%5C1565867662113.png" alt="1565867662113"></p>
+<p><img src="D:%5CGridea%5Cresources%5Capp%5Cdefault-files%5Cpost-images%5C1565867679991.png" alt="1565867679991"></p>
+<h5 id="注意">注意</h5>
+<p>因为加密是以5个字符串为一组所以，最后两个字符不要带上，否则解密出来的东西是乱码的</p>
+<p><img src="D:%5CGridea%5Cresources%5Capp%5Cdefault-files%5Cpost-images%5C1565867742640.png" alt="1565867742640"></p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="tag">
-                    Python
+                  <a href="https://Asolmn.github.io/tag/7jhQ0ZYzo" class="tag">
+                    CTF
+                  </a>
+                
+                  <a href="https://Asolmn.github.io/tag/0K_2m4i87" class="tag">
+                    Misc
                   </a>
                 
               </div>
@@ -171,9 +140,9 @@ sm.quit()
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/centos65-pxe">
+                <a href="https://Asolmn.github.io/post/flask-sqlalchemy">
                   <h3 class="post-title">
-                    Centos6.5 PXE
+                    Flask-SQLALchemy
                   </h3>
                 </a>
               </div>
