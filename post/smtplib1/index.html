@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1566903650934">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1573356549692">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1566903650934" class="site-logo">
+        <img src="https://Asolmn.github.io/images/avatar.png?v=1573356549692" class="site-logo">
         <h1 class="site-title">Asolmn</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -109,13 +109,13 @@
 <hr>
 <h2 id="0x00">0x00</h2>
 <h3 id="smtplib学习笔记">smtplib学习笔记</h3>
-<p>基础：
+<p>基础：<br>
 smtp是发送邮件的协议，在python中有两个模块用来支持发送邮件，smtplib负责发送邮件，而email模块这是负责构造邮件。email可以构造纯文本文件，也可以HTML邮件和带附件的邮件。首先先从纯文本文件开始构造</p>
 <pre><code class="language-python">from email.mime.text import MIMEText
 msg = MIMEText('test python email','plain','utf-8')
 </code></pre>
-<p>导入email模块中的MIMEText类
-然后构造email纯文本邮件
+<p>导入email模块中的MIMEText类<br>
+然后构造email纯文本邮件<br>
 语法为</p>
 <pre><code class="language-python">msg = MIMEText('要发送的文本内容','发送邮件类型','设置编码')
 </code></pre>

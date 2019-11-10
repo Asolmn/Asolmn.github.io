@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://Asolmn.github.io</id>
+    <title>Asolmn</title>
+    <updated>2019-11-10T03:29:13.795Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://Asolmn.github.io"/>
+    <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
+    <subtitle>随便写写，佛系更新</subtitle>
+    <logo>https://Asolmn.github.io/images/avatar.png</logo>
+    <icon>https://Asolmn.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2019, Asolmn</rights>
+    <entry>
+        <title type="html"><![CDATA[Misc-亚萨西]]></title>
+        <id>https://Asolmn.github.io/post/misc-ya-sa-xi</id>
+        <link href="https://Asolmn.github.io/post/misc-ya-sa-xi">
+        </link>
+        <updated>2019-08-15T11:16:34.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="一道misc题目">一道Misc题目</h5>
+<h5 id="网络与信息安全领域转项赛一如既往的自闭赛哈哈哈哈">网络与信息安全领域转项赛，一如既往的自闭赛哈哈哈哈</h5>
+<p>记录一道Misc题，下载文件<br>
+<img src="https://Asolmn.github.io/post-images/1565875411877.png" alt=""><br>
+然后是一个压缩包，发现正常方法打不开，使用工具对其爆破</p>
+<p>工具地址：</p>
+<p>链接：https://pan.baidu.com/s/1uUbrbPBNNfRp-1YOuE75XQ<br>
+提取码：yd5r<br>
+<img src="https://Asolmn.github.io/post-images/1565875442890.png" alt=""><br>
+<img src="https://Asolmn.github.io/post-images/1565875452834.png" alt=""></p>
+<p>得到密码为<code>loli</code>，注意不用是要用winrar进行解压，使用360解压</p>
+<p><img src="https://Asolmn.github.io/post-images/1565875456963.png" alt=""><br>
+然后输入刚刚破解出来的密码</p>
+<p>获得一张照片</p>
+<h6 id="图片如下">图片如下：</h6>
+<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1565868167344.jpg" alt=""></figure>
+<p>右击属性，然后并没有发现有啥信息<br>
+<img src="https://Asolmn.github.io/post-images/1565868187803.png" alt=""></p>
+<p>接着使用WinHex打开图片，然后一路查看，可以看到最后一部分有一连串类似加密字符。<br>
+<img src="https://Asolmn.github.io/post-images/1565868198013.png" alt=""></p>
+<p>为Ook！加密类型，以.!?五个一组</p>
+<p>然后找一个在线解密网站</p>
+<p>网址在这:https://www.splitbrain.org/services/ook</p>
+<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1565868248932.png" alt=""></figure>
+<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1565868257123.png" alt=""></figure>
+<h5 id="注意">注意</h5>
+<p>因为加密是以5个字符串为一组所以，最后两个字符不要带上，否则解密出来的东西是乱码的</p>
+<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1565868266386.png" alt=""></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Flask-SQLALchemy]]></title>
+        <id>https://Asolmn.github.io/post/flask-sqlalchemy</id>
+        <link href="https://Asolmn.github.io/post/flask-sqlalchemy">
+        </link>
+        <updated>2019-08-02T12:20:33.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="数据库的连接">数据库的连接</h5>
+<pre><code class="language-python">app.config['SQLALCHEMY_DATABASE_URI']='mysql://flaskyadmin:123456@192.168.3.4/flasky'
+</code></pre>
+<h5 id="常用数据库url格式">常用数据库url格式</h5>
+<table>
+<thead>
+<tr>
+<th>Mysql</th>
+<th>mysql://username:password@hostname/database</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SQLite</strong></td>
+<td><strong>sqlite:///c:/absolute/path/database</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="定义一个数据库模型">定义一个数据库模型</h5>
+<p>这里可以设置为False，否则运行时会有警告</p>
+<p>设置这一项是每次请求结束都会自动提交数据库中的变动</p>
+<pre><code class="language-python">app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+</code></pre>
+<pre><code class="language-python">from flask import Flask
+from flask_sqlalchemy import SQLALchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']='mysql://flaskyadmin:123456@192.168.3.4/flasky'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+
+db=SQLAlchemy(app)
+
+
+class Role(db.Model):
+    __tablename__ = 'roles'  #表名称
+    id = db.Column(db.Integer,primary_key=True) #Int类型，设置为主键
+    name = db.Column(db.String(64),unique=True) #字符串类型，unique列不允许出现重复值
+
+    def __repr__(self):
+        return 'Roles %r' %self.name
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer,primary_key=True) #Int类型，设置为主键
+    #字符串类型，unique列不允许出现重复值，index为列创建引索
+    username = db.Column(db.String(64),unique=True,index=True) 
+
+    def __repr__(self):
+        return '&lt;User %r&gt;' %self.username
+</code></pre>
+<h5 id="报错记录">报错记录</h5>
+<p>报错内容:</p>
+<pre><code>MySQLdb._exceptions.OperationalError: (1045, &quot;Access denied for user 'flaskyadmin'@'192.168.3.9' (using password: YES)&quot;)
+</code></pre>
+<p>原因是数据库权限问题，所有要到数据库上对其进行授权</p>
+<p>命令如下:</p>
+<p><code>grant all privileges on * . * to 'flaskyadmin'@'%' identified by '123456'</code></p>
+<h5 id="插入行">插入行</h5>
+<pre><code class="language-python">admin_role=Role(name='Admin')
+user_role=Role(name='User')
+user_test1=User(username='test1',role=admin_role)
+user_test2=User(username='test2',role=user_role)
+
+#创建的数据此时并不在数据库中，而是存在python中，所以要通过session提交到数据库中
+db.session.add(admin_role)
+db.session.add(user_role)
+db.session.add(user_test1)
+........
+#也可以用另一种方法
+db.session.add_all([admin_role,user_role,user_test1,user_test2])
+db.session.commit()#提交会话
+
+#数据库db.session()会话与数据库事务为同一个意思
+</code></pre>
+<p>如果在写入会话的时候发生错误，整个会话失败，同时也会有导致数据库内容与会话不一致，会话db.session.commit()失败</p>
+<p>这时可以对数据库会话进行回滚</p>
+<p><code>db.session.rollback()</code></p>
+<h5 id="修改行">修改行</h5>
+<p>可以使用add()方法对之前定义模型中的内容进行修改</p>
+<pre><code class="language-python">admin_role.name='Administrator'
+db.session.add(admin_role)
+db.commit()
+</code></pre>
+<h5 id="查询">查询</h5>
+<p>Flask_SQLALchemy为每个模型都提供query，使用all()方法返回对应表的所有记录</p>
+<p><code>Role.query.all()</code></p>
+<p>除了all()方法全部显示外</p>
+<p>还可以使用<code>过滤器</code>配置query对象</p>
+<p><code>User.query.filter_by(role=user_role).all()</code></p>
+<p>如果想看查询命令的原生SQL语句只需要将其转换为str()就行，其中<code>filter_by</code>为过滤器</p>
+<p><code>str(User.query.filter_by(role=user_role))</code></p>
+<p>如果退出shell会话，前面创建的对象(例如<code>user_role,admin_role之类的</code>)都不会以Python对象的形式存在，但数据库的表中仍有对应的行。</p>
+<p>这时候就需要将数据重新导入对象中,first()方法只返回第一个结果</p>
+<p><code>user_role=Role.query.filter_by(name='User').first()</code></p>
+<p><code>filter_by()</code> :把等值过滤器加到原查询上，返回一个新查询</p>
+<h5 id="报错">报错</h5>
+<p><code>AttributeError: 'InstrumentedList' object has no attribute 'order_by'</code></p>
+<p>解决方法：</p>
+<p>重进进入flask shell</p>
+<p>然后将数据重新导入对象中，再使用<code>order_by()</code>则可以成功</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Flask-Migrate进行数据库的迁移]]></title>
+        <id>https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi</id>
+        <link href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
+        </link>
+        <updated>2019-08-02T12:18:10.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="更新数据库的原有">更新数据库的原有</h5>
+<p>如果碰到需要修改数据库模型同时进行更新</p>
+<p>flask-sqlalchemy的机制是数据库表不存在的时候，才会根据模型进行创建数据库</p>
+<p>所以造成了如果要更新模型，只能将原有的表进行删除，再重新进行创建</p>
+<p>这样会丢失原有表中的所有数据，而数据库迁移框架则可以解决</p>
+<h5 id="创建迁移仓库">创建迁移仓库</h5>
+<p>首先安装flask-Migrate</p>
+<p><code>pip install flask-Migrate</code></p>
+<p>初始化Flask-Migrate</p>
+<pre><code class="language-python">from flask-migrate import Migrate
+
+pass
+
+migrate=Mirgrate(app,db)
+</code></pre>
+<p>接着当前目录的命令行中使用<code>flask db init</code></p>
+<p>这条命令会创建migrations目录，所有迁移脚本都存放在这个文件里面</p>
+<h5 id="创建迁移脚本">创建迁移脚本</h5>
+<p>为了测试先对模型类进行一个修改</p>
+<p>例如：</p>
+<pre><code class="language-python">	class User():
+        ....
+    	age = db.Column(db.Integer,nullable=True)
+</code></pre>
+<p>在<code>class User()</code>中添加<code>age = db.Column(db.Integer,nullable=True)</code></p>
+<p>执行<code>flask db migrate &quot;initial migration&quot;</code>命令</p>
+<p>自动创建的迁移脚本并不一定正确，所有要手动检查一下，失误的地方手动更改</p>
+<p>执行<code>flask db upgrade</code>更新数据库</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用Baidu-AI进行图像识别]]></title>
+        <id>https://Asolmn.github.io/post/shi-yong-baidu-ai-jin-xing-tu-xiang-shi-bie</id>
+        <link href="https://Asolmn.github.io/post/shi-yong-baidu-ai-jin-xing-tu-xiang-shi-bie">
+        </link>
+        <updated>2019-06-13T07:22:30.000Z</updated>
+        <content type="html"><![CDATA[<p>因为专业课作业，所以有了这个程序，现在基本已经写完。顺便水一遍，整体并没有什么特别有技术含量的地方，基本都是调用API</p>
+<h3 id="图像识别-货币">图像识别-货币</h3>
+<p>首先是图像识别的代码，要先在百度AI创建应用，然后获取到APP_ID,API_KEY，SECRET_KEY三个值</p>
+<p>因为使用的货币识别，目前并没有封装到SDK中，所以我们需要手动发送调用api请求。获取到&quot;access_token&quot;</p>
+<p>具体代码如下:</p>
+<pre><code>#获取access_token
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id='+API_KEY+'&amp;client_secret='+SECRET_KEY
+request = urllib.request.Request(host)
+request.add_header('Content-Type','application/json;charset=UTF-8')
+response = urllib.request.urlopen(request)
+content = response.read()
+if (content):
+	print(content)
+</code></pre>
+<p>定义一个url的变量，变量的值为api的接口地址</p>
+<pre><code>requestUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/currency'
+</code></pre>
+<p>读取图片，并且转换为二进制Base64</p>
+<pre><code>fileName = str(input('图片名称:'))
+with open(fileName,'rb') as f:
+    img = base64.b64encode(f.read())
+</code></pre>
+<p>对图片进行转码</p>
+<pre><code>params = {'image':img}
+params = urllib.parse.urlencode(params).encode('utf-8')
+</code></pre>
+<p>完成这些步骤后，就可以调用api了<br>
+前面获取的content中，把access_token提取出来<br>
+添加到url上面</p>
+<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
+</code></pre>
+<p>后面就是发送了，使用python的标准库urllib发送数据</p>
+<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
+req = urllib.request.Request(url=requestUrl,data=params)
+req.add_header('Content-Type',&quot;application/x-www-form-urlencoded&quot;)
+res = urllib.request.urlopen(req)
+con = res.read()
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mariadb主从复制的一次报错]]></title>
+        <id>https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo</id>
+        <link href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">
+        </link>
+        <updated>2019-05-22T03:22:21.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="slave体现不了master的数据更新">slave体现不了master的数据更新</h3>
+<p>刚刚解决，趁机水一篇博客</p>
+<p>报错体现</p>
+<pre><code>Slave_IO_Running:Connecting
+</code></pre>
+<p>查看一些报错信息</p>
+<pre><code>error connecting to master 'slave@192.168.116.22:3306' - retry-time: 60  retries: 86400  message: Host '192.168.116.33' is not allowed to connect to this MariaDB server
+
+</code></pre>
+<p>问题出在访问连接权限上面。<br>
+解决方法:</p>
+<pre><code>grant replication slave on *.* to 'slave'@'192.168.116.%';
+</code></pre>
+<pre><code>grant replication user_name on *.* to  'user_name'@'ip'
+</code></pre>
+<p>user_name用户名，ip可以使用%通配符</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[记DNS的子域转发]]></title>
+        <id>https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa</id>
+        <link href="https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa">
+        </link>
+        <updated>2019-05-09T11:16:31.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="因为刚好做题的时候碰到就顺便记录一下">因为刚好做题的时候碰到，就顺便记录一下</h3>
+<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数<br>
+行数一般为31和32行</p>
+<h6 id="将yes改成no">将yes改成no</h6>
+<pre><code>dnssec-enable no;
+dnssec-validation no;
+</code></pre>
+<p>dnssec-enable 是否支持DNSSEC开关<br>
+dnssec-validation 是否进行DNSSEC确认开关</p>
+<p>DNSSEC技术主要用于DNS数据的完整性，存在，来源三个方面进行验证</p>
+<p>所以关掉DNSSEC功能，可以取消对子域名的验证</p>
+<p>向正向区域中添加胶水记录<br>
+其实就是在父区域中添加一条NS记录和A记录</p>
+<pre><code>gz             IN            NS            serverB.gz
+serverB.gz          IN         A        192.168.101.33
+</code></pre>
+<h4 id="扩展">扩展：</h4>
+<p>如果客户端的请求超出子域的解析范围，则可以使用定义转发服务器</p>
+<p><code>zone &quot;zone_name&quot; IN { 	 type forward; 	 forward only; 	 forwarders { IP; }; };</code></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Samba报错]]></title>
+        <id>https://Asolmn.github.io/post/samba-bug</id>
+        <link href="https://Asolmn.github.io/post/samba-bug">
+        </link>
+        <updated>2019-05-08T01:40:22.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="记一次samba的报错报错体现在远程挂载超时始终不能访问其问题在于域名解析">记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。</h3>
+<h4 id="samba配置文件内容如下">Samba配置文件内容如下</h4>
+<pre><code>[webdata]
+						path = /data/web_dat
+						writable = yes
+						hosts allow = 192.168.101.0/24
+						hosts deny = all
+						public = yes
+</code></pre>
+<p>使用用户为apache，添加用户</p>
+<pre><code>smbpasswd -a apache
+</code></pre>
+<p>重启服务</p>
+<pre><code>systemctl restart nmb smb
+</code></pre>
+<p>报错内容如下<br>
+使用命令<code>smbclient -L //192.168.101.22/webdata -U apache</code>用来测试<br>
+报错显示:</p>
+<pre><code>protocol negotiation failed: NT_STATUS_IO_TIMEOUT
+</code></pre>
+<p>造成原因，是因为服务器本身是DNS服务，所以要对dns服务进行停止<code>systemctl stop named</code></p>
+<p>第二种的话，则是/etc/resolv.conf文件中的nameserver参数为114.114.114.114，将其注释掉就行</p>
+<h4 id="还可以在客户端的host文件中添加服务端的主机名记录">还可以在客户端的host文件中添加服务端的主机名记录</h4>
+<p>例如:添加<code>192.168.116.22 serverA.rj.com</code></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SMTPLIB(2)]]></title>
+        <id>https://Asolmn.github.io/post/smtplib2</id>
+        <link href="https://Asolmn.github.io/post/smtplib2">
+        </link>
+        <updated>2019-05-05T16:14:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="python3-smptlib2">python3-smptlib2</h1>
+<hr>
+<h2 id="0x01">0x01</h2>
+<h3 id="smtplib-显示主题发送人等">smtplib-显示主题，发送人等...</h3>
+<h3 id="更新">更新:</h3>
+<p>发现一个尴尬的事实<br>
+我是用qq邮件测试的，就算我没写主题和发送人这些话，如果你是对方的好友也会自动显示（哭），但如果是一个的邮箱服务器发送到另一个邮箱服务器就可以出现</p>
+<p>这次直接上代码吧，稍微写一下笔记，原谅我的懒惰（嘿嘿）<br>
+一个完整的邮件，要有主题和发送人，收件人等信息，smtplib同样提供这样的功能，功能实现如下。</p>
+<pre><code class="language-python">/usr/bin/env python
+
+from email import encoders
+from email.header import Header
+from email.mime.text import MIMEText
+from email.utils import parseaddr,formataddr
+import smtplib
+
+#格式化邮箱地址
+def format_addr(s):
+        name,addr = parseaddr(s)
+        return formataddr((Header(name,'utf-8').encode(),addr))
+
+'''
+这个设置就不用多说了吧,和上次一样，都是用户，授权码，发送地址和接受地址。
+'''
+user = input('User:')
+password = input('Password:')
+send = input('Send:')
+receivers = list(input('Receivers:'))
+smtp_server = input('SMTP server:')
+
+
+#构造邮件
+msg = MIMEText('test python smtp','plain','utf-8')
+#构造发件人的头部信息
+msg['From'] = format_addr('python lover'%user)
+#构造收件人的头部信息
+msg['To']=format_addr('administrator&lt;%s&gt;'%receivers)
+#构造邮件主题头部信息
+msg['Subject'] = (Header('from smtp....','utf-8').encode())
+
+#发送邮件
+server = smtplib.SMTP(smtp_server,465)
+server.set_debuglevel(1)
+server.login(user,password)
+server.sendmail(send,[receivers],msg.as_string())
+server.quit
+</code></pre>
+<p>def format_addr(s)是照网上写的，作用是格式化邮件地址,没看懂parseaddr()和formataddr。等理解再补上<br>
+（补充内容：<br>
+format_addrs函数接受到邮件地址后，使用parseaddr()方法将user和send的值，分为(name,addr)格式的元组，再将分解后的值分别赋予给name和addr两个变量，如果这个地址连接错误或者不存在，就相当于解析失败，这会返回(&quot;&quot;,&quot;&quot;)形式的一个元组信息。formataddr()与parseaddr()的方法相反，需要元组的信息，然后返回适合与smtp协议的To和Cc的字符串值，所以使用这个对象的前提条件是，name和addr为元组，所以这个函数使用了parseaddr()方法，将user转换一下可以适用于formataddr()对象可以接受的值，再由formataddr()进行转换。<br>
+）</p>
+<p>不能简单的传入一个name<a href="mailto:addr@example.com">addr@example.com</a>格式，因为如果包含中文，要使用Header对象。Header()对象可以进行编码，msg['To']接受的是字符串而不是list</p>
+<p>['From']和['To']和['Subject']是标准邮件的三个头部信息。这是smtp协议中定义的格式。</p>
+<p>发送格式部分与上次并无差别<br>
+这个程序的与上个程序的差别，基本就在于显示smtp标准协议中三个头部信息</p>
+<p>剩下的明日更新~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SMTPLIB(1)]]></title>
+        <id>https://Asolmn.github.io/post/smtplib1</id>
+        <link href="https://Asolmn.github.io/post/smtplib1">
+        </link>
+        <updated>2019-05-05T16:13:29.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="python-smtplib">Python  smtplib</h1>
+<hr>
+<h2 id="0x00">0x00</h2>
+<h3 id="smtplib学习笔记">smtplib学习笔记</h3>
+<p>基础：<br>
+smtp是发送邮件的协议，在python中有两个模块用来支持发送邮件，smtplib负责发送邮件，而email模块这是负责构造邮件。email可以构造纯文本文件，也可以HTML邮件和带附件的邮件。首先先从纯文本文件开始构造</p>
+<pre><code class="language-python">from email.mime.text import MIMEText
+msg = MIMEText('test python email','plain','utf-8')
+</code></pre>
+<p>导入email模块中的MIMEText类<br>
+然后构造email纯文本邮件<br>
+语法为</p>
+<pre><code class="language-python">msg = MIMEText('要发送的文本内容','发送邮件类型','设置编码')
+</code></pre>
+<p>刚刚例子中，plain指的是纯文本，然后utf-8为邮件内容编码。使用utf-8可以保证编码的兼容性</p>
+<p>邮件内容构造完成后，就是发送邮件，这一块是由smtplib模块负责</p>
+<pre><code class="language-python">import smtplib
+server = smtplib.SMTP(服务器地址，端口)
+#可以打印出与smtp服务器的交互信息
+server.set_debuglevel(1)
+server.login(发件人email地址,smtp服务器授权码)
+server.sendmail(发件人地址，收件人地址，构造的邮件)
+server.quit
+</code></pre>
+<p>接着可以使用QQ的smtp服务器来写一个发送邮件的程序</p>
+<pre><code class="language-python">from email.mime.text import MIMEText
+import smtplib
+
+#构造邮件
+email_information = input(&quot;邮件内容&quot;)
+msg = MIMEText(email_information,'plain','utf-8')
+
+#设置server和user,password
+server = input(&quot;服务器:&quot;)
+user = input(&quot;用户:&quot;)
+password = input(&quot;授权码:&quot;)
+
+#设置收发地址
+send = input(&quot;发件人:&quot;)
+receivers = list(input(&quot;收件人:&quot;))
+
+#发送邮件,注：QQ的smtp服务器端口为465
+sm = smtplib.SMTP(server,465)
+sm.set_debuglevel(1)
+sm.login(user,password)
+sm.sendmail(send,receivers,msg.as_string())
+sm.quit()
+
+</code></pre>
+<p>剩下明日更新~~~~~</p>
+]]></content>
+    </entry>
+</feed>

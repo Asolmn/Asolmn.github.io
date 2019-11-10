@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1566903650934">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1573356549692">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1566903650934" class="site-logo">
+        <img src="https://Asolmn.github.io/images/avatar.png?v=1573356549692" class="site-logo">
         <h1 class="site-title">Asolmn</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -106,17 +106,17 @@
             
             <div class="post-content">
               <h3 id="因为刚好做题的时候碰到就顺便记录一下">因为刚好做题的时候碰到，就顺便记录一下</h3>
-<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数
+<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数<br>
 行数一般为31和32行</p>
 <h6 id="将yes改成no">将yes改成no</h6>
 <pre><code>dnssec-enable no;
 dnssec-validation no;
 </code></pre>
-<p>dnssec-enable 是否支持DNSSEC开关
+<p>dnssec-enable 是否支持DNSSEC开关<br>
 dnssec-validation 是否进行DNSSEC确认开关</p>
 <p>DNSSEC技术主要用于DNS数据的完整性，存在，来源三个方面进行验证</p>
 <p>所以关掉DNSSEC功能，可以取消对子域名的验证</p>
-<p>向正向区域中添加胶水记录
+<p>向正向区域中添加胶水记录<br>
 其实就是在父区域中添加一条NS记录和A记录</p>
 <pre><code>gz             IN            NS            serverB.gz
 serverB.gz          IN         A        192.168.101.33
