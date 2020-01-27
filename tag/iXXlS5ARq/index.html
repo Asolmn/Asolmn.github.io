@@ -7,7 +7,7 @@
 <title>
     Linux | Asolmn
 </title>
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580134092405">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580136467554">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Asolmn.github.io">
-                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580134092405" alt="">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580136467554" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -120,7 +120,7 @@
                     <time class="post-time">2019-05-22</time>
                     
                         <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-banana">
             #Linux
         </a>
                         
@@ -129,26 +129,11 @@
                     
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            slave体现不了master的数据更新
-刚刚解决，趁机水一篇博客
-报错体现
-Slave_IO_Running:Connecting
+                                    <div class="post-content-abstract">
+                                        <p>mariadb的主从复制一次报错小记</p>
 
-查看一些报错信息
-error connecting to master &#39;slave@192.168.116.22:3306&#39; - retry-time: 60  retries: 86400  message: Host &#39;192.168.116.33&#39; is not allowed to connect to this MariaDB server
-
-
-问题出在访问连接权限上面。
-解决方法:
-grant replication slave on *.* to &#39;slave&#39;@&#39;192.168.116.%&#39;;
-
-grant replication user_name on *.* to  &#39;user_name&#39;@&#39;ip&#39;
-
-user_name用户名，ip可以使用%通配符
-
-                                        </div>
-                                        
+                                    </div>
+                                    
                                             <a class="btn btn-text" href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">Read More ~</a>
                             </div>
                 </div>
@@ -164,7 +149,7 @@ user_name用户名，ip可以使用%通配符
                     <time class="post-time">2019-05-08</time>
                     
                         <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_2">
             #Linux
         </a>
                         
@@ -173,34 +158,11 @@ user_name用户名，ip可以使用%通配符
                     
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。
-Samba配置文件内容如下
-[webdata]
-						path = /data/web_dat
-						writable = yes
-						hosts allow = 192.168.101.0/24
-						hosts deny = all
-						public = yes
+                                    <div class="post-content-abstract">
+                                        <p>centos7环境，samba服务的远程挂载超时报错</p>
 
-使用用户为apache，添加用户
-smbpasswd -a apache
-
-重启服务
-systemctl restart nmb smb
-
-报错内容如下
-使用命令smbclient -L //192.168.101.22/webdata -U apache用来测试
-报错显示:
-protocol negotiation failed: NT_STATUS_IO_TIMEOUT
-
-造成原因，是因为服务器本身是DNS服务，所以要对dns服务进行停止systemctl stop named
-第二种的话，则是/etc/resolv.conf文件中的nameserver参数为114.114.114.114，将其注释掉就行
-还可以在客户端的host文件中添加服务端的主机名记录
-例如:添加192.168.116.22 serverA.rj.com
-
-                                        </div>
-                                        
+                                    </div>
+                                    
                                             <a class="btn btn-text" href="https://Asolmn.github.io/post/samba-bug">Read More ~</a>
                             </div>
                 </div>
@@ -217,7 +179,7 @@ protocol negotiation failed: NT_STATUS_IO_TIMEOUT
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1580134092405)">
+        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1580136467554)">
         </div>
         <h1 class="id_card-title">
             Asolmn

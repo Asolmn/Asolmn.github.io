@@ -7,7 +7,7 @@
 <title>
     Flask-Migrate进行数据库的迁移 | Asolmn
 </title>
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580134092405">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580136467554">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -28,7 +28,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Asolmn.github.io">
-                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580134092405" alt="">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580136467554" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -113,19 +113,21 @@
                             <time class="post-time">2019-08-02</time>
                             
                                 <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-error">
                             #Mysql
                         </a>
                                 
                                 <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-primary">
                             #Python
                         </a>
                                 
                         </div>
                         
                                 <div class="post-content">
-                                    <h5 id="更新数据库的原有">更新数据库的原有</h5>
+                                    <p>使用flask-migrate进行数据库模型迁移</p>
+<!-- more -->
+<h5 id="更新数据库的原有">更新数据库的原有</h5>
 <p>如果碰到需要修改数据库模型同时进行更新</p>
 <p>flask-sqlalchemy的机制是数据库表不存在的时候，才会根据模型进行创建数据库</p>
 <p>所以造成了如果要更新模型，只能将原有的表进行删除，再重新进行创建</p>
