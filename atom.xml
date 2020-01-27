@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Asolmn.github.io</id>
     <title>Asolmn</title>
-    <updated>2019-12-31T13:26:25.270Z</updated>
+    <updated>2020-01-27T13:53:58.182Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Asolmn.github.io"/>
     <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
     <subtitle>随便写写，佛系更新</subtitle>
     <logo>https://Asolmn.github.io/images/avatar.png</logo>
     <icon>https://Asolmn.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Asolmn</rights>
+    <rights>All rights reserved 2020, Asolmn</rights>
     <entry>
         <title type="html"><![CDATA[记渡过的2019]]></title>
         <id>https://Asolmn.github.io/post/ji-du-guo-de-2019</id>
@@ -65,31 +65,31 @@
         <content type="html"><![CDATA[<h5 id="一道misc题目">一道Misc题目</h5>
 <h5 id="网络与信息安全领域转项赛一如既往的自闭赛哈哈哈哈">网络与信息安全领域转项赛，一如既往的自闭赛哈哈哈哈</h5>
 <p>记录一道Misc题，下载文件<br>
-<img src="https://Asolmn.github.io/post-images/1565875411877.png" alt=""><br>
+<img src="https://Asolmn.github.io/post-images/1565875411877.png" alt="" loading="lazy"><br>
 然后是一个压缩包，发现正常方法打不开，使用工具对其爆破</p>
 <p>工具地址：</p>
 <p>链接：https://pan.baidu.com/s/1uUbrbPBNNfRp-1YOuE75XQ<br>
 提取码：yd5r<br>
-<img src="https://Asolmn.github.io/post-images/1565875442890.png" alt=""><br>
-<img src="https://Asolmn.github.io/post-images/1565875452834.png" alt=""></p>
+<img src="https://Asolmn.github.io/post-images/1565875442890.png" alt="" loading="lazy"><br>
+<img src="https://Asolmn.github.io/post-images/1565875452834.png" alt="" loading="lazy"></p>
 <p>得到密码为<code>loli</code>，注意不用是要用winrar进行解压，使用360解压</p>
-<p><img src="https://Asolmn.github.io/post-images/1565875456963.png" alt=""><br>
+<p><img src="https://Asolmn.github.io/post-images/1565875456963.png" alt="" loading="lazy"><br>
 然后输入刚刚破解出来的密码</p>
 <p>获得一张照片</p>
 <h6 id="图片如下">图片如下：</h6>
-<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1565868167344.jpg" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1565868167344.jpg" alt="" loading="lazy"></figure>
 <p>右击属性，然后并没有发现有啥信息<br>
-<img src="https://Asolmn.github.io/post-images/1565868187803.png" alt=""></p>
+<img src="https://Asolmn.github.io/post-images/1565868187803.png" alt="" loading="lazy"></p>
 <p>接着使用WinHex打开图片，然后一路查看，可以看到最后一部分有一连串类似加密字符。<br>
-<img src="https://Asolmn.github.io/post-images/1565868198013.png" alt=""></p>
+<img src="https://Asolmn.github.io/post-images/1565868198013.png" alt="" loading="lazy"></p>
 <p>为Ook！加密类型，以.!?五个一组</p>
 <p>然后找一个在线解密网站</p>
 <p>网址在这:https://www.splitbrain.org/services/ook</p>
-<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1565868248932.png" alt=""></figure>
-<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1565868257123.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1565868248932.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1565868257123.png" alt="" loading="lazy"></figure>
 <h5 id="注意">注意</h5>
 <p>因为加密是以5个字符串为一组所以，最后两个字符不要带上，否则解密出来的东西是乱码的</p>
-<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1565868266386.png" alt=""></figure>
+<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1565868266386.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -234,52 +234,6 @@ migrate=Mirgrate(app,db)
 <p>执行<code>flask db migrate &quot;initial migration&quot;</code>命令</p>
 <p>自动创建的迁移脚本并不一定正确，所有要手动检查一下，失误的地方手动更改</p>
 <p>执行<code>flask db upgrade</code>更新数据库</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[使用Baidu-AI进行图像识别]]></title>
-        <id>https://Asolmn.github.io/post/shi-yong-baidu-ai-jin-xing-tu-xiang-shi-bie</id>
-        <link href="https://Asolmn.github.io/post/shi-yong-baidu-ai-jin-xing-tu-xiang-shi-bie">
-        </link>
-        <updated>2019-06-13T07:22:30.000Z</updated>
-        <content type="html"><![CDATA[<p>因为专业课作业，所以有了这个程序，现在基本已经写完。顺便水一遍，整体并没有什么特别有技术含量的地方，基本都是调用API</p>
-<h3 id="图像识别-货币">图像识别-货币</h3>
-<p>首先是图像识别的代码，要先在百度AI创建应用，然后获取到APP_ID,API_KEY，SECRET_KEY三个值</p>
-<p>因为使用的货币识别，目前并没有封装到SDK中，所以我们需要手动发送调用api请求。获取到&quot;access_token&quot;</p>
-<p>具体代码如下:</p>
-<pre><code>#获取access_token
-host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id='+API_KEY+'&amp;client_secret='+SECRET_KEY
-request = urllib.request.Request(host)
-request.add_header('Content-Type','application/json;charset=UTF-8')
-response = urllib.request.urlopen(request)
-content = response.read()
-if (content):
-	print(content)
-</code></pre>
-<p>定义一个url的变量，变量的值为api的接口地址</p>
-<pre><code>requestUrl = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/currency'
-</code></pre>
-<p>读取图片，并且转换为二进制Base64</p>
-<pre><code>fileName = str(input('图片名称:'))
-with open(fileName,'rb') as f:
-    img = base64.b64encode(f.read())
-</code></pre>
-<p>对图片进行转码</p>
-<pre><code>params = {'image':img}
-params = urllib.parse.urlencode(params).encode('utf-8')
-</code></pre>
-<p>完成这些步骤后，就可以调用api了<br>
-前面获取的content中，把access_token提取出来<br>
-添加到url上面</p>
-<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
-</code></pre>
-<p>后面就是发送了，使用python的标准库urllib发送数据</p>
-<pre><code>requestUrl = requestUrl+&quot;?access_token=&quot;+access_token
-req = urllib.request.Request(url=requestUrl,data=params)
-req.add_header('Content-Type',&quot;application/x-www-form-urlencoded&quot;)
-res = urllib.request.urlopen(req)
-con = res.read()
-</code></pre>
 ]]></content>
     </entry>
     <entry>
