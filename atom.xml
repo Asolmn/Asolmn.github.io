@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Asolmn.github.io</id>
     <title>Asolmn</title>
-    <updated>2020-01-27T13:53:58.182Z</updated>
+    <updated>2020-01-27T13:55:33.847Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Asolmn.github.io"/>
     <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
@@ -10,6 +10,110 @@
     <logo>https://Asolmn.github.io/images/avatar.png</logo>
     <icon>https://Asolmn.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Asolmn</rights>
+    <entry>
+        <title type="html"><![CDATA[functools wraps方法]]></title>
+        <id>https://Asolmn.github.io/post/functools-wraps-fang-fa</id>
+        <link href="https://Asolmn.github.io/post/functools-wraps-fang-fa">
+        </link>
+        <updated>2020-01-27T13:54:27.000Z</updated>
+        <content type="html"><![CDATA[<p>参考资料：https://www.bilibili.com/video/av15904918/</p>
+<p>从书中看到了一段代码，对其中的含义并不是很理解。代码如下</p>
+<pre><code class="language-python">from functools import wraps #作用于函数或者返回其它函数的函数
+from flask import abort
+from flask_login import current_user
+from .models import Permission
+#检查常规权限
+def permission_required(permission):
+    def decorator(f):
+        @wraps(f)
+        def decorated_funcation(*args,**kwargs):
+            #调用can方法，检验用户的权值是否相等，来判断是否有权限
+            if not current_user.can(permission):
+                #abort用于提前退出，用于指定错误码的返回
+                abort(403)
+            return f(*args,**kwargs)
+        return decorated_funcation
+    return decorator
+
+#检查管理员权限
+def admin_required(f):
+    #调用检查权限的函数，传入参数设置为管理员的
+    return permission_required(Permission.ADMIN)
+</code></pre>
+<p>其中使用了装饰器，这一个知识点，于是便搜索了一下为什么这一段代码要用到<code>functools.wraps</code>，具体可以解决那些问题</p>
+<h5 id="结果如下">结果如下</h5>
+<p>最开始实现的装饰器有几个缺点：不支持关键字参数，而且会遮盖被装饰函数的<code>__name__</code>和<code>__doc__</code>属性</p>
+<p>例如:</p>
+<pre><code class="language-python">def noop(f):
+	def wrapper():
+		return f()
+	return wrapper
+
+@noop
+def hello():
+    print(&quot;Hello,world&quot;)
+ 
+help(hello)
+print(hello.__name__)
+print(hello.__doc__)
+
+#输出
+Help on function wrapper in module __main__:
+
+wrapper()
+
+wrapper
+None
+</code></pre>
+<p>可以看到help(hello)，输出来的function并不是hello的，而是wrapper。同时hello的<code>__name__</code>也并不是hello的。</p>
+<p>可以通过手动修改来解决这个问题</p>
+<pre><code class="language-python">def noop(f):
+	def wrapper():
+		return f()
+	wrapper.__name__ = f.__name__
+	wrapper.__doc__ = f.__doc__
+	return wrapper
+</code></pre>
+<p>这个时候，再进行输出一次。</p>
+<pre><code class="language-python">help(hello)
+print(hello.__name__)
+print(hello.__doc__)
+
+#输出
+Help on function hello in module __main__:
+
+hello()
+
+hello
+None
+</code></pre>
+<p>但是再一个较大的项目中，这样操作，未免过于繁琐，所以这个时候可以使用functools.wraps来解决这个问题</p>
+<pre><code class="language-python">from functools import wraps
+
+def noop(f):
+    @wraps(f)
+    def wrapper():
+        return f()
+    return wrapper
+
+@noop
+def hello():
+    print(&quot;Hello,world&quot;)
+
+help(hello)
+print(hello.__name__)
+print(hello.__doc__)
+
+#输出
+Help on function hello in module __main__:
+
+hello()
+
+hello
+None
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[记渡过的2019]]></title>
         <id>https://Asolmn.github.io/post/ji-du-guo-de-2019</id>

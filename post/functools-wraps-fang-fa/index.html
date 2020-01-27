@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>记DNS的子域转发 | Asolmn</title>
+<title>functools wraps方法 | Asolmn</title>
 <meta name="description" content="随便写写，佛系更新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -101,38 +101,115 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">记DNS的子域转发</h2>
-            <div class="post-date">2019-05-09</div>
+            <h2 class="post-title">functools wraps方法</h2>
+            <div class="post-date">2020-01-27</div>
             
             <div class="post-content">
-              <h3 id="因为刚好做题的时候碰到就顺便记录一下">因为刚好做题的时候碰到，就顺便记录一下</h3>
-<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数<br>
-行数一般为31和32行</p>
-<h6 id="将yes改成no">将yes改成no</h6>
-<pre><code>dnssec-enable no;
-dnssec-validation no;
+              <p>参考资料：https://www.bilibili.com/video/av15904918/</p>
+<p>从书中看到了一段代码，对其中的含义并不是很理解。代码如下</p>
+<pre><code class="language-python">from functools import wraps #作用于函数或者返回其它函数的函数
+from flask import abort
+from flask_login import current_user
+from .models import Permission
+#检查常规权限
+def permission_required(permission):
+    def decorator(f):
+        @wraps(f)
+        def decorated_funcation(*args,**kwargs):
+            #调用can方法，检验用户的权值是否相等，来判断是否有权限
+            if not current_user.can(permission):
+                #abort用于提前退出，用于指定错误码的返回
+                abort(403)
+            return f(*args,**kwargs)
+        return decorated_funcation
+    return decorator
+
+#检查管理员权限
+def admin_required(f):
+    #调用检查权限的函数，传入参数设置为管理员的
+    return permission_required(Permission.ADMIN)
 </code></pre>
-<p>dnssec-enable 是否支持DNSSEC开关<br>
-dnssec-validation 是否进行DNSSEC确认开关</p>
-<p>DNSSEC技术主要用于DNS数据的完整性，存在，来源三个方面进行验证</p>
-<p>所以关掉DNSSEC功能，可以取消对子域名的验证</p>
-<p>向正向区域中添加胶水记录<br>
-其实就是在父区域中添加一条NS记录和A记录</p>
-<pre><code>gz             IN            NS            serverB.gz
-serverB.gz          IN         A        192.168.101.33
+<p>其中使用了装饰器，这一个知识点，于是便搜索了一下为什么这一段代码要用到<code>functools.wraps</code>，具体可以解决那些问题</p>
+<h5 id="结果如下">结果如下</h5>
+<p>最开始实现的装饰器有几个缺点：不支持关键字参数，而且会遮盖被装饰函数的<code>__name__</code>和<code>__doc__</code>属性</p>
+<p>例如:</p>
+<pre><code class="language-python">def noop(f):
+	def wrapper():
+		return f()
+	return wrapper
+
+@noop
+def hello():
+    print(&quot;Hello,world&quot;)
+ 
+help(hello)
+print(hello.__name__)
+print(hello.__doc__)
+
+#输出
+Help on function wrapper in module __main__:
+
+wrapper()
+
+wrapper
+None
 </code></pre>
-<h4 id="扩展">扩展：</h4>
-<p>如果客户端的请求超出子域的解析范围，则可以使用定义转发服务器</p>
-<p><code>zone &quot;zone_name&quot; IN { 	 type forward; 	 forward only; 	 forwarders { IP; }; };</code></p>
+<p>可以看到help(hello)，输出来的function并不是hello的，而是wrapper。同时hello的<code>__name__</code>也并不是hello的。</p>
+<p>可以通过手动修改来解决这个问题</p>
+<pre><code class="language-python">def noop(f):
+	def wrapper():
+		return f()
+	wrapper.__name__ = f.__name__
+	wrapper.__doc__ = f.__doc__
+	return wrapper
+</code></pre>
+<p>这个时候，再进行输出一次。</p>
+<pre><code class="language-python">help(hello)
+print(hello.__name__)
+print(hello.__doc__)
+
+#输出
+Help on function hello in module __main__:
+
+hello()
+
+hello
+None
+</code></pre>
+<p>但是再一个较大的项目中，这样操作，未免过于繁琐，所以这个时候可以使用functools.wraps来解决这个问题</p>
+<pre><code class="language-python">from functools import wraps
+
+def noop(f):
+    @wraps(f)
+    def wrapper():
+        return f()
+    return wrapper
+
+@noop
+def hello():
+    print(&quot;Hello,world&quot;)
+
+help(hello)
+print(hello.__name__)
+print(hello.__doc__)
+
+#输出
+Help on function hello in module __main__:
+
+hello()
+
+hello
+None
+</code></pre>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/samba-bug">
+                <a href="https://Asolmn.github.io/post/ji-du-guo-de-2019">
                   <h3 class="post-title">
-                    Samba报错
+                    记渡过的2019
                   </h3>
                 </a>
               </div>
