@@ -1,111 +1,136 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Flask-SQLALchemy | Asolmn</title>
-<meta name="description" content="随便写写，佛系更新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580133753559">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Flask-SQLALchemy | Asolmn
+</title>
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580134092405">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  </head>
-  <body>
-    <div id="app" class="main">
+        
+</head>
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1580133753559" class="site-logo">
-        <h1 class="site-title">Asolmn</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580134092405" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-        
-          <a href="/post/friend" class="site-nav">
-            友链
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-          <a class="social-link" href="https://github.com/Asolmn" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      随便写写，佛系更新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-  </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Flask-SQLALchemy</h2>
-            <div class="post-date">2019-08-02</div>
-            
-            <div class="post-content">
-              <h5 id="数据库的连接">数据库的连接</h5>
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Flask-SQLALchemy
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-08-02</time>
+                            
+                                <a href="https://Asolmn.github.io/tag/eCxwcvHi8" class="post-tag i-tag
+                            i-tag-other_2">
+                            #Web
+                        </a>
+                                
+                                <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="post-tag i-tag
+                            i-tag-success">
+                            #Mysql
+                        </a>
+                                
+                                <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
+                            i-tag-banana">
+                            #Python
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h5 id="数据库的连接">数据库的连接</h5>
 <pre><code class="language-python">app.config['SQLALCHEMY_DATABASE_URI']='mysql://flaskyadmin:123456@192.168.3.4/flasky'
 </code></pre>
 <h5 id="常用数据库url格式">常用数据库url格式</h5>
@@ -206,62 +231,113 @@ db.commit()
 <p>重进进入flask shell</p>
 <p>然后将数据重新导入对象中，再使用<code>order_by()</code>则可以成功</p>
 
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://Asolmn.github.io/tag/eCxwcvHi8" class="tag">
-                    Web
-                  </a>
-                
-                  <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="tag">
-                    Mysql
-                  </a>
-                
-                  <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="tag">
-                    Python
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
-                  <h3 class="post-title">
-                    Flask-Migrate进行数据库的迁移
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
+                                <h3 class="post-title">
+                                    Flask-Migrate进行数据库的迁移
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%BF%9E%E6%8E%A5">数据库的连接</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93url%E6%A0%BC%E5%BC%8F">常用数据库url格式</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B">定义一个数据库模型</a></li>
+<li><a href="#%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95">报错记录</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E8%A1%8C">插入行</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E8%A1%8C">修改行</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2">查询</a></li>
+<li><a href="#%E6%8A%A5%E9%94%99">报错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
-      </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
+    
+                            
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                </div>
 
-<script type="application/javascript">
 
-AOS.init();
 
-hljs.initHighlightingOnLoad()
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+            </div>
 
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-
-  </body>
 </html>

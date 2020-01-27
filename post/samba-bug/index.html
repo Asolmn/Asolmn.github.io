@@ -1,111 +1,126 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Samba报错 | Asolmn</title>
-<meta name="description" content="随便写写，佛系更新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580133753559">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Samba报错 | Asolmn
+</title>
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580134092405">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  </head>
-  <body>
-    <div id="app" class="main">
+        
+</head>
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1580133753559" class="site-logo">
-        <h1 class="site-title">Asolmn</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580134092405" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-        
-          <a href="/post/friend" class="site-nav">
-            友链
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-          <a class="social-link" href="https://github.com/Asolmn" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      随便写写，佛系更新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-  </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Samba报错</h2>
-            <div class="post-date">2019-05-08</div>
-            
-            <div class="post-content">
-              <h3 id="记一次samba的报错报错体现在远程挂载超时始终不能访问其问题在于域名解析">记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。</h3>
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Samba报错
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-08</time>
+                            
+                                <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="post-tag i-tag
+                            i-tag-success">
+                            #Linux
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h3 id="记一次samba的报错报错体现在远程挂载超时始终不能访问其问题在于域名解析">记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。</h3>
 <h4 id="samba配置文件内容如下">Samba配置文件内容如下</h4>
 <pre><code>[webdata]
 						path = /data/web_dat
@@ -130,54 +145,103 @@
 <h4 id="还可以在客户端的host文件中添加服务端的主机名记录">还可以在客户端的host文件中添加服务端的主机名记录</h4>
 <p>例如:添加<code>192.168.116.22 serverA.rj.com</code></p>
 
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="tag">
-                    Linux
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://Asolmn.github.io/post/smtplib2">
-                  <h3 class="post-title">
-                    SMTPLIB(2)
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Asolmn.github.io/post/smtplib2">
+                                <h3 class="post-title">
+                                    SMTPLIB(2)
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E8%AE%B0%E4%B8%80%E6%AC%A1samba%E7%9A%84%E6%8A%A5%E9%94%99%E6%8A%A5%E9%94%99%E4%BD%93%E7%8E%B0%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%8C%82%E8%BD%BD%E8%B6%85%E6%97%B6%E5%A7%8B%E7%BB%88%E4%B8%8D%E8%83%BD%E8%AE%BF%E9%97%AE%E5%85%B6%E9%97%AE%E9%A2%98%E5%9C%A8%E4%BA%8E%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90">记一次samba的报错，报错体现在远程挂载超时，始终不能访问，其问题在于域名解析。</a>
+<ul>
+<li><a href="#samba%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E5%A6%82%E4%B8%8B">Samba配置文件内容如下</a></li>
+<li><a href="#%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84host%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%90%8D%E8%AE%B0%E5%BD%95">还可以在客户端的host文件中添加服务端的主机名记录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
-      </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
+    
+                            
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                </div>
 
-<script type="application/javascript">
 
-AOS.init();
 
-hljs.initHighlightingOnLoad()
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+            </div>
 
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-
-  </body>
 </html>

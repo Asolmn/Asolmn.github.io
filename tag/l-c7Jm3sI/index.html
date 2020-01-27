@@ -1,166 +1,372 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Mysql | Asolmn</title>
-<meta name="description" content="随便写写，佛系更新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580133753559">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Mysql | Asolmn
+</title>
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1580134092405">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  </head>
-  <body>
-    <div id="app" class="main">
+</head>
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://Asolmn.github.io">
-        <img src="https://Asolmn.github.io/images/avatar.png?v=1580133753559" class="site-logo">
-        <h1 class="site-title">Asolmn</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-        
-          <a href="/post/friend" class="site-nav">
-            友链
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-          <a class="social-link" href="https://github.com/Asolmn" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      随便写写，佛系更新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: Mysql</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Asolmn.github.io/post/flask-sqlalchemy">
-                  <h2 class="post-title">Flask-SQLALchemy</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-02
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
-                  <h2 class="post-title">Flask-Migrate进行数据库的迁移</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-02
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-
-          <div class="pagination-container">
-  
-  
-</div>
-
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1580134092405" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
         </div>
-      </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
+</div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-<script type="application/javascript">
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+        });
+    });
 </script>
 
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        Mysql</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://Asolmn.github.io/post/flask-sqlalchemy">
+                        Flask-SQLALchemy
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-08-02</time>
+                    
+                        <a href="https://Asolmn.github.io/tag/eCxwcvHi8" class="post-tag i-tag
+                            i-tag-warning">
+            #Web
+        </a>
+                        
+                        <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="post-tag i-tag
+                            i-tag-info">
+            #Mysql
+        </a>
+                        
+                        <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
+                            i-tag-other_1">
+            #Python
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            数据库的连接
+app.config[&#39;SQLALCHEMY_DATABASE_URI&#39;]=&#39;mysql://flaskyadmin:123456@192.168.3.4/flasky&#39;
+
+常用数据库url格式
 
 
 
-  </body>
+Mysql
+mysql://username:password@hostname/database
+
+
+
+
+SQLite
+sqlite:///c:/absolute/path/database
+
+
+
+定义一个数据库模型
+这里可以设置为False，否则运行时会有警告
+设置这一项是每次请求结束都会自动提交数据库中的变动
+app.config[&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;]=False
+
+from flask import Flask
+from flask_sqlalchemy import SQLALchemy
+
+app = Flask(__name__)
+app.config[&#39;SQLALCHEMY_DATABASE_URI&#39;]=&#39;mysql://flaskyadmin:123456@192.168.3.4/flasky&#39;
+app.config[&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;]=False
+
+db=SQLAlchemy(app)
+
+
+class Role(db.Model):
+    __tablename__ = &#39;roles&#39;  #表名称
+    id = db.Column(db.Integer,primary_key=True) #Int类型，设置为主键
+    name = db.Column(db.String(64),unique=True) #字符串类型，unique列不允许出现重复值
+
+    def __repr__(self):
+        return &#39;Roles %r&#39; %self.name
+
+class User(db.Model):
+    __tablename__ = &#39;users&#39;
+    id = db.Column(db.Integer,primary_key=True) #Int类型，设置为主键
+    #字符串类型，unique列不允许出现重复值，index为列创建引索
+    username = db.Column(db.String(64),unique=True,index=True) 
+
+    def __repr__(self):
+        return &#39;&amp;lt;User %r&amp;gt;&#39; %self.username
+
+报错记录
+报错内容:
+MySQLdb._exceptions.OperationalError: (1045, &amp;quot;Access denied for user &#39;flaskyadmin&#39;@&#39;192.168.3.9&#39; (using password: YES)&amp;quot;)
+
+原因是数据库权限问题，所有要到数据库上对其进行授权
+命令如下:
+grant all privileges on * . * to &#39;flaskyadmin&#39;@&#39;%&#39; identified by &#39;123456&#39;
+插入行
+admin_role=Role(name=&#39;Admin&#39;)
+user_role=Role(name=&#39;User&#39;)
+user_test1=User(username=&#39;test1&#39;,role=admin_role)
+user_test2=User(username=&#39;test2&#39;,role=user_role)
+
+#创建的数据此时并不在数据库中，而是存在python中，所以要通过session提交到数据库中
+db.session.add(admin_role)
+db.session.add(user_role)
+db.session.add(user_test1)
+........
+#也可以用另一种方法
+db.session.add_all([admin_role,user_role,user_test1,user_test2])
+db.session.commit()#提交会话
+
+#数据库db.session()会话与数据库事务为同一个意思
+
+如果在写入会话的时候发生错误，整个会话失败，同时也会有导致数据库内容与会话不一致，会话db.session.commit()失败
+这时可以对数据库会话进行回滚
+db.session.rollback()
+修改行
+可以使用add()方法对之前定义模型中的内容进行修改
+admin_role.name=&#39;Administrator&#39;
+db.session.add(admin_role)
+db.commit()
+
+查询
+Flask_SQLALchemy为每个模型都提供query，使用all()方法返回对应表的所有记录
+Role.query.all()
+除了all()方法全部显示外
+还可以使用过滤器配置query对象
+User.query.filter_by(role=user_role).all()
+如果想看查询命令的原生SQL语句只需要将其转换为str()就行，其中filter_by为过滤器
+str(User.query.filter_by(role=user_role))
+如果退出shell会话，前面创建的对象(例如user_role,admin_role之类的)都不会以Python对象的形式存在，但数据库的表中仍有对应的行。
+这时候就需要将数据重新导入对象中,first()方法只返回第一个结果
+user_role=Role.query.filter_by(name=&#39;User&#39;).first()
+filter_by() :把等值过滤器加到原查询上，返回一个新查询
+报错
+AttributeError: &#39;InstrumentedList&#39; object has no attribute &#39;order_by&#39;
+解决方法：
+重进进入flask shell
+然后将数据重新导入对象中，再使用order_by()则可以成功
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/flask-sqlalchemy">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
+                        Flask-Migrate进行数据库的迁移
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-08-02</time>
+                    
+                        <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="post-tag i-tag
+                            i-tag-other_3">
+            #Mysql
+        </a>
+                        
+                        <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
+                            i-tag-">
+            #Python
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            更新数据库的原有
+如果碰到需要修改数据库模型同时进行更新
+flask-sqlalchemy的机制是数据库表不存在的时候，才会根据模型进行创建数据库
+所以造成了如果要更新模型，只能将原有的表进行删除，再重新进行创建
+这样会丢失原有表中的所有数据，而数据库迁移框架则可以解决
+创建迁移仓库
+首先安装flask-Migrate
+pip install flask-Migrate
+初始化Flask-Migrate
+from flask-migrate import Migrate
+
+pass
+
+migrate=Mirgrate(app,db)
+
+接着当前目录的命令行中使用flask db init
+这条命令会创建migrations目录，所有迁移脚本都存放在这个文件里面
+创建迁移脚本
+为了测试先对模型类进行一个修改
+例如：
+	class User():
+        ....
+    	age = db.Column(db.Integer,nullable=True)
+
+在class User()中添加age = db.Column(db.Integer,nullable=True)
+执行flask db migrate &amp;quot;initial migration&amp;quot;命令
+自动创建的迁移脚本并不一定正确，所有要手动检查一下，失误的地方手动更改
+执行flask db upgrade更新数据库
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1580134092405)">
+        </div>
+        <h1 class="id_card-title">
+            Asolmn
+        </h1>
+        <h2 class="id_card-description">
+            随便写写，佛系更新
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
 </html>
