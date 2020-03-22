@@ -1,0 +1,520 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    HTML-DOM操作笔记 | Asolmn
+</title>
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1584885287861">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://localhost:4000/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="http://localhost:4000">
+                <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1584885287861" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            HTML-DOM操作笔记
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-03-22</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h3 id="html-dom">HTML DOM</h3>
+<p>DOM是把html里面的各种数据当作对象进行操作的一种思路</p>
+<p>DOM把所有的html都转换为节点</p>
+<p>例如，整个文档，元素，元素属性，元素内容，注释等</p>
+<p><code>document.getElementByID(&quot;d1&quot;)</code>例如这一个</p>
+<p>就是获取id=d1的div标签对应的元素节点</p>
+<p>可以通过<code>chiildNodes</code>获取内容节点</p>
+<p>文档节点[object HTMLDocument]</p>
+<p>元素节点[object HTMLDivElement]</p>
+<p>属性节点[object Attr]</p>
+<p>内容节点[object Text]<br>
+<img src="http://localhost:4000/post-images/1584885264433.png" alt="" loading="lazy"></p>
+<p>document.getElementById	通过id获取元素节点</p>
+<p>getElementsByTagName	通过标签名称获取元素节点</p>
+<p>getElementsByClassName	通过类名获取元素节点</p>
+<p>getElementsByName	通过表单元素的name获取元素节点</p>
+<p>attributes	获取属性节点</p>
+<p>childNodes	获取内容节点</p>
+<p>nodeName 节点名称</p>
+<p>nodeValue	节点值</p>
+<p>nodeType	节点类型</p>
+<p>innerHTML	元素文本内容</p>
+<p>id，value，className	元素上的属性</p>
+<h4 id="html-dom-样式">html-dom 样式</h4>
+<p>style.display=&quot;none&quot; //隐藏</p>
+<p>style.display=&quot;block&quot; //显示</p>
+<pre><code class="language-html">//显示和隐藏
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;button onclick=&quot;hide()&quot;&gt;Hide&lt;/button&gt;
+&lt;button onclick=&quot;show()&quot;&gt;Show&lt;/button&gt;
+
+&lt;div id=&quot;d&quot;&gt;Hide or Show&lt;/div&gt;
+&lt;script&gt;
+function hide(){
+    var d = document.getElementById(&quot;d&quot;);
+    d.style.display =&quot;none&quot;;
+}
+function show(){
+    var d = document.getElementById(&quot;d&quot;);
+    d.style.display=&quot;block&quot;;
+}
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>改变背景色</p>
+<p>style.backgroundColor</p>
+<p>这里的backgroundColor和css中的background-color有所不同</p>
+<p>通过DOM的style修改样式是一件很麻烦的事</p>
+<p>所以通过CSS的属性名，直接就进行修改了。比如通过这样的方式：</p>
+<p><code>d1.css(&quot;background-color&quot;,&quot;green&quot;)</code></p>
+<h5 id="html-dom-事件">HTML-DOM 事件</h5>
+<p>焦点事件<code>onfocus</code> <code>onblur</code></p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;input type=&quot;text&quot; onfocus=&quot;f()&quot; onblur=&quot;b()&quot; id=&quot;input1&quot; placeHolrder=&quot;&quot;&gt;
+&lt;input type=&quot;text&quot;&gt;
+&lt;div id=&quot;message&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+function f(){
+    document.getElementById(&quot;message&quot;).innerHTML=&quot;获取焦点&quot;;
+}
+function p(){
+    document.getElementById(&quot;message&quot;).innerHTML=&quot;失去焦点&quot;;
+}
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="鼠标事件">鼠标事件</h5>
+<p>onmousedown 鼠标按下</p>
+<p>onmouseup 鼠标弹起</p>
+<p>onmousemove 鼠标经过</p>
+<p>onmouseover 鼠标进入</p>
+<p>onmouseout 鼠标退出</p>
+<h5 id="键盘事件">键盘事件</h5>
+<p>键盘按下	onkeydown</p>
+<p>键盘按下	onkeypress</p>
+<p>键盘弹起	onkeyup</p>
+<h5 id="点击事件">点击事件</h5>
+<p>单击	onclick</p>
+<p>双击	ondblclick</p>
+<h5 id="提交事件-onsubmit">提交事件-onsubmit</h5>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;form action=&quot;&quot; onsubmit=&quot;login()&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+    &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Login&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;
+function login(){
+    alert(&quot;提交表单&quot;);
+}
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="创建节点">创建节点</h4>
+<p>createElement 创建元素节点</p>
+<pre><code class="language-html">//例子
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;div id=&quot;d&quot;&gt; Test Page&lt;/div&gt;
+&lt;button onclick=&quot;add()&quot;&gt;Submit&lt;/button&gt;
+&lt;script&gt;
+function add(){
+    var hr=document.createElement(&quot;hr&quot;);
+    var div1 = document.getElementById(&quot;d&quot;);
+    //appendChild 将hr元素节点添加到div1中
+    div1.appendChild(hr);
+}
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>createTextNode 创建文本节点</p>
+<pre><code class="language-html">//例子
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;d&quot;&gt; Test Page&lt;/div&gt;
+&lt;button onclick=&quot;add()&quot;&gt;Submit&lt;/button&gt;
+&lt;script&gt;
+function add(){
+    var p=document.createElement(&quot;p&quot;);
+    var text = document.createTextNode(&quot;test add text dom&quot;);
+    p.appendChild(text);
+
+    var div1 = document.getElementById(&quot;d&quot;);
+    div1.appendChild(p);
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;s
+</code></pre>
+<p>createAttribute 创建属性节点</p>
+<pre><code class="language-html">//例子
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;d&quot;&gt; Test Page&lt;/div&gt;
+&lt;button onclick=&quot;add()&quot;&gt;Submit&lt;/button&gt;
+&lt;script&gt;
+function add(){
+    var a = document.createElement(&quot;a&quot;);
+    var content = document.createTextNode(&quot;http://baidu.com&quot;);
+    a.appendChild(content);
+
+    var href = document.createAttribute(&quot;href&quot;);
+    href.nodeValue=&quot;http://baidu.com&quot;;
+    //setAttributeNode把href属性添加到元素节点a上面
+    a.setAttributeNode(href);
+
+    var div1 = document.getElementById(&quot;d&quot;);
+    div1.appendChild(a)
+
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="删除节点">删除节点</h4>
+<p>删除元素节点 removeChild</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;div id=&quot;d&quot;&gt;
+    &lt;div id=&quot;d1&quot;&gt;First Delete Div&lt;/div&gt;
+    &lt;div id=&quot;d2&quot;&gt;Secend Delete Div&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button onclick=&quot;remove()&quot;&gt;Delete&lt;/button&gt;
+
+&lt;script&gt;
+function remove(){
+    var parentDiv = document.getElementById(&quot;d&quot;);
+    var d2 = document.getElementById(&quot;d2&quot;);
+    parentDiv.removeChild(d2);
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>删除属性节点</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+//将原先Baidu文本上面的链接删除
+&lt;a id=&quot;link&quot; href=&quot;http://baidu.com&quot;&gt;Baidu&lt;/a&gt;
+&lt;button onclick=&quot;remove()&quot;&gt;Delete&lt;/button&gt;
+
+&lt;script&gt;
+function remove(){
+    var link = document.getElementById(&quot;link&quot;)
+    link.removeAttribute(&quot;href&quot;)
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="替换节点">替换节点</h4>
+<p>replaceChild</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Test1&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;div id=&quot;parentDiv&quot;&gt;
+    &lt;div id=&quot;d1&quot;&gt;one&lt;/div&gt;
+    &lt;div id=&quot;d2&quot;&gt;two&lt;/div&gt;
+    &lt;div id=&quot;d3&quot;&gt;three&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button onclick=&quot;replaceDiv()&quot;&gt;Submit&lt;/button&gt;
+&lt;script&gt;
+function remove(){
+    var link = document.getElementById(&quot;link&quot;)
+    link.removeAttribute(&quot;href&quot;)
+}
+
+function replaceDiv(){
+    var d4 = document.createElement(&quot;div&quot;);
+    var text = document.createTextNode(&quot;four&quot;);
+
+    d4.appendChild(text);
+
+    var d3 = document.getElementById(&quot;d3&quot;);
+    var parentDiv = document.getElementById(&quot;parentDiv&quot;);
+
+    parentDiv.replaceChild(d4,d3)
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="http://localhost:4000/post/javascript-ji-chu-yu-fa-bi-ji">
+                                <h3 class="post-title">
+                                    javascript基础语法笔记
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#html-dom">HTML DOM</a>
+<ul>
+<li><a href="#html-dom-%E6%A0%B7%E5%BC%8F">html-dom 样式</a>
+<ul>
+<li><a href="#html-dom-%E4%BA%8B%E4%BB%B6">HTML-DOM 事件</a></li>
+<li><a href="#%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6">鼠标事件</a></li>
+<li><a href="#%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6">键盘事件</a></li>
+<li><a href="#%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6">点击事件</a></li>
+<li><a href="#%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6-onsubmit">提交事件-onsubmit</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9">创建节点</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9">删除节点</a></li>
+<li><a href="#%E6%9B%BF%E6%8D%A2%E8%8A%82%E7%82%B9">替换节点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
