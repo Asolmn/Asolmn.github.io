@@ -7,14 +7,14 @@
 <title>
     Asolmn
 </title>
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1584885287861">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1585059730320">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
+<link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
 <!-- js -->
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://localhost:4000/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
@@ -26,8 +26,8 @@
         <div class="header">
     <div class="nav">
         <div class="logo">
-            <a href="http://localhost:4000">
-                <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1584885287861" alt="">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1585059730320" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,7 +107,31 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/html-dom-cao-zuo-bi-ji">
+                    <a href="https://Asolmn.github.io/post/ajax-xiao-ji">
+                        Ajax小记
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-03-24</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>Ajax的学习</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/ajax-xiao-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://Asolmn.github.io/post/html-dom-cao-zuo-bi-ji">
                         HTML-DOM操作笔记
                     </a>
                 </h2>
@@ -119,310 +143,19 @@
                     
                             <div class="post-content">
                                 
-                                        <div class="post-content-content">
-                                            HTML DOM
-DOM是把html里面的各种数据当作对象进行操作的一种思路
-DOM把所有的html都转换为节点
-例如，整个文档，元素，元素属性，元素内容，注释等
-document.getElementByID(&amp;quot;d1&amp;quot;)例如这一个
-就是获取id=d1的div标签对应的元素节点
-可以通过chiildNodes获取内容节点
-文档节点[object HTMLDocument]
-元素节点[object HTMLDivElement]
-属性节点[object Attr]
-内容节点[object Text]
+                                    <div class="post-content-abstract">
+                                        <p>前端需要，了解一下html-dom的内容</p>
 
-document.getElementById	通过id获取元素节点
-getElementsByTagName	通过标签名称获取元素节点
-getElementsByClassName	通过类名获取元素节点
-getElementsByName	通过表单元素的name获取元素节点
-attributes	获取属性节点
-childNodes	获取内容节点
-nodeName 节点名称
-nodeValue	节点值
-nodeType	节点类型
-innerHTML	元素文本内容
-id，value，className	元素上的属性
-html-dom 样式
-style.display=&amp;quot;none&amp;quot; //隐藏
-style.display=&amp;quot;block&amp;quot; //显示
-//显示和隐藏
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-&amp;lt;button onclick=&amp;quot;hide()&amp;quot;&amp;gt;Hide&amp;lt;/button&amp;gt;
-&amp;lt;button onclick=&amp;quot;show()&amp;quot;&amp;gt;Show&amp;lt;/button&amp;gt;
-
-&amp;lt;div id=&amp;quot;d&amp;quot;&amp;gt;Hide or Show&amp;lt;/div&amp;gt;
-&amp;lt;script&amp;gt;
-function hide(){
-    var d = document.getElementById(&amp;quot;d&amp;quot;);
-    d.style.display =&amp;quot;none&amp;quot;;
-}
-function show(){
-    var d = document.getElementById(&amp;quot;d&amp;quot;);
-    d.style.display=&amp;quot;block&amp;quot;;
-}
-&amp;lt;/script&amp;gt;
-
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-改变背景色
-style.backgroundColor
-这里的backgroundColor和css中的background-color有所不同
-通过DOM的style修改样式是一件很麻烦的事
-所以通过CSS的属性名，直接就进行修改了。比如通过这样的方式：
-d1.css(&amp;quot;background-color&amp;quot;,&amp;quot;green&amp;quot;)
-HTML-DOM 事件
-焦点事件onfocus onblur
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-&amp;lt;input type=&amp;quot;text&amp;quot; onfocus=&amp;quot;f()&amp;quot; onblur=&amp;quot;b()&amp;quot; id=&amp;quot;input1&amp;quot; placeHolrder=&amp;quot;&amp;quot;&amp;gt;
-&amp;lt;input type=&amp;quot;text&amp;quot;&amp;gt;
-&amp;lt;div id=&amp;quot;message&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
-
-&amp;lt;script&amp;gt;
-function f(){
-    document.getElementById(&amp;quot;message&amp;quot;).innerHTML=&amp;quot;获取焦点&amp;quot;;
-}
-function p(){
-    document.getElementById(&amp;quot;message&amp;quot;).innerHTML=&amp;quot;失去焦点&amp;quot;;
-}
-&amp;lt;/script&amp;gt;
-
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-鼠标事件
-onmousedown 鼠标按下
-onmouseup 鼠标弹起
-onmousemove 鼠标经过
-onmouseover 鼠标进入
-onmouseout 鼠标退出
-键盘事件
-键盘按下	onkeydown
-键盘按下	onkeypress
-键盘弹起	onkeyup
-点击事件
-单击	onclick
-双击	ondblclick
-提交事件-onsubmit
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-
-&amp;lt;form action=&amp;quot;&amp;quot; onsubmit=&amp;quot;login()&amp;quot;&amp;gt;
-    &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;name&amp;quot;&amp;gt;
-    &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot;&amp;gt;
-    &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Login&amp;quot;&amp;gt;
-&amp;lt;/form&amp;gt;
-&amp;lt;script&amp;gt;
-function login(){
-    alert(&amp;quot;提交表单&amp;quot;);
-}
-&amp;lt;/script&amp;gt;
-
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-创建节点
-createElement 创建元素节点
-//例子
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-
-&amp;lt;div id=&amp;quot;d&amp;quot;&amp;gt; Test Page&amp;lt;/div&amp;gt;
-&amp;lt;button onclick=&amp;quot;add()&amp;quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
-&amp;lt;script&amp;gt;
-function add(){
-    var hr=document.createElement(&amp;quot;hr&amp;quot;);
-    var div1 = document.getElementById(&amp;quot;d&amp;quot;);
-    //appendChild 将hr元素节点添加到div1中
-    div1.appendChild(hr);
-}
-&amp;lt;/script&amp;gt;
-
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-createTextNode 创建文本节点
-//例子
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-&amp;lt;div id=&amp;quot;d&amp;quot;&amp;gt; Test Page&amp;lt;/div&amp;gt;
-&amp;lt;button onclick=&amp;quot;add()&amp;quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
-&amp;lt;script&amp;gt;
-function add(){
-    var p=document.createElement(&amp;quot;p&amp;quot;);
-    var text = document.createTextNode(&amp;quot;test add text dom&amp;quot;);
-    p.appendChild(text);
-
-    var div1 = document.getElementById(&amp;quot;d&amp;quot;);
-    div1.appendChild(p);
-}
-&amp;lt;/script&amp;gt;
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;s
-
-createAttribute 创建属性节点
-//例子
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-&amp;lt;div id=&amp;quot;d&amp;quot;&amp;gt; Test Page&amp;lt;/div&amp;gt;
-&amp;lt;button onclick=&amp;quot;add()&amp;quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
-&amp;lt;script&amp;gt;
-function add(){
-    var a = document.createElement(&amp;quot;a&amp;quot;);
-    var content = document.createTextNode(&amp;quot;http://baidu.com&amp;quot;);
-    a.appendChild(content);
-
-    var href = document.createAttribute(&amp;quot;href&amp;quot;);
-    href.nodeValue=&amp;quot;http://baidu.com&amp;quot;;
-    //setAttributeNode把href属性添加到元素节点a上面
-    a.setAttributeNode(href);
-
-    var div1 = document.getElementById(&amp;quot;d&amp;quot;);
-    div1.appendChild(a)
-
-}
-&amp;lt;/script&amp;gt;
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-删除节点
-删除元素节点 removeChild
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-
-&amp;lt;div id=&amp;quot;d&amp;quot;&amp;gt;
-    &amp;lt;div id=&amp;quot;d1&amp;quot;&amp;gt;First Delete Div&amp;lt;/div&amp;gt;
-    &amp;lt;div id=&amp;quot;d2&amp;quot;&amp;gt;Secend Delete Div&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-
-&amp;lt;button onclick=&amp;quot;remove()&amp;quot;&amp;gt;Delete&amp;lt;/button&amp;gt;
-
-&amp;lt;script&amp;gt;
-function remove(){
-    var parentDiv = document.getElementById(&amp;quot;d&amp;quot;);
-    var d2 = document.getElementById(&amp;quot;d2&amp;quot;);
-    parentDiv.removeChild(d2);
-}
-&amp;lt;/script&amp;gt;
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-删除属性节点
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-//将原先Baidu文本上面的链接删除
-&amp;lt;a id=&amp;quot;link&amp;quot; href=&amp;quot;http://baidu.com&amp;quot;&amp;gt;Baidu&amp;lt;/a&amp;gt;
-&amp;lt;button onclick=&amp;quot;remove()&amp;quot;&amp;gt;Delete&amp;lt;/button&amp;gt;
-
-&amp;lt;script&amp;gt;
-function remove(){
-    var link = document.getElementById(&amp;quot;link&amp;quot;)
-    link.removeAttribute(&amp;quot;href&amp;quot;)
-}
-&amp;lt;/script&amp;gt;
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-替换节点
-replaceChild
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;title&amp;gt;Test1&amp;lt;/title&amp;gt;
-    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-
-&amp;lt;div id=&amp;quot;parentDiv&amp;quot;&amp;gt;
-    &amp;lt;div id=&amp;quot;d1&amp;quot;&amp;gt;one&amp;lt;/div&amp;gt;
-    &amp;lt;div id=&amp;quot;d2&amp;quot;&amp;gt;two&amp;lt;/div&amp;gt;
-    &amp;lt;div id=&amp;quot;d3&amp;quot;&amp;gt;three&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-
-&amp;lt;button onclick=&amp;quot;replaceDiv()&amp;quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
-&amp;lt;script&amp;gt;
-function remove(){
-    var link = document.getElementById(&amp;quot;link&amp;quot;)
-    link.removeAttribute(&amp;quot;href&amp;quot;)
-}
-
-function replaceDiv(){
-    var d4 = document.createElement(&amp;quot;div&amp;quot;);
-    var text = document.createTextNode(&amp;quot;four&amp;quot;);
-
-    d4.appendChild(text);
-
-    var d3 = document.getElementById(&amp;quot;d3&amp;quot;);
-    var parentDiv = document.getElementById(&amp;quot;parentDiv&amp;quot;);
-
-    parentDiv.replaceChild(d4,d3)
-}
-&amp;lt;/script&amp;gt;
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="http://localhost:4000/post/html-dom-cao-zuo-bi-ji">Read More ~</a>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/html-dom-cao-zuo-bi-ji">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/javascript-ji-chu-yu-fa-bi-ji">
+                    <a href="https://Asolmn.github.io/post/javascript-ji-chu-yu-fa-bi-ji">
                         javascript基础语法笔记
                     </a>
                 </h2>
@@ -439,21 +172,21 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/javascript-ji-chu-yu-fa-bi-ji">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/javascript-ji-chu-yu-fa-bi-ji">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/functools-wraps-fang-fa">
+                    <a href="https://Asolmn.github.io/post/functools-wraps-fang-fa">
                         functools wraps方法
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2020-01-27</time>
                     
-                        <a href="http://localhost:4000/tag/FS2dWeAVH" class="post-tag i-tag
+                        <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
                             i-tag-other_2">
             #Python
         </a>
@@ -468,22 +201,22 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/functools-wraps-fang-fa">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/functools-wraps-fang-fa">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/ji-du-guo-de-2019">
+                    <a href="https://Asolmn.github.io/post/ji-du-guo-de-2019">
                         记渡过的2019
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2019-12-31</time>
                     
-                        <a href="http://localhost:4000/tag/HAEId3lPR" class="post-tag i-tag
-                            i-tag-other_1">
+                        <a href="https://Asolmn.github.io/tag/HAEId3lPR" class="post-tag i-tag
+                            i-tag-banana">
             #杂记
         </a>
                         
@@ -497,27 +230,27 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/ji-du-guo-de-2019">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/ji-du-guo-de-2019">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/misc-ya-sa-xi">
+                    <a href="https://Asolmn.github.io/post/misc-ya-sa-xi">
                         Misc-亚萨西
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2019-08-15</time>
                     
-                        <a href="http://localhost:4000/tag/7jhQ0ZYzo" class="post-tag i-tag
-                            i-tag-other_3">
+                        <a href="https://Asolmn.github.io/tag/7jhQ0ZYzo" class="post-tag i-tag
+                            i-tag-other_2">
             #CTF
         </a>
                         
-                        <a href="http://localhost:4000/tag/0K_2m4i87" class="post-tag i-tag
-                            i-tag-other_3">
+                        <a href="https://Asolmn.github.io/tag/0K_2m4i87" class="post-tag i-tag
+                            i-tag-info">
             #Misc
         </a>
                         
@@ -531,32 +264,32 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/misc-ya-sa-xi">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/misc-ya-sa-xi">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/flask-sqlalchemy">
+                    <a href="https://Asolmn.github.io/post/flask-sqlalchemy">
                         Flask-SQLALchemy
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2019-08-02</time>
                     
-                        <a href="http://localhost:4000/tag/eCxwcvHi8" class="post-tag i-tag
-                            i-tag-other_1">
+                        <a href="https://Asolmn.github.io/tag/eCxwcvHi8" class="post-tag i-tag
+                            i-tag-info">
             #Web
         </a>
                         
-                        <a href="http://localhost:4000/tag/l-c7Jm3sI" class="post-tag i-tag
-                            i-tag-other_2">
+                        <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="post-tag i-tag
+                            i-tag-other_1">
             #Mysql
         </a>
                         
-                        <a href="http://localhost:4000/tag/FS2dWeAVH" class="post-tag i-tag
-                            i-tag-warning">
+                        <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
+                            i-tag-primary">
             #Python
         </a>
                         
@@ -570,27 +303,27 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/flask-sqlalchemy">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/flask-sqlalchemy">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
+                    <a href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
                         Flask-Migrate进行数据库的迁移
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2019-08-02</time>
                     
-                        <a href="http://localhost:4000/tag/l-c7Jm3sI" class="post-tag i-tag
-                            i-tag-primary">
+                        <a href="https://Asolmn.github.io/tag/l-c7Jm3sI" class="post-tag i-tag
+                            i-tag-other_3">
             #Mysql
         </a>
                         
-                        <a href="http://localhost:4000/tag/FS2dWeAVH" class="post-tag i-tag
-                            i-tag-other_4">
+                        <a href="https://Asolmn.github.io/tag/FS2dWeAVH" class="post-tag i-tag
+                            i-tag-warning">
             #Python
         </a>
                         
@@ -604,22 +337,22 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">
+                    <a href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">
                         Mariadb主从复制的一次报错
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2019-05-22</time>
                     
-                        <a href="http://localhost:4000/tag/iXXlS5ARq" class="post-tag i-tag
-                            i-tag-success">
+                        <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="post-tag i-tag
+                            i-tag-error">
             #Linux
         </a>
                         
@@ -633,22 +366,22 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="http://localhost:4000/post/ji-dns-de-zi-yu-zhuan-fa">
+                    <a href="https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa">
                         记DNS的子域转发
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2019-05-09</time>
                     
-                        <a href="http://localhost:4000/tag/iXXlS5ARq" class="post-tag i-tag
-                            i-tag-banana">
+                        <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="post-tag i-tag
+                            i-tag-other_1">
             #Linux
         </a>
                         
@@ -662,36 +395,7 @@ function replaceDiv(){
 
                                     </div>
                                     
-                                            <a class="btn btn-text" href="http://localhost:4000/post/ji-dns-de-zi-yu-zhuan-fa">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="http://localhost:4000/post/samba-bug">
-                        Samba报错
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-05-08</time>
-                    
-                        <a href="http://localhost:4000/tag/iXXlS5ARq" class="post-tag i-tag
-                            i-tag-other_1">
-            #Linux
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>centos7环境，samba服务的远程挂载超时报错</p>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="http://localhost:4000/post/samba-bug">Read More ~</a>
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa">Read More ~</a>
                             </div>
                 </div>
             </article>
@@ -701,7 +405,7 @@ function replaceDiv(){
     <div class="pagination-container">
         
                 
-                    <a href="http://localhost:4000/page/2" class="page-btn btn">下一页</a>
+                    <a href="https://Asolmn.github.io/page/2" class="page-btn btn">下一页</a>
                     
     </div>
     
@@ -714,7 +418,7 @@ function replaceDiv(){
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(http://localhost:4000/images/avatar.png?v=1584885287861)">
+        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1585059730320)">
         </div>
         <h1 class="id_card-title">
             Asolmn
@@ -750,7 +454,7 @@ function replaceDiv(){
 
             <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 <script>
