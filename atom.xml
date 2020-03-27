@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Asolmn.github.io</id>
     <title>Asolmn</title>
-    <updated>2020-03-24T14:24:48.714Z</updated>
+    <updated>2020-03-27T14:49:34.348Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Asolmn.github.io"/>
     <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
@@ -10,6 +10,168 @@
     <logo>https://Asolmn.github.io/images/avatar.png</logo>
     <icon>https://Asolmn.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Asolmn</rights>
+    <entry>
+        <title type="html"><![CDATA[Vue.js小记-1]]></title>
+        <id>https://Asolmn.github.io/post/vuejs-xiao-ji-1</id>
+        <link href="https://Asolmn.github.io/post/vuejs-xiao-ji-1">
+        </link>
+        <updated>2020-03-27T14:44:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>开个坑，记录一下vue的学习过程（鬼知道这个能不能填完），前端真难</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>开个坑，记录一下vue的学习过程（鬼知道这个能不能填完），前端真难</p>
+<!-- more -->
+<h3 id="vuejs-小记1">vue.js 小记1</h3>
+<p>vues是一个渐进式的javascript框架</p>
+<p>**渐进式含义：**声明式渲染-&gt;组件系统-&gt;客户端路由-&gt;集中式状态管理-&gt;项目构建</p>
+<p><strong>vue的helloworld例子</strong></p>
+<pre><code class="language-html">/*
+Vue的基本使用步骤
+	需要提供标签用于填充数据
+	引入vue.js文件
+	使用vue的语法做功能
+	把vue提供的数据填充到标签里面
+*/
+
+    &lt;div id=&quot;app&quot;&gt;
+        //{{}}为插值表达式，可以支持简要数值的计算，或者字符串拼接
+        //{{1+2}}
+        &lt;div&gt;{{msg}}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        //el代表要把数据填充到那个标签里面
+        //el官方说法，元素的挂载位置
+        //data 模型数据
+        var vm = new Vue(
+            {
+                el:'#app',
+                data:{
+                    msg:'Hello Vue'
+                }
+            }
+        )
+    &lt;/script&gt;
+</code></pre>
+<p>首先从vue官网下载它的js文件：https://cn.vuejs.org/js/vue.js</p>
+<p>然后导入</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p><strong>vue代码</strong>--&gt;<strong>vue框架</strong>--&gt;<strong>原生js代码</strong></p>
+<h4 id="vue模板语法">vue模板语法</h4>
+<p>vue是属于前端渲染，通过模板和数据结合，得出静态的HTML内容</p>
+<p><strong>前端渲染</strong>：把数据填充到HTML标签，但是通过ajax类似的技术，进行数据交互，后端只负责进行开发接口和处理数据，前端调用后端的接口，获取数据，插值到标签中</p>
+<p><strong>后端渲染</strong>：通过模板引擎生成html文件然后，然后将数据直接插值到html文件肿</p>
+<p><em>使用指令的一个原因，是因为插值表达式的话，如果频繁刷新页面，会有出现闪动的现象</em></p>
+<h5 id="指令">指令</h5>
+<pre><code class="language-vue">/*
+v-cloak该指令保持在元素上直到关联实例结束编译
+v-cloak指令用法
+1、提供样式
+[v-cloak]{
+	display:none
+}
+原理：先通过样式隐藏内容，然后再内存中进行值的替换，替换好再显示最后的结果
+&lt;div v-cloak&gt;
+    {{ message }}
+&lt;/div&gt;
+*/
+//实例代码如下：
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            [v-cloak]{
+                display: none;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+&lt;body&gt;
+
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;div v-cloak&gt;{{ msg }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        //el代表要把数据填充到那个标签里面
+        //el官方说法，元素的挂载位置
+        //data 模型数据
+        var vm = new Vue(
+            {
+                el:'#app',
+                data:{
+                    msg:'Hello Vue'
+                }
+            }
+        )
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h4 id="数据绑定指令">数据绑定指令</h4>
+<p><code>v-text</code>填充纯文本</p>
+<p><code>v-html</code>填充html片段，比较危险，容易会造成xss攻击</p>
+<p><code>v-pre</code>填充原始的信息，例如直接带花括号的插值表达式</p>
+<h4 id="数据响应式">数据响应式</h4>
+<p>响应式：</p>
+<p>h5中的响应式，屏幕的尺寸会影响屏幕的适配</p>
+<p>数据的响应式， 数据的变化导致页面内容的变化</p>
+<p>这一个过程称为数据的响应式</p>
+<p><img src="https://Asolmn.github.io/post-images/1585320549554.png" alt="" loading="lazy"><br>
+<img src="https://Asolmn.github.io/post-images/1585320555074.png" alt="" loading="lazy"></p>
+<h4 id="一个计算器例子">一个计算器例子</h4>
+<pre><code class="language-html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            [v-cloak]{
+                display: none;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h1&gt;简单计算器&lt;/h1&gt;
+        &lt;div&gt;
+            &lt;span&gt;数值A：&lt;/span&gt;
+            &lt;input type=&quot;text&quot; v-model='a'&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span&gt;数值B：&lt;/span&gt;
+            &lt;input type=&quot;text&quot; v-model='b'&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;button v-on:click=&quot;handle&quot;&gt;计算&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span&gt;计算结果：&lt;/span&gt;
+            &lt;span v-text='result'&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el:&quot;#app&quot;,
+        data:{
+            a:'',
+            b:'',
+            result:''
+        },
+        methods:{
+            handle:function(){
+                //计算逻辑
+                this.result=parseInt(this.a)+parseInt(this.b);
+            }
+        }
+    })
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Ajax小记]]></title>
         <id>https://Asolmn.github.io/post/ajax-xiao-ji</id>
@@ -1429,37 +1591,6 @@ migrate=Mirgrate(app,db)
 <pre><code>grant replication user_name on *.* to  'user_name'@'ip'
 </code></pre>
 <p>user_name用户名，ip可以使用%通配符</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[记DNS的子域转发]]></title>
-        <id>https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa</id>
-        <link href="https://Asolmn.github.io/post/ji-dns-de-zi-yu-zhuan-fa">
-        </link>
-        <updated>2019-05-09T11:16:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>centos7，dns进行子域转发</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>centos7，dns进行子域转发</p>
-<!-- more -->
-<h3 id="因为刚好做题的时候碰到就顺便记录一下">因为刚好做题的时候碰到，就顺便记录一下</h3>
-<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数<br>
-行数一般为31和32行</p>
-<h6 id="将yes改成no">将yes改成no</h6>
-<pre><code>dnssec-enable no;
-dnssec-validation no;
-</code></pre>
-<p>dnssec-enable 是否支持DNSSEC开关<br>
-dnssec-validation 是否进行DNSSEC确认开关</p>
-<p>DNSSEC技术主要用于DNS数据的完整性，存在，来源三个方面进行验证</p>
-<p>所以关掉DNSSEC功能，可以取消对子域名的验证</p>
-<p>向正向区域中添加胶水记录<br>
-其实就是在父区域中添加一条NS记录和A记录</p>
-<pre><code>gz             IN            NS            serverB.gz
-serverB.gz          IN         A        192.168.101.33
-</code></pre>
-<h4 id="扩展">扩展：</h4>
-<p>如果客户端的请求超出子域的解析范围，则可以使用定义转发服务器</p>
-<p><code>zone &quot;zone_name&quot; IN { 	 type forward; 	 forward only; 	 forwarders { IP; }; };</code></p>
 ]]></content>
     </entry>
 </feed>
