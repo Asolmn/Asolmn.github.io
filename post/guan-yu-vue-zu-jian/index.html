@@ -1,0 +1,461 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    关于Vue组件 | Asolmn
+</title>
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1588432301823">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1588432301823" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            关于Vue组件
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-05-02</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>Vue组件</p>
+<!-- more -->
+<h4 id="组件基础">组件基础</h4>
+<p>组件是可复用的Vue实例，并且带有名字。通过Vue.component创建组件</p>
+<p>可以通过new Vue创建的Vue根实例中，把组件作为自定义元素使用。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('button-counter',{
+        data: function(){
+            return {count: 0}
+        },
+        template: '&lt;button v-on:click=&quot;count++&quot;&gt;{{ count }}&lt;/button&gt;'
+    })
+
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<p>创建一个叫做<button-counter>的组件，定一个函数，返回count为0的值，然后通过template模板返回html元素。</p>
+<p>因为组件是可以复用的Vue实例，所以可以与new Vue创建的实例接受相同的选项</p>
+<p>例如<code>data</code>，<code>computed</code>，<code>watch</code>，<code>methods</code></p>
+<p>以及生命周期钩子，唯一的例外就是<code>el</code>，这是根实例特有的选项。</p>
+<h5 id="复用可以多次使用">复用（可以多次使用）</h5>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+&lt;/div&gt;
+</code></pre>
+<h5 id="关于data">关于data</h5>
+<p>data必须是一个函数，而不是一个对象</p>
+<pre><code class="language-js">//当data是一个对象时
+data:{
+	count: 0
+}
+//函数
+data: function() {
+	return {
+		count: 0
+	}
+}
+</code></pre>
+<p>这样的作用是，防止复用多个组件时，其中的变量会互相影响</p>
+<h5 id="组件的注册">组件的注册</h5>
+<p>组件的注册类型分为全局注册和局部注册，所有的全局注册都是通过Vue.component创建的</p>
+<h5 id="通过prop子组件传递数据">通过Prop子组件传递数据</h5>
+<p>prop就是在组件上面自定义的属性</p>
+<p>prop注册时是attribute，当一个值传递给prop attribute时，它就会变成组件的一个property</p>
+<pre><code>attribute和property的区别
+
+attribute：
+是html标签上面的某一个属性，例如id,class,value等以及一系列的自定义属性
+它的值，只会返回为字符串
+property:
+是js获取的一个DOM对象上面的属性值
+
+例如
+&lt;input type=&quot;text&quot; id='test' value=&quot;foo&quot;&gt;
+其中attribute就是id，value
+打印value
+//&quot;foo&quot;
+当在input这个输入框输入bar时
+value就变成了bar，打印property，会返回bar。打印attribute依旧还是foo并没有改变
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;blog-post title=&quot;My Vue&quot;&gt;&lt;/blog-post&gt;
+&lt;blog-post title=&quot;My Web&quot;&gt;&lt;/blog-post&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['title'],
+        template: '&lt;h3&gt;{{ title }}&lt;/h3&gt;'
+    });
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1588432062195.png" alt="" loading="lazy"></figure>
+<h5 id="动态传递prop">动态传递prop</h5>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;blog-post v-for=&quot;post in posts&quot; v-bind:keys=&quot;post.id&quot; v-bind:title=&quot;post.title&quot;&gt;&lt;/blog-post&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['title','keys'],
+        template: '&lt;h3&gt;{{ keys }} {{ title }}&lt;/h3&gt;'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id:1,title:'Foo'},
+                {id:2,title:'Bar'},
+                {id:3,title:'Dav'}
+            ]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1588432184550.png" alt="" loading="lazy"></figure>
+<h5 id="单个根元素">单个根元素</h5>
+<p>当属性开始变多，不止一个title时</p>
+<p>同时需要多条html语句才能显示时</p>
+<p>需要一个父元素进行一个包裹</p>
+<p>一个组件只能拥有一个根元素（）</p>
+<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
+    &lt;div&gt;
+        &lt;h3&gt;{{ post.id }} {{ post.title }}&lt;/h3&gt;
+        &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot;&gt;&lt;/blog-post&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['post'],
+        template: '#blogpost'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id:1,title:'Foo',content:'&lt;h3&gt;J.H&lt;/h3&gt;'},
+                {id:2,title:'Bar',content:'&lt;h3&gt;J.H&lt;/h3&gt;'},
+                {id:3,title:'Dav',content:'&lt;h3&gt;J.H&lt;/h3&gt;'}
+            ]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1588431748735.png" alt="" loading="lazy"></figure>
+<h5 id="监听子组件事件">监听子组件事件</h5>
+<p>通过一个例子，实现监听子组件事件，功能就是放大字号。</p>
+<p>在父组件也就是根实例中添加一个postFontSize数据，用来支持放大字号功能。</p>
+<p>首先在template模板中，添加一个按钮，但是这个按钮不能做任何事。</p>
+<p>所以要使用v-on监听子组件的事件，在<code>bost-post</code>中添加一个<code>v-on</code>监听事件，然后再子组件通过调用内建的<code>$emit</code>方法传入事件名称来触发一个事件。</p>
+<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
+    &lt;div &gt;
+        &lt;h3&gt;{{ post.id }}.{{ post.title }}&lt;/h3&gt;
+        &lt;button v-on:click=&quot;$emit('enlarge-text')&quot;&gt;Elarge text&lt;/button&gt;
+        &lt;p v-html=&quot;post.content&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;div id=&quot;app&quot;&gt;
+    &lt;div :style=&quot;{ fontSize: postFontSize+'em' }&quot;&gt;
+        &lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot; v-on:enlarge-text=&quot;postFontSize += 0.1&quot;&gt;&lt;/blog-post&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['post'],
+        template: '#blogpost'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id:1,title:'Foo',content:'&lt;h5&gt;J.H&lt;/h5&gt;'},
+                {id:2,title:'Bar',content:'&lt;h5&gt;J.H&lt;/h5&gt;'},
+                {id:3,title:'Dav',content:'&lt;h5&gt;J.H&lt;/h5&gt;'}
+            ],
+            postFontSize: 1
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1588432108580.gif" alt="" loading="lazy"></figure>
+<h5 id="使用事件抛出一个值">使用事件抛出一个值</h5>
+<p>可以使用一个事件抛出一特定的值，使用<code>$emit</code>的第二参数来提供这个值</p>
+<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
+    &lt;div &gt;
+        &lt;h3&gt;{{ post.id }}.{{ post.title }}&lt;/h3&gt;
+        &lt;button v-on:click=&quot;$emit('enlarge-text',0.1)&quot;&gt;Elarge text&lt;/button&gt;
+        &lt;p v-html=&quot;post.content&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>当父组件监听到这个事件的时候，通过<code>$event</code>访问这个值</p>
+<pre><code class="language-html">&lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot; v-on:enlarge-text=&quot;postFontSize += $event&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p><strong>可以通过函数处理事件</strong></p>
+<pre><code class="language-js">        methods: {
+            onEnlargeText: function(enlargeAmount) {
+                this.postFontSize += enlargeAmount
+            }
+        }
+</code></pre>
+<pre><code> v-on:enlarge-text=&quot;onEnlargeText
+</code></pre>
+<p>这时对事件的处理就是封装一个函数，提供一个enlargeAmount的参数传入，这个参数的值，依旧是靠<code>$event</code>访问。</p>
+<h5 id="在组件上使用v-model">在组件上使用v-model</h5>
+<p>自定义事件可以用于创建支持<code>v-model</code>的自定义输入组件</p>
+<pre><code class="language-html">&lt;input v-model=&quot;searchtext&quot;&gt;
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-html">&lt;input
+	v-bind:value=&quot;searchtext&quot;
+	v-on:input=&quot;searctext=$event.target.value&quot;
+&gt;
+</code></pre>
+<p>将<code>value</code>(attrbute)绑定到一个叫<code>value</code>的prop上</p>
+<p>当<code>input</code>事件被触发时，将新的值通过自定义的<code>input</code>事件抛出</p>
+<p>所以组件的写法</p>
+<pre><code class="language-js">Vue.component('custom-input'),{
+    props: ['value'],
+    template:'
+    	&lt;input
+	v-bind:value=&quot;searchtext&quot;
+	v-on:input=&quot;$emit('input',$event.target.value)&quot;
+	&gt;
+    '
+})
+</code></pre>
+<p>这时才可以在<code>custom-input</code>上运行<code>v-model</code></p>
+<pre><code class="language-html">&lt;custom-input v-model=&quot;searchtext&quot;&gt;&lt;/custom-input&gt;
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Asolmn.github.io/post/guan-yu-vue-de-ji-suan-shu-xing-he-zhen-ting-qi">
+                                <h3 class="post-title">
+                                    关于Vue的计算属性和侦听器
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%BB%84%E4%BB%B6%E5%9F%BA%E7%A1%80">组件基础</a>
+<ul>
+<li><a href="#%E5%A4%8D%E7%94%A8%E5%8F%AF%E4%BB%A5%E5%A4%9A%E6%AC%A1%E4%BD%BF%E7%94%A8">复用（可以多次使用）</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8Edata">关于data</a></li>
+<li><a href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B3%A8%E5%86%8C">组件的注册</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87prop%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE">通过Prop子组件传递数据</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E4%BC%A0%E9%80%92prop">动态传递prop</a></li>
+<li><a href="#%E5%8D%95%E4%B8%AA%E6%A0%B9%E5%85%83%E7%B4%A0">单个根元素</a></li>
+<li><a href="#%E7%9B%91%E5%90%AC%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6">监听子组件事件</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%BA%8B%E4%BB%B6%E6%8A%9B%E5%87%BA%E4%B8%80%E4%B8%AA%E5%80%BC">使用事件抛出一个值</a></li>
+<li><a href="#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BD%BF%E7%94%A8v-model">在组件上使用v-model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

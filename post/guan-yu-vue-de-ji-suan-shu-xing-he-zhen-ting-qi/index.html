@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    记DNS的子域转发 | Asolmn
+    关于Vue的计算属性和侦听器 | Asolmn
 </title>
 <link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1588432301823">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,40 +107,109 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            记DNS的子域转发
+                            关于Vue的计算属性和侦听器
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-05-09</time>
+                            <time class="post-time">2020-04-30</time>
                             
-                                <a href="https://Asolmn.github.io/tag/iXXlS5ARq" class="post-tag i-tag
-                            i-tag-warning">
-                            #Linux
-                        </a>
-                                
                         </div>
                         
                                 <div class="post-content">
-                                    <p>centos7，dns进行子域转发</p>
+                                    <p>计算属性与侦听器</p>
 <!-- more -->
-<h3 id="因为刚好做题的时候碰到就顺便记录一下">因为刚好做题的时候碰到，就顺便记录一下</h3>
-<p>首先修改<code>/etc/named.conf</code>配置文件中的两个参数<br>
-行数一般为31和32行</p>
-<h6 id="将yes改成no">将yes改成no</h6>
-<pre><code>dnssec-enable no;
-dnssec-validation no;
+<h5 id="计算属性">计算属性</h5>
+<p>如果插值表达式内放入了过多复杂的逻辑，可以通过计算属性，将逻辑提取出来</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{ msg }}&lt;/p&gt;
+    &lt;p&gt;{{ msg.split('').reverse().join('') }}
+    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
+&lt;/div&gt;
 </code></pre>
-<p>dnssec-enable 是否支持DNSSEC开关<br>
-dnssec-validation 是否进行DNSSEC确认开关</p>
-<p>DNSSEC技术主要用于DNS数据的完整性，存在，来源三个方面进行验证</p>
-<p>所以关掉DNSSEC功能，可以取消对子域名的验证</p>
-<p>向正向区域中添加胶水记录<br>
-其实就是在父区域中添加一条NS记录和A记录</p>
-<pre><code>gz             IN            NS            serverB.gz
-serverB.gz          IN         A        192.168.101.33
+<pre><code class="language-vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'Hello'
+        },
+        computed: {
+            reversedMessage: function(){
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    })
+&lt;/script&gt;
 </code></pre>
-<h4 id="扩展">扩展：</h4>
-<p>如果客户端的请求超出子域的解析范围，则可以使用定义转发服务器</p>
-<p><code>zone &quot;zone_name&quot; IN { 	 type forward; 	 forward only; 	 forwarders { IP; }; };</code></p>
+<p>对Hello字符串进行一个反转，如果不使用计算属性，这个反转字符串的逻辑，全部写在表达式内。</p>
+<p>而使用计算属性，只需要添加一个<code>computed</code>，然后再其中写入一个叫做<code>reversedMessage</code>的计算属性，然后再表达式中调用它</p>
+<p>同时计算属性具有依赖性，例如<code>reversedMessage</code>就中就依赖<code>msg</code>，如果再浏览器中的控制台使用<code>vm.msg='World'</code> 页面会发生同步改变</p>
+<h5 id="计算属性缓存和方法的区别">计算属性缓存和方法的区别</h5>
+<p>计算机属性具有缓存的功能，只要第一次调用过计算属性，有返回值后。后面再进行调用，计算属性无需再执行一次，只要把返回的值直接填进去就好。</p>
+<p>如果使用方法，则没有缓存功能，当逻辑和运算很大的时候，重复执行，如果导致性能下降。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
+    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-Vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'Hello'
+        },
+        computed: {
+            reversedMessage: function(){
+                console.log('Final')
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1588432282288.png" alt="" loading="lazy"></figure>
+<p>虽然使用了两次计算属性，但是计算属性只执行了一次，可以看到只返回过一次Final</p>
+<h5 id="侦听器watch属性">侦听器（watch属性）</h5>
+<p>侦听器和计算属性的区别就是，侦听器是一种更加通用的方式响应Vue实例上的数据变动，同时也应用于数据变化时执行异步或者开销较大的操作</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span&gt;姓：
+        &lt;input type=&quot;text&quot; v-model='firstname'&gt;
+    &lt;/span&gt;
+    &lt;span&gt;名:
+        &lt;input type=&quot;text&quot; v-model='lastname'&gt;
+    &lt;/span&gt;
+    &lt;p&gt;{{ fullname }}&lt;/p&gt;
+
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-Vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            firstname: 'Foo',
+            lastname: 'Bar',
+            fullname: 'Foo Bar'
+        },
+        watch: {
+            firstname: function(val) {
+                this.fullname = val+' '+this.lastname;
+            },
+            lastname: function(val) {
+                this.fullname = this.firstname+' '+val;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://Asolmn.github.io/post-images/1588432299162.gif" alt="" loading="lazy"><img src="F:%5C%E6%96%87%E6%A1%A3%5C%E7%BC%96%E7%A8%8B%5Cdocument-image%5Cgit-1-1588176994554.gif" alt="git-1" loading="lazy"></p>
+<p>使用计算属性也可以达到同样的效果</p>
+<pre><code class="language-Vue">computed: {
+	fullname: function() {
+		return this.firstname+this.lastname;
+	}
+   }
+</code></pre>
 
                                 </div>
                     </article>
@@ -148,9 +217,9 @@ serverB.gz          IN         A        192.168.101.33
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://Asolmn.github.io/post/samba-bug">
+                            <a href="https://Asolmn.github.io/post/vuejs-xiao-ji-1">
                                 <h3 class="post-title">
-                                    Samba报错
+                                    Vue.js小记-1
                                 </h3>
                             </a>
                         </div>
@@ -173,12 +242,15 @@ serverB.gz          IN         A        192.168.101.33
 <ul>
 <li>
 <ul>
-<li><a href="#%E5%9B%A0%E4%B8%BA%E5%88%9A%E5%A5%BD%E5%81%9A%E9%A2%98%E7%9A%84%E6%97%B6%E5%80%99%E7%A2%B0%E5%88%B0%E5%B0%B1%E9%A1%BA%E4%BE%BF%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B">因为刚好做题的时候碰到，就顺便记录一下</a><br>
-*<br>
-*<br>
-* <a href="#%E5%B0%86yes%E6%94%B9%E6%88%90no">将yes改成no</a>
+<li>
 <ul>
-<li><a href="#%E6%89%A9%E5%B1%95">扩展：</a></li>
+<li>
+<ul>
+<li><a href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">计算属性</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%BC%93%E5%AD%98%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB">计算属性缓存和方法的区别</a></li>
+<li><a href="#%E4%BE%A6%E5%90%AC%E5%99%A8watch%E5%B1%9E%E6%80%A7">侦听器（watch属性）</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

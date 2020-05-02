@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Asolmn.github.io</id>
     <title>Asolmn</title>
-    <updated>2020-04-08T01:31:38.309Z</updated>
+    <updated>2020-05-02T15:12:02.397Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Asolmn.github.io"/>
     <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
@@ -10,6 +10,353 @@
     <logo>https://Asolmn.github.io/images/avatar.png</logo>
     <icon>https://Asolmn.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Asolmn</rights>
+    <entry>
+        <title type="html"><![CDATA[关于Vue组件]]></title>
+        <id>https://Asolmn.github.io/post/guan-yu-vue-zu-jian</id>
+        <link href="https://Asolmn.github.io/post/guan-yu-vue-zu-jian">
+        </link>
+        <updated>2020-05-02T15:01:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>Vue组件</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Vue组件</p>
+<!-- more -->
+<h4 id="组件基础">组件基础</h4>
+<p>组件是可复用的Vue实例，并且带有名字。通过Vue.component创建组件</p>
+<p>可以通过new Vue创建的Vue根实例中，把组件作为自定义元素使用。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('button-counter',{
+        data: function(){
+            return {count: 0}
+        },
+        template: '&lt;button v-on:click=&quot;count++&quot;&gt;{{ count }}&lt;/button&gt;'
+    })
+
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<p>创建一个叫做<button-counter>的组件，定一个函数，返回count为0的值，然后通过template模板返回html元素。</p>
+<p>因为组件是可以复用的Vue实例，所以可以与new Vue创建的实例接受相同的选项</p>
+<p>例如<code>data</code>，<code>computed</code>，<code>watch</code>，<code>methods</code></p>
+<p>以及生命周期钩子，唯一的例外就是<code>el</code>，这是根实例特有的选项。</p>
+<h5 id="复用可以多次使用">复用（可以多次使用）</h5>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+    &lt;button-counter&gt;&lt;/button-counter&gt;
+&lt;/div&gt;
+</code></pre>
+<h5 id="关于data">关于data</h5>
+<p>data必须是一个函数，而不是一个对象</p>
+<pre><code class="language-js">//当data是一个对象时
+data:{
+	count: 0
+}
+//函数
+data: function() {
+	return {
+		count: 0
+	}
+}
+</code></pre>
+<p>这样的作用是，防止复用多个组件时，其中的变量会互相影响</p>
+<h5 id="组件的注册">组件的注册</h5>
+<p>组件的注册类型分为全局注册和局部注册，所有的全局注册都是通过Vue.component创建的</p>
+<h5 id="通过prop子组件传递数据">通过Prop子组件传递数据</h5>
+<p>prop就是在组件上面自定义的属性</p>
+<p>prop注册时是attribute，当一个值传递给prop attribute时，它就会变成组件的一个property</p>
+<pre><code>attribute和property的区别
+
+attribute：
+是html标签上面的某一个属性，例如id,class,value等以及一系列的自定义属性
+它的值，只会返回为字符串
+property:
+是js获取的一个DOM对象上面的属性值
+
+例如
+&lt;input type=&quot;text&quot; id='test' value=&quot;foo&quot;&gt;
+其中attribute就是id，value
+打印value
+//&quot;foo&quot;
+当在input这个输入框输入bar时
+value就变成了bar，打印property，会返回bar。打印attribute依旧还是foo并没有改变
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;blog-post title=&quot;My Vue&quot;&gt;&lt;/blog-post&gt;
+&lt;blog-post title=&quot;My Web&quot;&gt;&lt;/blog-post&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['title'],
+        template: '&lt;h3&gt;{{ title }}&lt;/h3&gt;'
+    });
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1588432062195.png" alt="" loading="lazy"></figure>
+<h5 id="动态传递prop">动态传递prop</h5>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;blog-post v-for=&quot;post in posts&quot; v-bind:keys=&quot;post.id&quot; v-bind:title=&quot;post.title&quot;&gt;&lt;/blog-post&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['title','keys'],
+        template: '&lt;h3&gt;{{ keys }} {{ title }}&lt;/h3&gt;'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id:1,title:'Foo'},
+                {id:2,title:'Bar'},
+                {id:3,title:'Dav'}
+            ]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1588432184550.png" alt="" loading="lazy"></figure>
+<h5 id="单个根元素">单个根元素</h5>
+<p>当属性开始变多，不止一个title时</p>
+<p>同时需要多条html语句才能显示时</p>
+<p>需要一个父元素进行一个包裹</p>
+<p>一个组件只能拥有一个根元素（）</p>
+<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
+    &lt;div&gt;
+        &lt;h3&gt;{{ post.id }} {{ post.title }}&lt;/h3&gt;
+        &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot;&gt;&lt;/blog-post&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['post'],
+        template: '#blogpost'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id:1,title:'Foo',content:'&lt;h3&gt;J.H&lt;/h3&gt;'},
+                {id:2,title:'Bar',content:'&lt;h3&gt;J.H&lt;/h3&gt;'},
+                {id:3,title:'Dav',content:'&lt;h3&gt;J.H&lt;/h3&gt;'}
+            ]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1588431748735.png" alt="" loading="lazy"></figure>
+<h5 id="监听子组件事件">监听子组件事件</h5>
+<p>通过一个例子，实现监听子组件事件，功能就是放大字号。</p>
+<p>在父组件也就是根实例中添加一个postFontSize数据，用来支持放大字号功能。</p>
+<p>首先在template模板中，添加一个按钮，但是这个按钮不能做任何事。</p>
+<p>所以要使用v-on监听子组件的事件，在<code>bost-post</code>中添加一个<code>v-on</code>监听事件，然后再子组件通过调用内建的<code>$emit</code>方法传入事件名称来触发一个事件。</p>
+<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
+    &lt;div &gt;
+        &lt;h3&gt;{{ post.id }}.{{ post.title }}&lt;/h3&gt;
+        &lt;button v-on:click=&quot;$emit('enlarge-text')&quot;&gt;Elarge text&lt;/button&gt;
+        &lt;p v-html=&quot;post.content&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;div id=&quot;app&quot;&gt;
+    &lt;div :style=&quot;{ fontSize: postFontSize+'em' }&quot;&gt;
+        &lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot; v-on:enlarge-text=&quot;postFontSize += 0.1&quot;&gt;&lt;/blog-post&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('blog-post',{
+        props: ['post'],
+        template: '#blogpost'
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            posts: [
+                {id:1,title:'Foo',content:'&lt;h5&gt;J.H&lt;/h5&gt;'},
+                {id:2,title:'Bar',content:'&lt;h5&gt;J.H&lt;/h5&gt;'},
+                {id:3,title:'Dav',content:'&lt;h5&gt;J.H&lt;/h5&gt;'}
+            ],
+            postFontSize: 1
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1588432108580.gif" alt="" loading="lazy"></figure>
+<h5 id="使用事件抛出一个值">使用事件抛出一个值</h5>
+<p>可以使用一个事件抛出一特定的值，使用<code>$emit</code>的第二参数来提供这个值</p>
+<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
+    &lt;div &gt;
+        &lt;h3&gt;{{ post.id }}.{{ post.title }}&lt;/h3&gt;
+        &lt;button v-on:click=&quot;$emit('enlarge-text',0.1)&quot;&gt;Elarge text&lt;/button&gt;
+        &lt;p v-html=&quot;post.content&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>当父组件监听到这个事件的时候，通过<code>$event</code>访问这个值</p>
+<pre><code class="language-html">&lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot; v-on:enlarge-text=&quot;postFontSize += $event&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p><strong>可以通过函数处理事件</strong></p>
+<pre><code class="language-js">        methods: {
+            onEnlargeText: function(enlargeAmount) {
+                this.postFontSize += enlargeAmount
+            }
+        }
+</code></pre>
+<pre><code> v-on:enlarge-text=&quot;onEnlargeText
+</code></pre>
+<p>这时对事件的处理就是封装一个函数，提供一个enlargeAmount的参数传入，这个参数的值，依旧是靠<code>$event</code>访问。</p>
+<h5 id="在组件上使用v-model">在组件上使用v-model</h5>
+<p>自定义事件可以用于创建支持<code>v-model</code>的自定义输入组件</p>
+<pre><code class="language-html">&lt;input v-model=&quot;searchtext&quot;&gt;
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-html">&lt;input
+	v-bind:value=&quot;searchtext&quot;
+	v-on:input=&quot;searctext=$event.target.value&quot;
+&gt;
+</code></pre>
+<p>将<code>value</code>(attrbute)绑定到一个叫<code>value</code>的prop上</p>
+<p>当<code>input</code>事件被触发时，将新的值通过自定义的<code>input</code>事件抛出</p>
+<p>所以组件的写法</p>
+<pre><code class="language-js">Vue.component('custom-input'),{
+    props: ['value'],
+    template:'
+    	&lt;input
+	v-bind:value=&quot;searchtext&quot;
+	v-on:input=&quot;$emit('input',$event.target.value)&quot;
+	&gt;
+    '
+})
+</code></pre>
+<p>这时才可以在<code>custom-input</code>上运行<code>v-model</code></p>
+<pre><code class="language-html">&lt;custom-input v-model=&quot;searchtext&quot;&gt;&lt;/custom-input&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于Vue的计算属性和侦听器]]></title>
+        <id>https://Asolmn.github.io/post/guan-yu-vue-de-ji-suan-shu-xing-he-zhen-ting-qi</id>
+        <link href="https://Asolmn.github.io/post/guan-yu-vue-de-ji-suan-shu-xing-he-zhen-ting-qi">
+        </link>
+        <updated>2020-04-29T16:19:02.000Z</updated>
+        <summary type="html"><![CDATA[<p>计算属性与侦听器</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>计算属性与侦听器</p>
+<!-- more -->
+<h5 id="计算属性">计算属性</h5>
+<p>如果插值表达式内放入了过多复杂的逻辑，可以通过计算属性，将逻辑提取出来</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{ msg }}&lt;/p&gt;
+    &lt;p&gt;{{ msg.split('').reverse().join('') }}
+    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'Hello'
+        },
+        computed: {
+            reversedMessage: function(){
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p>对Hello字符串进行一个反转，如果不使用计算属性，这个反转字符串的逻辑，全部写在表达式内。</p>
+<p>而使用计算属性，只需要添加一个<code>computed</code>，然后再其中写入一个叫做<code>reversedMessage</code>的计算属性，然后再表达式中调用它</p>
+<p>同时计算属性具有依赖性，例如<code>reversedMessage</code>就中就依赖<code>msg</code>，如果再浏览器中的控制台使用<code>vm.msg='World'</code> 页面会发生同步改变</p>
+<h5 id="计算属性缓存和方法的区别">计算属性缓存和方法的区别</h5>
+<p>计算机属性具有缓存的功能，只要第一次调用过计算属性，有返回值后。后面再进行调用，计算属性无需再执行一次，只要把返回的值直接填进去就好。</p>
+<p>如果使用方法，则没有缓存功能，当逻辑和运算很大的时候，重复执行，如果导致性能下降。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
+    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-Vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'Hello'
+        },
+        computed: {
+            reversedMessage: function(){
+                console.log('Final')
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1588432282288.png" alt="" loading="lazy"></figure>
+<p>虽然使用了两次计算属性，但是计算属性只执行了一次，可以看到只返回过一次Final</p>
+<h5 id="侦听器watch属性">侦听器（watch属性）</h5>
+<p>侦听器和计算属性的区别就是，侦听器是一种更加通用的方式响应Vue实例上的数据变动，同时也应用于数据变化时执行异步或者开销较大的操作</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span&gt;姓：
+        &lt;input type=&quot;text&quot; v-model='firstname'&gt;
+    &lt;/span&gt;
+    &lt;span&gt;名:
+        &lt;input type=&quot;text&quot; v-model='lastname'&gt;
+    &lt;/span&gt;
+    &lt;p&gt;{{ fullname }}&lt;/p&gt;
+
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-Vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            firstname: 'Foo',
+            lastname: 'Bar',
+            fullname: 'Foo Bar'
+        },
+        watch: {
+            firstname: function(val) {
+                this.fullname = val+' '+this.lastname;
+            },
+            lastname: function(val) {
+                this.fullname = this.firstname+' '+val;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://Asolmn.github.io/post-images/1588432299162.gif" alt="" loading="lazy"><img src="F:%5C%E6%96%87%E6%A1%A3%5C%E7%BC%96%E7%A8%8B%5Cdocument-image%5Cgit-1-1588176994554.gif" alt="git-1" loading="lazy"></p>
+<p>使用计算属性也可以达到同样的效果</p>
+<pre><code class="language-Vue">computed: {
+	fullname: function() {
+		return this.firstname+this.lastname;
+	}
+   }
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vue.js小记-1]]></title>
         <id>https://Asolmn.github.io/post/vuejs-xiao-ji-1</id>
@@ -1523,74 +1870,6 @@ db.commit()
 <p>解决方法：</p>
 <p>重进进入flask shell</p>
 <p>然后将数据重新导入对象中，再使用<code>order_by()</code>则可以成功</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Flask-Migrate进行数据库的迁移]]></title>
-        <id>https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi</id>
-        <link href="https://Asolmn.github.io/post/flask-migrate-jin-xing-shu-ju-ku-de-qian-yi">
-        </link>
-        <updated>2019-08-02T12:18:10.000Z</updated>
-        <summary type="html"><![CDATA[<p>使用flask-migrate进行数据库模型迁移</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>使用flask-migrate进行数据库模型迁移</p>
-<!-- more -->
-<h5 id="更新数据库的原有">更新数据库的原有</h5>
-<p>如果碰到需要修改数据库模型同时进行更新</p>
-<p>flask-sqlalchemy的机制是数据库表不存在的时候，才会根据模型进行创建数据库</p>
-<p>所以造成了如果要更新模型，只能将原有的表进行删除，再重新进行创建</p>
-<p>这样会丢失原有表中的所有数据，而数据库迁移框架则可以解决</p>
-<h5 id="创建迁移仓库">创建迁移仓库</h5>
-<p>首先安装flask-Migrate</p>
-<p><code>pip install flask-Migrate</code></p>
-<p>初始化Flask-Migrate</p>
-<pre><code class="language-python">from flask-migrate import Migrate
-
-pass
-
-migrate=Mirgrate(app,db)
-</code></pre>
-<p>接着当前目录的命令行中使用<code>flask db init</code></p>
-<p>这条命令会创建migrations目录，所有迁移脚本都存放在这个文件里面</p>
-<h5 id="创建迁移脚本">创建迁移脚本</h5>
-<p>为了测试先对模型类进行一个修改</p>
-<p>例如：</p>
-<pre><code class="language-python">	class User():
-        ....
-    	age = db.Column(db.Integer,nullable=True)
-</code></pre>
-<p>在<code>class User()</code>中添加<code>age = db.Column(db.Integer,nullable=True)</code></p>
-<p>执行<code>flask db migrate &quot;initial migration&quot;</code>命令</p>
-<p>自动创建的迁移脚本并不一定正确，所有要手动检查一下，失误的地方手动更改</p>
-<p>执行<code>flask db upgrade</code>更新数据库</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mariadb主从复制的一次报错]]></title>
-        <id>https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo</id>
-        <link href="https://Asolmn.github.io/post/mariadb-zhu-cong-fu-zhi-de-yi-ci-bao-cuo">
-        </link>
-        <updated>2019-05-22T03:22:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>mariadb的主从复制一次报错小记</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>mariadb的主从复制一次报错小记</p>
-<!-- more -->
-<h3 id="slave体现不了master的数据更新">slave体现不了master的数据更新</h3>
-<p>刚刚解决，趁机水一篇博客</p>
-<p>报错体现</p>
-<pre><code>Slave_IO_Running:Connecting
-</code></pre>
-<p>查看一些报错信息</p>
-<pre><code>error connecting to master 'slave@192.168.116.22:3306' - retry-time: 60  retries: 86400  message: Host '192.168.116.33' is not allowed to connect to this MariaDB server
-
-</code></pre>
-<p>问题出在访问连接权限上面。<br>
-解决方法:</p>
-<pre><code>grant replication slave on *.* to 'slave'@'192.168.116.%';
-</code></pre>
-<pre><code>grant replication user_name on *.* to  'user_name'@'ip'
-</code></pre>
-<p>user_name用户名，ip可以使用%通配符</p>
 ]]></content>
     </entry>
 </feed>
