@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Asolmn.github.io</id>
     <title>Asolmn</title>
-    <updated>2020-11-27T16:07:23.819Z</updated>
+    <updated>2021-01-10T12:01:39.211Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Asolmn.github.io"/>
     <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
     <subtitle>随便写写，佛系更新</subtitle>
     <logo>https://Asolmn.github.io/images/avatar.png</logo>
     <icon>https://Asolmn.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Asolmn</rights>
+    <rights>All rights reserved 2021, Asolmn</rights>
     <entry>
         <title type="html"><![CDATA[关于Vue组件]]></title>
         <id>https://Asolmn.github.io/post/guan-yu-vue-zu-jian</id>
