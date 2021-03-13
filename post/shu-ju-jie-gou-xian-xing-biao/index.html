@@ -1,22 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Asolmn.github.io</id>
-    <title>Asolmn</title>
-    <updated>2021-03-13T12:30:16.317Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Asolmn.github.io"/>
-    <link rel="self" href="https://Asolmn.github.io/atom.xml"/>
-    <subtitle>随便写写，佛系更新</subtitle>
-    <logo>https://Asolmn.github.io/images/avatar.png</logo>
-    <icon>https://Asolmn.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Asolmn</rights>
-    <entry>
-        <title type="html"><![CDATA[数据结构-线性表]]></title>
-        <id>https://Asolmn.github.io/post/shu-ju-jie-gou-xian-xing-biao/</id>
-        <link href="https://Asolmn.github.io/post/shu-ju-jie-gou-xian-xing-biao/">
-        </link>
-        <updated>2021-03-13T11:58:56.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="线性表">线性表</h3>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    数据结构-线性表 | Asolmn
+</title>
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1615638607437">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1615638607437" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            数据结构-线性表
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-03-13</time>
+                            
+                                <a href="https://Asolmn.github.io/tag/jsdDPoFYZ/" class="post-tag i-tag
+                            i-tag-other_1">
+                            #数据结构
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h3 id="线性表">线性表</h3>
 <hr>
 <blockquote>
 <p>本文部分截图来自<a href="https://www.bilibili.com/video/BV1b7411N798?p=15&amp;spm_id_from=pageDriver">王道考研</a></p>
@@ -624,1756 +728,122 @@ int main(){
     } 
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于Vue组件]]></title>
-        <id>https://Asolmn.github.io/post/guan-yu-vue-zu-jian/</id>
-        <link href="https://Asolmn.github.io/post/guan-yu-vue-zu-jian/">
-        </link>
-        <updated>2020-05-02T15:01:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>Vue组件</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Vue组件</p>
-<!-- more -->
-<h4 id="组件基础">组件基础</h4>
-<p>组件是可复用的Vue实例，并且带有名字。通过Vue.component创建组件</p>
-<p>可以通过new Vue创建的Vue根实例中，把组件作为自定义元素使用。</p>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;button-counter&gt;&lt;/button-counter&gt;
-&lt;/div&gt;
 
-&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    Vue.component('button-counter',{
-        data: function(){
-            return {count: 0}
-        },
-        template: '&lt;button v-on:click=&quot;count++&quot;&gt;{{ count }}&lt;/button&gt;'
-    })
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Asolmn.github.io/post/guan-yu-vue-zu-jian/">
+                                <h3 class="post-title">
+                                    关于Vue组件
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%BA%BF%E6%80%A7%E8%A1%A8">线性表</a>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0">顺序表（数组实现）</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0-%E9%9D%99%E6%80%81%E5%88%86%E9%85%8D">顺序表的实现-静态分配</a></li>
+<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D">顺序表的实现-动态分配</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">关于顺序表的基本操作</a></li>
+<li><a href="#%E9%83%A8%E5%88%86%E8%A1%A8%E6%93%8D%E4%BD%9C%E7%9A%84%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6">部分表操作的时空复杂度</a></li>
+</ul>
+</li>
+<li><a href="#%E9%93%BE%E8%A1%A8-%E5%8D%95%E9%93%BE%E8%A1%A8">链表-单链表</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89-2">定义</a></li>
+<li><a href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0">单链表的实现</a></li>
+<li><a href="#%E4%B8%8D%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8">不带头节点的单链表</a></li>
+<li><a href="#%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8">带头节点的单链表</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">关于单链表的基本操作</a></li>
+<li><a href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%BB%BA%E7%AB%8B">单链表的建立</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-    var vm = new Vue({
-        el: '#app'
-    })
-&lt;/script&gt;
-</code></pre>
-<p>创建一个叫做<button-counter>的组件，定一个函数，返回count为0的值，然后通过template模板返回html元素。</p>
-<p>因为组件是可以复用的Vue实例，所以可以与new Vue创建的实例接受相同的选项</p>
-<p>例如<code>data</code>，<code>computed</code>，<code>watch</code>，<code>methods</code></p>
-<p>以及生命周期钩子，唯一的例外就是<code>el</code>，这是根实例特有的选项。</p>
-<h5 id="复用可以多次使用">复用（可以多次使用）</h5>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;button-counter&gt;&lt;/button-counter&gt;
-    &lt;button-counter&gt;&lt;/button-counter&gt;
-    &lt;button-counter&gt;&lt;/button-counter&gt;
-&lt;/div&gt;
-</code></pre>
-<h5 id="关于data">关于data</h5>
-<p>data必须是一个函数，而不是一个对象</p>
-<pre><code class="language-js">//当data是一个对象时
-data:{
-	count: 0
-}
-//函数
-data: function() {
-	return {
-		count: 0
-	}
-}
-</code></pre>
-<p>这样的作用是，防止复用多个组件时，其中的变量会互相影响</p>
-<h5 id="组件的注册">组件的注册</h5>
-<p>组件的注册类型分为全局注册和局部注册，所有的全局注册都是通过Vue.component创建的</p>
-<h5 id="通过prop子组件传递数据">通过Prop子组件传递数据</h5>
-<p>prop就是在组件上面自定义的属性</p>
-<p>prop注册时是attribute，当一个值传递给prop attribute时，它就会变成组件的一个property</p>
-<pre><code>attribute和property的区别
-
-attribute：
-是html标签上面的某一个属性，例如id,class,value等以及一系列的自定义属性
-它的值，只会返回为字符串
-property:
-是js获取的一个DOM对象上面的属性值
-
-例如
-&lt;input type=&quot;text&quot; id='test' value=&quot;foo&quot;&gt;
-其中attribute就是id，value
-打印value
-//&quot;foo&quot;
-当在input这个输入框输入bar时
-value就变成了bar，打印property，会返回bar。打印attribute依旧还是foo并没有改变
-</code></pre>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;blog-post title=&quot;My Vue&quot;&gt;&lt;/blog-post&gt;
-&lt;blog-post title=&quot;My Web&quot;&gt;&lt;/blog-post&gt;
-&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    Vue.component('blog-post',{
-        props: ['title'],
-        template: '&lt;h3&gt;{{ title }}&lt;/h3&gt;'
-    });
-    var vm = new Vue({
-        el: '#app'
-    })
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1588432062195.png" alt="" loading="lazy"></figure>
-<h5 id="动态传递prop">动态传递prop</h5>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;blog-post v-for=&quot;post in posts&quot; v-bind:keys=&quot;post.id&quot; v-bind:title=&quot;post.title&quot;&gt;&lt;/blog-post&gt;
-&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    Vue.component('blog-post',{
-        props: ['title','keys'],
-        template: '&lt;h3&gt;{{ keys }} {{ title }}&lt;/h3&gt;'
-    });
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            posts: [
-                {id:1,title:'Foo'},
-                {id:2,title:'Bar'},
-                {id:3,title:'Dav'}
-            ]
-        }
-    })
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1588432184550.png" alt="" loading="lazy"></figure>
-<h5 id="单个根元素">单个根元素</h5>
-<p>当属性开始变多，不止一个title时</p>
-<p>同时需要多条html语句才能显示时</p>
-<p>需要一个父元素进行一个包裹</p>
-<p>一个组件只能拥有一个根元素（）</p>
-<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
-    &lt;div&gt;
-        &lt;h3&gt;{{ post.id }} {{ post.title }}&lt;/h3&gt;
-        &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-&lt;div id=&quot;app&quot;&gt;
-    &lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot;&gt;&lt;/blog-post&gt;
-&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    Vue.component('blog-post',{
-        props: ['post'],
-        template: '#blogpost'
-    });
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            posts: [
-                {id:1,title:'Foo',content:'&lt;h3&gt;J.H&lt;/h3&gt;'},
-                {id:2,title:'Bar',content:'&lt;h3&gt;J.H&lt;/h3&gt;'},
-                {id:3,title:'Dav',content:'&lt;h3&gt;J.H&lt;/h3&gt;'}
-            ]
-        }
-    })
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1588431748735.png" alt="" loading="lazy"></figure>
-<h5 id="监听子组件事件">监听子组件事件</h5>
-<p>通过一个例子，实现监听子组件事件，功能就是放大字号。</p>
-<p>在父组件也就是根实例中添加一个postFontSize数据，用来支持放大字号功能。</p>
-<p>首先在template模板中，添加一个按钮，但是这个按钮不能做任何事。</p>
-<p>所以要使用v-on监听子组件的事件，在<code>bost-post</code>中添加一个<code>v-on</code>监听事件，然后再子组件通过调用内建的<code>$emit</code>方法传入事件名称来触发一个事件。</p>
-<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
-    &lt;div &gt;
-        &lt;h3&gt;{{ post.id }}.{{ post.title }}&lt;/h3&gt;
-        &lt;button v-on:click=&quot;$emit('enlarge-text')&quot;&gt;Elarge text&lt;/button&gt;
-        &lt;p v-html=&quot;post.content&quot;&gt;&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;div id=&quot;app&quot;&gt;
-    &lt;div :style=&quot;{ fontSize: postFontSize+'em' }&quot;&gt;
-        &lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot; v-on:enlarge-text=&quot;postFontSize += 0.1&quot;&gt;&lt;/blog-post&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    Vue.component('blog-post',{
-        props: ['post'],
-        template: '#blogpost'
-    });
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            posts: [
-                {id:1,title:'Foo',content:'&lt;h5&gt;J.H&lt;/h5&gt;'},
-                {id:2,title:'Bar',content:'&lt;h5&gt;J.H&lt;/h5&gt;'},
-                {id:3,title:'Dav',content:'&lt;h5&gt;J.H&lt;/h5&gt;'}
-            ],
-            postFontSize: 1
-        }
-    })
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1588432108580.gif" alt="" loading="lazy"></figure>
-<h5 id="使用事件抛出一个值">使用事件抛出一个值</h5>
-<p>可以使用一个事件抛出一特定的值，使用<code>$emit</code>的第二参数来提供这个值</p>
-<pre><code class="language-html">&lt;template id=&quot;blogpost&quot;&gt;
-    &lt;div &gt;
-        &lt;h3&gt;{{ post.id }}.{{ post.title }}&lt;/h3&gt;
-        &lt;button v-on:click=&quot;$emit('enlarge-text',0.1)&quot;&gt;Elarge text&lt;/button&gt;
-        &lt;p v-html=&quot;post.content&quot;&gt;&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-</code></pre>
-<p>当父组件监听到这个事件的时候，通过<code>$event</code>访问这个值</p>
-<pre><code class="language-html">&lt;blog-post v-for=&quot;post in posts&quot; v-bind:post=&quot;post&quot; v-on:enlarge-text=&quot;postFontSize += $event&quot;&gt;&lt;/blog-post&gt;
-</code></pre>
-<p><strong>可以通过函数处理事件</strong></p>
-<pre><code class="language-js">        methods: {
-            onEnlargeText: function(enlargeAmount) {
-                this.postFontSize += enlargeAmount
-            }
-        }
-</code></pre>
-<pre><code> v-on:enlarge-text=&quot;onEnlargeText
-</code></pre>
-<p>这时对事件的处理就是封装一个函数，提供一个enlargeAmount的参数传入，这个参数的值，依旧是靠<code>$event</code>访问。</p>
-<h5 id="在组件上使用v-model">在组件上使用v-model</h5>
-<p>自定义事件可以用于创建支持<code>v-model</code>的自定义输入组件</p>
-<pre><code class="language-html">&lt;input v-model=&quot;searchtext&quot;&gt;
-</code></pre>
-<p>相当于</p>
-<pre><code class="language-html">&lt;input
-	v-bind:value=&quot;searchtext&quot;
-	v-on:input=&quot;searctext=$event.target.value&quot;
-&gt;
-</code></pre>
-<p>将<code>value</code>(attrbute)绑定到一个叫<code>value</code>的prop上</p>
-<p>当<code>input</code>事件被触发时，将新的值通过自定义的<code>input</code>事件抛出</p>
-<p>所以组件的写法</p>
-<pre><code class="language-js">Vue.component('custom-input'),{
-    props: ['value'],
-    template:'
-    	&lt;input
-	v-bind:value=&quot;searchtext&quot;
-	v-on:input=&quot;$emit('input',$event.target.value)&quot;
-	&gt;
-    '
-})
-</code></pre>
-<p>这时才可以在<code>custom-input</code>上运行<code>v-model</code></p>
-<pre><code class="language-html">&lt;custom-input v-model=&quot;searchtext&quot;&gt;&lt;/custom-input&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于Vue的计算属性和侦听器]]></title>
-        <id>https://Asolmn.github.io/post/guan-yu-vue-de-ji-suan-shu-xing-he-zhen-ting-qi/</id>
-        <link href="https://Asolmn.github.io/post/guan-yu-vue-de-ji-suan-shu-xing-he-zhen-ting-qi/">
-        </link>
-        <updated>2020-04-29T16:19:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>计算属性与侦听器</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>计算属性与侦听器</p>
-<!-- more -->
-<h5 id="计算属性">计算属性</h5>
-<p>如果插值表达式内放入了过多复杂的逻辑，可以通过计算属性，将逻辑提取出来</p>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;p&gt;{{ msg }}&lt;/p&gt;
-    &lt;p&gt;{{ msg.split('').reverse().join('') }}
-    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-<pre><code class="language-vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            msg: 'Hello'
-        },
-        computed: {
-            reversedMessage: function(){
-                return this.msg.split('').reverse().join('');
-            }
-        }
-    })
-&lt;/script&gt;
-</code></pre>
-<p>对Hello字符串进行一个反转，如果不使用计算属性，这个反转字符串的逻辑，全部写在表达式内。</p>
-<p>而使用计算属性，只需要添加一个<code>computed</code>，然后再其中写入一个叫做<code>reversedMessage</code>的计算属性，然后再表达式中调用它</p>
-<p>同时计算属性具有依赖性，例如<code>reversedMessage</code>就中就依赖<code>msg</code>，如果再浏览器中的控制台使用<code>vm.msg='World'</code> 页面会发生同步改变</p>
-<h5 id="计算属性缓存和方法的区别">计算属性缓存和方法的区别</h5>
-<p>计算机属性具有缓存的功能，只要第一次调用过计算属性，有返回值后。后面再进行调用，计算属性无需再执行一次，只要把返回的值直接填进去就好。</p>
-<p>如果使用方法，则没有缓存功能，当逻辑和运算很大的时候，重复执行，如果导致性能下降。</p>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
-    &lt;p&gt;{{ reversedMessage }}&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
-<pre><code class="language-Vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            msg: 'Hello'
-        },
-        computed: {
-            reversedMessage: function(){
-                console.log('Final')
-                return this.msg.split('').reverse().join('');
-            }
-        }
-    })
-&lt;/script&gt;
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1588432282288.png" alt="" loading="lazy"></figure>
-<p>虽然使用了两次计算属性，但是计算属性只执行了一次，可以看到只返回过一次Final</p>
-<h5 id="侦听器watch属性">侦听器（watch属性）</h5>
-<p>侦听器和计算属性的区别就是，侦听器是一种更加通用的方式响应Vue实例上的数据变动，同时也应用于数据变化时执行异步或者开销较大的操作</p>
-<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
-    &lt;span&gt;姓：
-        &lt;input type=&quot;text&quot; v-model='firstname'&gt;
-    &lt;/span&gt;
-    &lt;span&gt;名:
-        &lt;input type=&quot;text&quot; v-model='lastname'&gt;
-    &lt;/span&gt;
-    &lt;p&gt;{{ fullname }}&lt;/p&gt;
-
-&lt;/div&gt;
-</code></pre>
-<pre><code class="language-Vue">&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var vm = new Vue({
-        el: '#app',
-        data: {
-            firstname: 'Foo',
-            lastname: 'Bar',
-            fullname: 'Foo Bar'
-        },
-        watch: {
-            firstname: function(val) {
-                this.fullname = val+' '+this.lastname;
-            },
-            lastname: function(val) {
-                this.fullname = this.firstname+' '+val;
-            }
-        }
-    })
-&lt;/script&gt;
-</code></pre>
-<p><img src="https://Asolmn.github.io/post-images/1588432299162.gif" alt="" loading="lazy"><img src="F:%5C%E6%96%87%E6%A1%A3%5C%E7%BC%96%E7%A8%8B%5Cdocument-image%5Cgit-1-1588176994554.gif" alt="git-1" loading="lazy"></p>
-<p>使用计算属性也可以达到同样的效果</p>
-<pre><code class="language-Vue">computed: {
-	fullname: function() {
-		return this.firstname+this.lastname;
-	}
-   }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Vue.js小记-1]]></title>
-        <id>https://Asolmn.github.io/post/vuejs-xiao-ji-1/</id>
-        <link href="https://Asolmn.github.io/post/vuejs-xiao-ji-1/">
-        </link>
-        <updated>2020-03-27T14:44:15.000Z</updated>
-        <summary type="html"><![CDATA[<p>开个坑，记录一下vue的学习过程（鬼知道这个能不能填完），前端真难</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>开个坑，记录一下vue的学习过程（鬼知道这个能不能填完），前端真难</p>
-<!-- more -->
-<h3 id="vuejs-小记1">vue.js 小记1</h3>
-<p>vues是一个渐进式的javascript框架</p>
-<p>**渐进式含义：**声明式渲染-&gt;组件系统-&gt;客户端路由-&gt;集中式状态管理-&gt;项目构建</p>
-<p><strong>vue的helloworld例子</strong></p>
-<pre><code class="language-html">/*
-Vue的基本使用步骤
-	需要提供标签用于填充数据
-	引入vue.js文件
-	使用vue的语法做功能
-	把vue提供的数据填充到标签里面
-*/
-
-    &lt;div id=&quot;app&quot;&gt;
-        //{{}}为插值表达式，可以支持简要数值的计算，或者字符串拼接
-        //{{1+2}}
-        &lt;div&gt;{{msg}}&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        //el代表要把数据填充到那个标签里面
-        //el官方说法，元素的挂载位置
-        //data 模型数据
-        var vm = new Vue(
-            {
-                el:'#app',
-                data:{
-                    msg:'Hello Vue'
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
                 }
             }
-        )
-    &lt;/script&gt;
-</code></pre>
-<p>首先从vue官网下载它的js文件：https://cn.vuejs.org/js/vue.js</p>
-<p>然后导入</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<p><strong>vue代码</strong>--&gt;<strong>vue框架</strong>--&gt;<strong>原生js代码</strong></p>
-<h4 id="vue模板语法">vue模板语法</h4>
-<p>vue是属于前端渲染，通过模板和数据结合，得出静态的HTML内容</p>
-<p><strong>前端渲染</strong>：把数据填充到HTML标签，但是通过ajax类似的技术，进行数据交互，后端只负责进行开发接口和处理数据，前端调用后端的接口，获取数据，插值到标签中</p>
-<p><strong>后端渲染</strong>：通过模板引擎生成html文件然后，然后将数据直接插值到html文件肿</p>
-<p><em>使用指令的一个原因，是因为插值表达式的话，如果频繁刷新页面，会有出现闪动的现象</em></p>
-<h5 id="指令">指令</h5>
-<pre><code class="language-vue">/*
-v-cloak该指令保持在元素上直到关联实例结束编译
-v-cloak指令用法
-1、提供样式
-[v-cloak]{
-	display:none
-}
-原理：先通过样式隐藏内容，然后再内存中进行值的替换，替换好再显示最后的结果
-&lt;div v-cloak&gt;
-    {{ message }}
-&lt;/div&gt;
-*/
-//实例代码如下：
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            [v-cloak]{
-                display: none;
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-&lt;body&gt;
-
-
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;div v-cloak&gt;{{ msg }}&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        //el代表要把数据填充到那个标签里面
-        //el官方说法，元素的挂载位置
-        //data 模型数据
-        var vm = new Vue(
-            {
-                el:'#app',
-                data:{
-                    msg:'Hello Vue'
-                }
-            }
-        )
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-</code></pre>
-<h4 id="数据绑定指令">数据绑定指令</h4>
-<p><code>v-text</code>填充纯文本</p>
-<p><code>v-html</code>填充html片段，比较危险，容易会造成xss攻击</p>
-<p><code>v-pre</code>填充原始的信息，例如直接带花括号的插值表达式</p>
-<h4 id="数据响应式">数据响应式</h4>
-<p>响应式：</p>
-<p>h5中的响应式，屏幕的尺寸会影响屏幕的适配</p>
-<p>数据的响应式， 数据的变化导致页面内容的变化</p>
-<p>这一个过程称为数据的响应式</p>
-<p><img src="https://Asolmn.github.io/post-images/1585320549554.png" alt="" loading="lazy"><br>
-<img src="https://Asolmn.github.io/post-images/1585320555074.png" alt="" loading="lazy"></p>
-<h4 id="一个计算器例子">一个计算器例子</h4>
-<pre><code class="language-html">&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            [v-cloak]{
-                display: none;
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;h1&gt;简单计算器&lt;/h1&gt;
-        &lt;div&gt;
-            &lt;span&gt;数值A：&lt;/span&gt;
-            &lt;input type=&quot;text&quot; v-model='a'&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;span&gt;数值B：&lt;/span&gt;
-            &lt;input type=&quot;text&quot; v-model='b'&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;button v-on:click=&quot;handle&quot;&gt;计算&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;span&gt;计算结果：&lt;/span&gt;
-            &lt;span v-text='result'&gt;&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
     
-    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    var vm = new Vue({
-        el:&quot;#app&quot;,
-        data:{
-            a:'',
-            b:'',
-            result:''
-        },
-        methods:{
-            handle:function(){
-                //计算逻辑
-                this.result=parseInt(this.a)+parseInt(this.b);
-            }
-        }
-    })
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Ajax小记]]></title>
-        <id>https://Asolmn.github.io/post/ajax-xiao-ji/</id>
-        <link href="https://Asolmn.github.io/post/ajax-xiao-ji/">
-        </link>
-        <updated>2020-03-24T14:21:48.000Z</updated>
-        <summary type="html"><![CDATA[<p>Ajax的学习</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Ajax的学习</p>
-<!-- more -->
-<h3 id="ajax">Ajax</h3>
-<p>Ajax是<code>Asynchronous JavaScript And XML</code>的缩写</p>
-<p>主要功能是实现异步刷新</p>
-<p>首先是不通过Ajax进行数据交互</p>
-<pre><code class="language-html">//如果不同过Ajax提交数据
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
+                            
 
+                </div>
 
-&lt;form action=&quot;./test.html&quot;&gt;
-Input Username  &lt;input name=&quot;name&quot; type=&quot;text&quot; value=&quot;&quot;&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
-&lt;/form&gt;
-&lt;script&gt;
 
-&lt;/script&gt;
 
-&lt;/body&gt;
-&lt;/html&gt;
 
-//test.html中的内容
-&lt;script&gt;
-    document.write(&quot;&lt;h3&gt;Already Username&lt;/h3&gt;&quot;);
-&lt;/script&gt;
+            </div>
 
-</code></pre>
-<p>效果：</p>
-<p>跳转到test.html页面，同时传递了一个name的值，不过这里没有用到</p>
-<figure data-type="image" tabindex="1"><img src="F:%5C%E6%96%87%E6%A1%A3%5C%E7%BC%96%E7%A8%8B%5Cdocument-image%5C1584889198581.png" alt="1584889198581" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="F:%5C%E6%96%87%E6%A1%A3%5C%E7%BC%96%E7%A8%8B%5Cdocument-image%5C1584889220332.png" alt="1584889220332" loading="lazy"></figure>
-<h5 id="ajax-一种创建动态网页的技术">Ajax 一种创建动态网页的技术</h5>
-<p>通过后台和服务器进行少量数据交换，Ajax可以使网页实现异步更新</p>
-<p>网页不需要重新加载，只对某一部分进行更新</p>
-<p>首先浏览器创建一个<code>XMLHttpRequest()</code>对象，然后向服务器发送<code>HttpRquest</code></p>
-<p>服务器首先处理浏览器发送的<code>HttpRquest</code>，然后创建响应并将数据返回浏览器</p>
-<p>浏览器使用Javascript处理返回的数据，更新页面内容</p>
-<pre><code class="language-html">&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;myDiv&quot;&gt;&lt;h2&gt;使用Ajax修改内容&lt;/h2&gt;&lt;/div&gt;
-    &lt;button onclick=&quot;loadXMLDoc()&quot;&gt;修改内容&lt;/button&gt;
 
-    &lt;script&gt;
-        function loadXMLDoc(){
-            //AJAX脚本执行
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
+</div>
 
-</code></pre>
-<h5 id="ajax脚本执行逐步解析">Ajax脚本执行，逐步解析</h5>
-<p><strong>创建XMLHttpRequest对象</strong></p>
-<pre><code class="language-javascript">var xmlhttp;
-xmlhttp = new XMLHttpRequest();
-</code></pre>
-<p>创建XMLhttpRequest对象，不同版本的浏览器也有区别</p>
-<p>现在所有的浏览器基本都内建了XMLHttpRequest对象</p>
-<p>而项IE5或者IE6等老版本浏览器则没有</p>
-<p>需要使用另一个方法创建</p>
-<pre><code class="language-javascript">var xmlhttp;
-xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
-</code></pre>
-<p>所以为了不管再那个版本中都不出错，可以使用一个if语句进行判断</p>
-<pre><code class="language-javascript">var xmlhttp;
-if (window.XMLHttpRequest){
-    xmlhttp = new XMLHttpRequest();
-}
-else{
-    xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
-}
-</code></pre>
-<h5 id="向服务器发送请求">向服务器发送请求</h5>
-<p>对于发送请求到服务器，需要使用到XMLHttpRequest对象的open()和send()方法</p>
-<pre><code class="language-javascript">xmlhttp.open(&quot;GET&quot;,&quot;ajax_info.txt&quot;,true);
-xmlhttp.send();
-</code></pre>
-<p>关于open方法</p>
-<p>open(method,url,async)</p>
-<p>其中method：请求的类型，GET或者POST</p>
-<p>url：文件在服务器的位置</p>
-<p>async：true(异步),false(同步)   //如果XMLHttpRequest对象要使用Ajax的话，async一定要true</p>
-<p>异步：不可以和多线程相等，虽然看起来很像同时执行</p>
-<p>当一个线程，需要等待的时候，异步不需要阻塞当前线程等待处理完成，而是会允许后续的操作</p>
-<p>直到其它线程处理完成，并回调通知此线程</p>
-<pre><code class="language-javascript">//一个异步代码
-console.log(1);
-setTimeout(function(){console.log(2);},0) //设置一个定时器，打印2
-console.log(3)
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
 
-//打印结果:
-1 3 2
-</code></pre>
-<p>关于send方法</p>
-<p>send(string)，将请求发送到服务器，仅用于POST请求</p>
-<p><strong>GET请求</strong></p>
-<pre><code class="language-javascript">xmlhttp.open(&quot;GET&quot;,&quot;demo.php&quot;,true);
-xmlhttp.send();
-</code></pre>
-<p>但是这样有可能会得到缓存的结果</p>
-<p>所以为了避免这种情况，可以给url设置一个唯一的ID</p>
-<pre><code class="language-javascript">xmlhttp.open(&quot;GET&quot;,&quot;demo.php?t=&quot;+Math.random,true);
-</code></pre>
-<p>如果想在url上附带信息</p>
-<pre><code class="language-javascript">xmlhttp.open(&quot;GET&quot;,&quot;demo.php?name=test&amp;age=19&quot;,true);
-</code></pre>
-<p><strong>POST请求</strong></p>
-<pre><code class="language-javascript">xmlhttp.open(&quot;POST&quot;,&quot;demo.php&quot;,true)
-xmlhttp.send();
-</code></pre>
-<p>使用setRequestHeader()添加HTTP头</p>
-<pre><code class="language-javascript">xmlhttp.open(&quot;POST&quot;,&quot;demo.php&quot;,true);
-xmlhttp.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);
-xmlhttp.send(&quot;name=test&amp;age=19&quot;)；
-</code></pre>
-<h5 id="服务器响应">服务器响应</h5>
-<p><strong>responseText</strong>获取字符串形式的响应数据</p>
-<p><strong>responseXML</strong>获取XML形式的响应数据</p>
-<p>字符串形式的响应，可以这样子使用</p>
-<pre><code class="language-javascript">document.getElementById(&quot;d1&quot;).innerHTML=xmlhttp.responseText;
-</code></pre>
-<p>如果是xml形式的响应</p>
-<pre><code class="language-javascript">xmldoc = xmlhttp.responseXML;
-txt = &quot;&quot;;
-x = xmldoc.getElementsByTagName(&quot;ARTIST&quot;);
-for (var i=0;i&lt;x.length;i++){
-	txt = txt+x[i].childNodes[0].nodeValue+&quot;&lt;br&gt;&quot;; 
-    /*
-    childNodes返回子节点的集合
-    [0]代表第一个子节点
-    nodeValue是获取节点的值
-    */
-}
-document.getElementById(&quot;d1&quot;).innerHTML=txt;
-</code></pre>
-<h6 id="onreadystatechange事件">onreadystatechange事件</h6>
-<p><strong>onreadystatechange</strong> 存储函数，如果readyState的属性发生改变，就会调用该函数</p>
-<p><strong>readyState</strong>放着XMLHttpRequest的状态，从0到4分别不同</p>
-<p>0:请求未初始化，1:服务器连接已建立，2请求已接收，3:请求处理中，4:请求已完成，且响应就绪</p>
-<p><strong>status</strong> 200:&quot;OK&quot;,404:&quot;未找到页面&quot;</p>
-<p>所以一般有一个固定的写法</p>
-<pre><code class="language-javascript">var xmlhttp;
-xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange=function(){
-    if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200){
-        document.getElementById(&quot;d1&quot;).innerHTML=xmlhttp.responseText;
-    }
-}
-</code></pre>
-<p>这样子写，如果存在多个Ajax任务，就要每次都重新写一遍，就会非常麻烦。所以可以写一个标准的函数，然后每次执行Ajax任务的时候调用该函数</p>
-<pre><code class="language-javascript">function loadXMLDoc(){
-    //Ajax脚本执行
-}
 
-function myrequest(){
-    loadXMLDoc(&quot;dome.php&quot;,function()
-    {
-            if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200){
-        		document.getElementById(&quot;d1&quot;).innerHTML=xmlhttp.responseText;
-    		}
-    });
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[HTML-DOM操作笔记]]></title>
-        <id>https://Asolmn.github.io/post/html-dom-cao-zuo-bi-ji/</id>
-        <link href="https://Asolmn.github.io/post/html-dom-cao-zuo-bi-ji/">
-        </link>
-        <updated>2020-03-22T13:52:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>前端需要，了解一下html-dom的内容</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>前端需要，了解一下html-dom的内容</p>
-<!-- more -->
-<h3 id="html-dom">HTML DOM</h3>
-<p>DOM是把html里面的各种数据当作对象进行操作的一种思路</p>
-<p>DOM把所有的html都转换为节点</p>
-<p>例如，整个文档，元素，元素属性，元素内容，注释等</p>
-<p><code>document.getElementByID(&quot;d1&quot;)</code>例如这一个</p>
-<p>就是获取id=d1的div标签对应的元素节点</p>
-<p>可以通过<code>chiildNodes</code>获取内容节点</p>
-<p>文档节点[object HTMLDocument]</p>
-<p>元素节点[object HTMLDivElement]</p>
-<p>属性节点[object Attr]</p>
-<p>内容节点[object Text]<br>
-<img src="https://Asolmn.github.io/post-images/1584885264433.png" alt="" loading="lazy"></p>
-<p>document.getElementById	通过id获取元素节点</p>
-<p>getElementsByTagName	通过标签名称获取元素节点</p>
-<p>getElementsByClassName	通过类名获取元素节点</p>
-<p>getElementsByName	通过表单元素的name获取元素节点</p>
-<p>attributes	获取属性节点</p>
-<p>childNodes	获取内容节点</p>
-<p>nodeName 节点名称</p>
-<p>nodeValue	节点值</p>
-<p>nodeType	节点类型</p>
-<p>innerHTML	元素文本内容</p>
-<p>id，value，className	元素上的属性</p>
-<h4 id="html-dom-样式">html-dom 样式</h4>
-<p>style.display=&quot;none&quot; //隐藏</p>
-<p>style.display=&quot;block&quot; //显示</p>
-<pre><code class="language-html">//显示和隐藏
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-&lt;button onclick=&quot;hide()&quot;&gt;Hide&lt;/button&gt;
-&lt;button onclick=&quot;show()&quot;&gt;Show&lt;/button&gt;
-
-&lt;div id=&quot;d&quot;&gt;Hide or Show&lt;/div&gt;
-&lt;script&gt;
-function hide(){
-    var d = document.getElementById(&quot;d&quot;);
-    d.style.display =&quot;none&quot;;
-}
-function show(){
-    var d = document.getElementById(&quot;d&quot;);
-    d.style.display=&quot;block&quot;;
-}
-&lt;/script&gt;
-
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>改变背景色</p>
-<p>style.backgroundColor</p>
-<p>这里的backgroundColor和css中的background-color有所不同</p>
-<p>通过DOM的style修改样式是一件很麻烦的事</p>
-<p>所以通过CSS的属性名，直接就进行修改了。比如通过这样的方式：</p>
-<p><code>d1.css(&quot;background-color&quot;,&quot;green&quot;)</code></p>
-<h5 id="html-dom-事件">HTML-DOM 事件</h5>
-<p>焦点事件<code>onfocus</code> <code>onblur</code></p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;input type=&quot;text&quot; onfocus=&quot;f()&quot; onblur=&quot;b()&quot; id=&quot;input1&quot; placeHolrder=&quot;&quot;&gt;
-&lt;input type=&quot;text&quot;&gt;
-&lt;div id=&quot;message&quot;&gt;&lt;/div&gt;
-
-&lt;script&gt;
-function f(){
-    document.getElementById(&quot;message&quot;).innerHTML=&quot;获取焦点&quot;;
-}
-function p(){
-    document.getElementById(&quot;message&quot;).innerHTML=&quot;失去焦点&quot;;
-}
-&lt;/script&gt;
-
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h5 id="鼠标事件">鼠标事件</h5>
-<p>onmousedown 鼠标按下</p>
-<p>onmouseup 鼠标弹起</p>
-<p>onmousemove 鼠标经过</p>
-<p>onmouseover 鼠标进入</p>
-<p>onmouseout 鼠标退出</p>
-<h5 id="键盘事件">键盘事件</h5>
-<p>键盘按下	onkeydown</p>
-<p>键盘按下	onkeypress</p>
-<p>键盘弹起	onkeyup</p>
-<h5 id="点击事件">点击事件</h5>
-<p>单击	onclick</p>
-<p>双击	ondblclick</p>
-<h5 id="提交事件-onsubmit">提交事件-onsubmit</h5>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-
-&lt;form action=&quot;&quot; onsubmit=&quot;login()&quot;&gt;
-    &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
-    &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Login&quot;&gt;
-&lt;/form&gt;
-&lt;script&gt;
-function login(){
-    alert(&quot;提交表单&quot;);
-}
-&lt;/script&gt;
-
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h4 id="创建节点">创建节点</h4>
-<p>createElement 创建元素节点</p>
-<pre><code class="language-html">//例子
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-
-&lt;div id=&quot;d&quot;&gt; Test Page&lt;/div&gt;
-&lt;button onclick=&quot;add()&quot;&gt;Submit&lt;/button&gt;
-&lt;script&gt;
-function add(){
-    var hr=document.createElement(&quot;hr&quot;);
-    var div1 = document.getElementById(&quot;d&quot;);
-    //appendChild 将hr元素节点添加到div1中
-    div1.appendChild(hr);
-}
-&lt;/script&gt;
-
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>createTextNode 创建文本节点</p>
-<pre><code class="language-html">//例子
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;div id=&quot;d&quot;&gt; Test Page&lt;/div&gt;
-&lt;button onclick=&quot;add()&quot;&gt;Submit&lt;/button&gt;
-&lt;script&gt;
-function add(){
-    var p=document.createElement(&quot;p&quot;);
-    var text = document.createTextNode(&quot;test add text dom&quot;);
-    p.appendChild(text);
-
-    var div1 = document.getElementById(&quot;d&quot;);
-    div1.appendChild(p);
-}
-&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;s
-</code></pre>
-<p>createAttribute 创建属性节点</p>
-<pre><code class="language-html">//例子
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;div id=&quot;d&quot;&gt; Test Page&lt;/div&gt;
-&lt;button onclick=&quot;add()&quot;&gt;Submit&lt;/button&gt;
-&lt;script&gt;
-function add(){
-    var a = document.createElement(&quot;a&quot;);
-    var content = document.createTextNode(&quot;http://baidu.com&quot;);
-    a.appendChild(content);
-
-    var href = document.createAttribute(&quot;href&quot;);
-    href.nodeValue=&quot;http://baidu.com&quot;;
-    //setAttributeNode把href属性添加到元素节点a上面
-    a.setAttributeNode(href);
-
-    var div1 = document.getElementById(&quot;d&quot;);
-    div1.appendChild(a)
-
-}
-&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h4 id="删除节点">删除节点</h4>
-<p>删除元素节点 removeChild</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-
-&lt;div id=&quot;d&quot;&gt;
-    &lt;div id=&quot;d1&quot;&gt;First Delete Div&lt;/div&gt;
-    &lt;div id=&quot;d2&quot;&gt;Secend Delete Div&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;button onclick=&quot;remove()&quot;&gt;Delete&lt;/button&gt;
-
-&lt;script&gt;
-function remove(){
-    var parentDiv = document.getElementById(&quot;d&quot;);
-    var d2 = document.getElementById(&quot;d2&quot;);
-    parentDiv.removeChild(d2);
-}
-&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>删除属性节点</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-//将原先Baidu文本上面的链接删除
-&lt;a id=&quot;link&quot; href=&quot;http://baidu.com&quot;&gt;Baidu&lt;/a&gt;
-&lt;button onclick=&quot;remove()&quot;&gt;Delete&lt;/button&gt;
-
-&lt;script&gt;
-function remove(){
-    var link = document.getElementById(&quot;link&quot;)
-    link.removeAttribute(&quot;href&quot;)
-}
-&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h4 id="替换节点">替换节点</h4>
-<p>replaceChild</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Test1&lt;/title&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-
-&lt;div id=&quot;parentDiv&quot;&gt;
-    &lt;div id=&quot;d1&quot;&gt;one&lt;/div&gt;
-    &lt;div id=&quot;d2&quot;&gt;two&lt;/div&gt;
-    &lt;div id=&quot;d3&quot;&gt;three&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;button onclick=&quot;replaceDiv()&quot;&gt;Submit&lt;/button&gt;
-&lt;script&gt;
-function remove(){
-    var link = document.getElementById(&quot;link&quot;)
-    link.removeAttribute(&quot;href&quot;)
-}
-
-function replaceDiv(){
-    var d4 = document.createElement(&quot;div&quot;);
-    var text = document.createTextNode(&quot;four&quot;);
-
-    d4.appendChild(text);
-
-    var d3 = document.getElementById(&quot;d3&quot;);
-    var parentDiv = document.getElementById(&quot;parentDiv&quot;);
-
-    parentDiv.replaceChild(d4,d3)
-}
-&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[javascript基础语法笔记]]></title>
-        <id>https://Asolmn.github.io/post/javascript-ji-chu-yu-fa-bi-ji/</id>
-        <link href="https://Asolmn.github.io/post/javascript-ji-chu-yu-fa-bi-ji/">
-        </link>
-        <updated>2020-02-19T10:02:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>因为要用到vue.js，没学过javascript，刚好现在过一遍</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>因为要用到vue.js，没学过javascript，刚好现在过一遍</p>
-<!-- more -->
-<h3 id="javascript">javascript</h3>
-<p><code>&lt;script&gt;</code>标签</p>
-<p>在html页面中插入javascript，使用<code>&lt;script&gt;</code>标签</p>
-<pre><code class="language-html">&lt;scirpt&gt;
-    alert(&quot;我的第一个JavaScript&quot;);
-&lt;/script&gt;
-
-#例如在body中
-
-&lt;html&gt;
-&lt;body&gt;
-    &lt;script&gt;document.write(&quot;&lt;h1&gt; APP test &lt;/h1&gt;&quot;)&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>外部javascript</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;body&gt;
-	&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>app.js</p>
-<pre><code class="language-javascript">function myFunction()
-{
-    document.getElementById(&quot;demo&quot;).innerHTML=&quot;One Javascript function&quot;;
-}
-</code></pre>
-<h5 id="javascript输出">javascript输出</h5>
-<p><code>window.alert()</code>弹出警告框</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;body&gt;
-    &lt;script&gt;
-        windos.alter(5+6)
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;    
-</code></pre>
-<p><code>document.write()</code>方法将内容写到HTML文档中</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;APP&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;script&gt;
-    document.write(Date())
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p><code>innerHTML</code>写入到HTML元素</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;body&gt;
-    &lt;script&gt;
-        document.getElementById(&quot;demo&quot;).innerHTML=&quot;pargraph&quot;
-    &lt;/script&gt;
-    &lt;p id=&quot;demo&quot;&gt;
-        第一个段落
-    &lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;  
-</code></pre>
-<p><code>console.log()</code>写入到浏览器的控制台</p>
-<pre><code class="language-javascript">a = 5;
-b = 6;
-num = a+b;
-console.log(num);
-</code></pre>
-<h5 id="javascript变量">javascript变量</h5>
-<pre><code class="language-javascript">//var关键字，声明变量
-var name=&quot;jh&quot;,name2=&quot;cx&quot;;
-var x,length;
-x = 5;
-length = 6;
-console.log(x);
-console.log(length);
-
-//变量必须以字母开头，并对大小写敏感
-//变量也可以使用$和_符号最为开头，但是会增加代码的可阅读性
-</code></pre>
-<h5 id="javascript操作符">javascript操作符</h5>
-<pre><code class="language-javascript">= + - * / :赋值，加，减，乘，除
-== != &lt; &gt; :等于，不等于，小于，大于
-% ++ -- :取模，自增，自减
-+= -= *= /= %= : x+y，x-y，x*y，x/y，x%y
-
-//逻辑运算符
-&amp;&amp; || ! : and(x &lt; 10 &amp;&amp; y &gt; 1) 为 true，or(x==5 || y==5) 为 false，not(x==5 || y==5) 为 false
-</code></pre>
-<h5 id="javascript注释">javascript注释</h5>
-<pre><code class="language-javascript">console.log(&quot;注释&quot;);
-
-//console.log(&quot;注释&quot;) javascript通过//符号来注释
-
-/*
-这是一个
-多行注释
-*/
-</code></pre>
-<h5 id="javascript数据类型">javascript数据类型</h5>
-<pre><code class="language-javascript">var length = 16; //number数字
-var lastName = &quot;Asolmn&quot;; //String字符串
-var name = ['jh','cx']; //Array数组
-var person = {firstName:'Asomln',lastName:&quot;Elapse&quot;}; //Object对象按那个
-var x=true,y=false; //布尔逻辑值
-
-//数组
-var cars = new Array();
-cars[0]=&quot;test1&quot;;
-cars[1]=&quot;test2&quot;;
-cars[3]=&quot;test3&quot;;
-//第二种创建方法
-var cars = new Arrary(&quot;test1&quot;,&quot;test2&quot;,&quot;test3&quot;);
-//第三种创建方法
-var cars=['test1','test2','test3'];
-
-//对象，对象使用花括号分隔，以键值的方法定义
-var parson = {
-    name1:'test1',
-    name2:'test2'，
-    fullName():function(){ return this.name1+&quot; &quot;+this.name2}
-};
-//对象的寻址
-first = person.name1;
-second = person.name2;
-
-//访问对象的方法，不加括号代表是对象的属性，输出函数表达式
-name = person.fullName(); //
-name = person.fullName;
-//输出：function(){ return this.name1+&quot; &quot;+this.name2}
-
-
-//Undefined和Null代表不含有值，可以通过设置变量为Null来清空
-</code></pre>
-<h5 id="javascript语句">javascript语句</h5>
-<pre><code class="language-javascript">//使用分号做为javascript一句语句结束
-console.log(&quot;world&quot;);
-
-//javascript代码块,使用花括号
-function myfunction()
-{
-    pass
-}
-
-//如果一行写不下，可以通过\符号进行换行
-document.write(&quot;Hello \
-world&quot;);
-
-</code></pre>
-<h5 id="javascript函数">javascript函数</h5>
-<pre><code class="language-html">function myFunction(a,b){
-	return a * b;
-}
-console.log(myFunction(5,6));
-
-//调用带参数的函数
-&lt;p&gt;
-    try Submit 
-&lt;/p&gt;
-&lt;button onclick=&quot;myfunction(a,b)&quot;&gt;Submit&lt;/button&gt;
-&lt;script&gt;
-    function myfunction(a,b){
-        c = a,b;
-        alert(&quot;num:&quot;+c);
-    }
-&lt;/script&gt;
-
-//在函数内部var的变量，是局部变量，只能函数内部访问它
-//在函数外var的为全局变量，所有脚本和函数都可以访问
-
-</code></pre>
-<h5 id="javascript事件">javascript事件</h5>
-<p>HTML事件是发生在HTML元素上面的事情，当在HTML页面中使用JavaScript时</p>
-<p>Javascript可以触发这些事件</p>
-<p>HTML元素中可以添加事件属性，使用Javascript代码来添加HTML元素。</p>
-<p><code>&lt;some-html-element some-event='javascript代码'&gt;</code></p>
-<p>例子:<code>&lt;button onclick=&quot;getElementById('demo').innerHTML=Date()&quot;&gt;submit&lt;/button&gt;</code></p>
-<p>javascript代码将修改id=&quot;demo&quot;元素的内容</p>
-<p><code>&lt;button onclick=&quot;this.innerHTML=Date()&quot;&gt;New time&lt;/button&gt;</code></p>
-<h5 id="常见的html事件">常见的HTML事件</h5>
-<p><code>onchange</code>  HTML元素改变</p>
-<p><code>onclick</code>  用户点击HTML</p>
-<p><code>onmouseover</code> 用户在一个HTML元素上移动鼠标</p>
-<p><code>onkeydown</code>  用户按下键盘按键</p>
-<p><code>onload</code> 浏览器已完成页面的加载</p>
-<h5 id="javascript字符串">javascript字符串</h5>
-<pre><code class="language-javascript">var string1 = &quot;asolmn&quot;;
-var string2 = string1[2]; //通过索引访问字符串中的每一个字符
-
-var string1 = &quot;it\'s alright&quot;; //可以通过\符号用来转义在字符串内使用引号
-
-var txt = &quot;dfasdfsjdlgjslfg&quot;;
-var sln = txt.length; //通过内置属性length来计算字符串长度
-
-/*
-特殊字符
-\' 单引号
-\&quot; 双引号
-\\ 反斜杠
-\n 换行
-\r 回车
-\t tab
-\b 退格符
-\f 换页符
-*/
-
-var x = &quot;John&quot;;
-var y = new String(&quot;Jonh&quot;);
-
-typeof x //返回的是String
-typeof y //返回Object
-
-/*
-一些方法
-split()把字符串分割为子字符串数组
-toLowerCase()转换为小写
-toUpperCase()转换为大写
-trim()移除字符串首尾空白
-*/
-</code></pre>
-<h5 id="javascript-ifelse语句">javascript if...else语句</h5>
-<pre><code class="language-javascript">if (condition)
-{
-    //当条件为True时的代码
-}
-
-if (time&lt;20)
-{
-    alert(&quot;time小于20&quot;);
-}
-
-if (condition)
-{
-    //当条件为True时执行的代码  
-}
-else
-{
- 	//当条件为false时执行的代码   
-}
-
-if (condition1)
-{
-    //当条件1为True执行的代码
-}
-else if (condition2)
-{
- 	//当条件2为True执行的代码   
-}
-else
-{
-    //当条件1和条件2都不为True，执行的代码
-}
-</code></pre>
-<h5 id="javascript-switch语句">javascript switch语句</h5>
-<pre><code class="language-javascript">switch(n)
-{
-    case 1:
-        //执行代码快1
-        break;
-    case 2:
-        //执行代码快2
-        break;
-    default:
-        //与case1和case2不同时执行的代码
-}
-</code></pre>
-<h5 id="javascript-for语句">javascript for语句</h5>
-<pre><code class="language-javascript">for (语句1; 语句2; 语句3)
-{
-    //被执行的代码快
-}
-//语句1（代码块）循环开始前执行
-//语句2 定义运行循环（代码快）的条件
-//语句3 在循环（代码块）已被执行之后执行
-
-//例子1：
-for (var i=0;i&lt;5;i++)
-{
-	alert(i);    
-}
-
-//通常会使用语句1，初始化循环中所用的变量，但是语句1是可选的
-//可以初始化多个，也可以省略
-//省略的写法 for (; i&lt;len; i++)
-//语句2同样可选，但是如果省略了，必须在循环内提供break
-//语句3和语句1是一样的
-for (var i=0,len=cars.length; i&lt;len; i++)
-{
-    document.write(cars[i])
-}
-</code></pre>
-<h5 id="javascript-while语句">javascript while语句</h5>
-<pre><code class="language-javascript">while (条件)
-{
-    //需要执行的代码
-}
-
-//例子
-var x,i;
-x = 0;
-i = 1;
-while (i&lt;5)
-{
-    x += 1;
-    alert(x);
-    i++;
-}
-
-//do/while循环
-do
-{
-    //需要执行的代码
-}
-while (条件);
-//例子
-var x,i;
-x = 0;
-i = 1;
-do
-{
-    x += 1;
-    alert(x);
-}
-while (i&lt;5);
-</code></pre>
-<h5 id="javascript-break和continue语句">javascript break和continue语句</h5>
-<pre><code class="language-javascript">/*
-breack语句用于跳出循环
-continue中断寻红中的迭代，如果有指定条件
-继续循环中的下一个迭代。
-*/
-//例子,如果i迭代到5的时候，会执行break语句，跳出循环。
-for (var x=0,i=0; i&lt;10; i++)
-{
-    if (i==5)
-        break;
-    x += 1;
-    console.log(x);
-}
-
-//使用continue语句，如果碰到i=5的时候，直接跳过这次迭代
-for (var x=0,i=0; i&lt;10; i++)
-{
-    if (i==5)
-        continue;
-    x += 1;
-    console.log(i);
-}
-
-/*
-break的作用跳出代码块，所以可以使用于循环和switch等
-continue的作用是进入下一个迭代，所以conctinue只能用于循环的代码块
-*/
-</code></pre>
-<h5 id="typeof检测变量的数据类型">typeof检测变量的数据类型</h5>
-<h5 id="javascript数据类型-2">javascript数据类型</h5>
-<pre><code class="language-javascript">/*
-javascript有6种不同的数据类型
-string
-number
-boolean
-object
-function
-symbol
-3种对象类型
-Object
-Date
-Array
-2种不包含任何值的数据类型
-null
-undefined （如果var一个变量时，不赋予任何值的时候，使用typeof则会返回undefined）
-
-NaN的数据类型是number
-数组，日期，null的数据类型是object
-*/
-
-//constructor属性返回所有javascript变量的构造函数
-&quot;Asolmn&quot;.constructor //返回函数String()
-(3.14).constructor //返回函数Number()
-true.constructor //返回函数Boolean
-
-
-//javascript类型转换
-//String()可以将数字转换为字符串
-var x=19;
-String(x);
-String(19);
-
-//将日期转换为字符串
-Date() //返回字符串
-String(new Date()) //将日期对象转换为字符串
-
-//Number()将字符串从转换为数字
-Number(&quot;19&quot;);
-var str1=&quot;19&quot;;
-Number(str1);
-
-//一元运算符+
-var y = &quot;5&quot;;
-vara x = +y; //x现在是一个数字
-
-var y = &quot;Asolmn&quot;;
-var x = +y; //虽然变量不能转换，它仍然是一个数字，但是值为NaN
-</code></pre>
-<h5 id="javascript-正则表达式">javascript 正则表达式</h5>
-<pre><code class="language-javascript">/*
-语法: /正则表达式主体/修饰符(可选)
-*/
-var patt = /asolmn/i 
-/*
-/asolmn是一个正则表达式 i是一个修饰符(搜索不区分大小写)
-*/
-
-/*
-正则表达式通常用两个字符串方法：search()和replace()
-search()用于检索字符串种指定的子字符串，或者检索与正则表达式相匹配的子字符串
-replace()用于在字符串中用一些字符串替换另一些字符串，或者替换一个与正则表达式匹配的子串
-*/
-
-var str = &quot;Hello Asolmn&quot;;
-var n = str.search(/Asol/i);
-console.log(n);
-//Asolmn字符串。在从0开始，第6位上
-//输出
-6
-
-var str = &quot;Hello Asolmn&quot;;
-var n = str.search(&quot;Asolmn&quot;); //字符串作为参数，会自动转化位正则表达式
-console.log(n);
-//输出
-6 
-
-var str1 = &quot;Visit test1&quot;;
-var txt = str1.replace(/Elapse/i,&quot;test2&quot;);
-console.log(txt);
-//将test1替换成test2
-//输出
-Visit test2
-</code></pre>
-<p>正则表达式修饰符</p>
-<ul>
-<li>i	执行对大小写不敏感的匹配</li>
-<li>g   执行全局匹配</li>
-<li>m  执行多行匹配</li>
-</ul>
-<p>正则表达式模式</p>
-<ul>
-<li>[abc]    查找方括号之间任何字符串</li>
-<li>[0-9]     查找任何从0至9的数字</li>
-<li>(x|y)     查找任何以|分隔的选项</li>
-</ul>
-<p>正则表达式模式</p>
-<ul>
-<li>\d	查找数字</li>
-<li>\s	查找空白字符</li>
-<li>\b	匹配单词边界</li>
-<li>\uxxx	查找以十六进制数xxx规定的Unicode字符串</li>
-<li>n+	匹配任何包含至少一个n的字符串</li>
-<li>n*	匹配任何包含零个或者多个n的字符串</li>
-<li>n?	匹配任何包含零个或者一个n的字符串</li>
-</ul>
-<h5 id="javascript错误">javascript错误</h5>
-<pre><code class="language-javascript">/*
-try语句测试代码块的错误
-catch语句处理错误
-throw语句创建自定义错误
-finally语句在try和catch语句后，无论是否有触发异常，该语句都会执行
-*/
-
-try
-{
-    //异常的抛出
-} catch(e){
-    //异常的捕获和处理
-} finally {
-    //结束处理
-}
-
-//例子 故意写错addlert，碰到异常后，会自动执行catch语句块中的内容
-var txt = &quot;&quot;;
-function message()
-{
-    try{
-        addlert(&quot;Hello World&quot;);
-    } catch(err){
-        alert(txt);
-    }
-}
-
-//例子 finally无论之前的try和catch中是否产生异常都会执行该代码块
-try{
-   if (x==&quot;&quot;) throw &quot;Null&quot;;
-} catch(err){
-    message.innerHTML=&quot;错误&quot;;
-}
-finally{
-    alert(&quot;test&quot;)l;
-}
-</code></pre>
-<h5 id="javascript变量可以先使用在声明">javascript变量可以先使用，在声明</h5>
-<pre><code class="language-javascript">x = 5;
-alert(x);
-var 5;
-</code></pre>
-<h5 id="javascript严格模式">javascript严格模式</h5>
-<pre><code class="language-javascript">//使用use strict指令。目的是代码在严格条件下执行，严格模式下不能使用未先声明的变量,写在脚本头部
-&quot;use strict&quot;;
-pass
-</code></pre>
-<h5 id="javascript表单验证">javascript表单验证</h5>
-<p>js内容:</p>
-<pre><code class="language-javascript">function dateform(){
-    var name = document.forms['myForm']['fname'].value;
-    if ( name==null || name==&quot;&quot;){
-        alert(&quot;input name&quot;);
-        return false;
-    }
-    else{
-        document.getElementById(&quot;demo&quot;).innerHTML=name;
-        return true
-    }
-}
-</code></pre>
-<p>html内容</p>
-<pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;APP&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;p&gt;
-    输入名字
-&lt;/p&gt;
-&lt;form name=&quot;myForm&quot; action=&quot;&quot; onsubmit=&quot;return dateform()&quot; method=&quot;post&quot;&gt;
-    Name: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;
-    &lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
-&lt;/form&gt;
-
-&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<!-- more -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[functools wraps方法]]></title>
-        <id>https://Asolmn.github.io/post/functools-wraps-fang-fa/</id>
-        <link href="https://Asolmn.github.io/post/functools-wraps-fang-fa/">
-        </link>
-        <updated>2020-01-27T13:54:27.000Z</updated>
-        <summary type="html"><![CDATA[<p>python的functools模块，wraps探讨</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>python的functools模块，wraps探讨</p>
-<!-- more -->
-<p>参考资料：https://www.bilibili.com/video/av15904918/</p>
-<p>从书中看到了一段代码，对其中的含义并不是很理解。代码如下</p>
-<pre><code class="language-python">from functools import wraps #作用于函数或者返回其它函数的函数
-from flask import abort
-from flask_login import current_user
-from .models import Permission
-#检查常规权限
-def permission_required(permission):
-    def decorator(f):
-        @wraps(f)
-        def decorated_funcation(*args,**kwargs):
-            #调用can方法，检验用户的权值是否相等，来判断是否有权限
-            if not current_user.can(permission):
-                #abort用于提前退出，用于指定错误码的返回
-                abort(403)
-            return f(*args,**kwargs)
-        return decorated_funcation
-    return decorator
-
-#检查管理员权限
-def admin_required(f):
-    #调用检查权限的函数，传入参数设置为管理员的
-    return permission_required(Permission.ADMIN)
-</code></pre>
-<p>其中使用了装饰器，这一个知识点，于是便搜索了一下为什么这一段代码要用到<code>functools.wraps</code>，具体可以解决那些问题</p>
-<h5 id="结果如下">结果如下</h5>
-<p>最开始实现的装饰器有几个缺点：不支持关键字参数，而且会遮盖被装饰函数的<code>__name__</code>和<code>__doc__</code>属性</p>
-<p>例如:</p>
-<pre><code class="language-python">def noop(f):
-	def wrapper():
-		return f()
-	return wrapper
-
-@noop
-def hello():
-    print(&quot;Hello,world&quot;)
- 
-help(hello)
-print(hello.__name__)
-print(hello.__doc__)
-
-#输出
-Help on function wrapper in module __main__:
-
-wrapper()
-
-wrapper
-None
-</code></pre>
-<p>可以看到help(hello)，输出来的function并不是hello的，而是wrapper。同时hello的<code>__name__</code>也并不是hello的。</p>
-<p>可以通过手动修改来解决这个问题</p>
-<pre><code class="language-python">def noop(f):
-	def wrapper():
-		return f()
-	wrapper.__name__ = f.__name__
-	wrapper.__doc__ = f.__doc__
-	return wrapper
-</code></pre>
-<p>这个时候，再进行输出一次。</p>
-<pre><code class="language-python">help(hello)
-print(hello.__name__)
-print(hello.__doc__)
-
-#输出
-Help on function hello in module __main__:
-
-hello()
-
-hello
-None
-</code></pre>
-<p>但是再一个较大的项目中，这样操作，未免过于繁琐，所以这个时候可以使用functools.wraps来解决这个问题</p>
-<pre><code class="language-python">from functools import wraps
-
-def noop(f):
-    @wraps(f)
-    def wrapper():
-        return f()
-    return wrapper
-
-@noop
-def hello():
-    print(&quot;Hello,world&quot;)
-
-help(hello)
-print(hello.__name__)
-print(hello.__doc__)
-
-#输出
-Help on function hello in module __main__:
-
-hello()
-
-hello
-None
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[记渡过的2019]]></title>
-        <id>https://Asolmn.github.io/post/ji-du-guo-de-2019/</id>
-        <link href="https://Asolmn.github.io/post/ji-du-guo-de-2019/">
-        </link>
-        <updated>2019-12-31T13:03:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>记录一下2019这一年</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>记录一下2019这一年</p>
-<!-- more -->
-<h3 id="记渡过的2019">记渡过的2019</h3>
-<p>例行惯例，又到了年底总结的时候了</p>
-<h4 id="学业与技术方面">学业与技术方面</h4>
-<p>大一一眨眼就过完了，大二现在正式快要过完上学期了。</p>
-<p>还有一年时间，插本的该插本了，工作的该工作了。现在再想一下入学的时候</p>
-<p>不得不感叹时间是真的快</p>
-<p>现在总结一下今年学业与技术方面发生的事吧，</p>
-<p>主要拿到的重大奖项，都集中在上半年了，下半年表现平淡无奇（离咸鱼不远了）</p>
-<p>但虽说如此还是列一下吧</p>
-<h5 id="2019全国职业院校大赛一等奖">2019全国职业院校大赛一等奖</h5>
-<p><strong>2019广东省职业院校大赛一等奖</strong></p>
-<h5 id="2019年大学生数学建模大赛广东省一等奖">2019年大学生数学建模大赛广东省一等奖</h5>
-<p>噢，还有一个是在一月份的数学美赛，不过奖项不高，不值得一提。技术方面的奖项重大的也就这两个了。</p>
-<p>比赛虽然很累，但是非常感谢老师和学校能给我机会出去比赛，过程中也是收获了许多。</p>
-<p>学业方面，另我比较开心的就是，获得一次<strong>国家奖学金</strong>。大学目标✔一个。</p>
-<p>（说到比赛不得不说就有一个比赛，必须要深刻检讨一下的地方。就在前几天，今年的南山区比赛，可能自己没有太在意，也没有放到心上，成绩最后格外的差。这次比赛也让我想明白一件事，哪怕在不擅长，报名了就要全力去准备）</p>
-<p>技术方面，也下定决心，从运维转向了<strong>web后端开发</strong>。虽然已经决定好了，但是从开学到现在一直是一个忙碌状态（有时都不知道自己在忙啥）。所以掌握的知识并不多，很多知识都看的似懂非懂的，特别像前端的内容 vue.js和ajax等等之类的。自己没有形成一个完整的体系。在这一次寒假，希望可以有一个巨大的提升</p>
-<p>运维方面也没有完全放弃，还是去报名了红帽的考证。毕竟后面还是会用到的。</p>
-<p>说了怎么多，再说说博客公众号的事，开了之后就没有怎么打理过，一是抽不出时间，二是太懒了</p>
-<p>博客文章什么的，太懒了，文档都写在了word里面，到现在依旧都没有整理上传到公众号上和博客，实在是惭愧（脸红了）</p>
-<p>后面的一年，也会改正一下，陆陆续续的更新些文章。</p>
-<p>技术方面就到这样吧</p>
-<h4 id="生活">生活</h4>
-<p>说到生活方面，事情也是蛮多的。</p>
-<p>真的再一次不得不说，到目前为止我的人生中的重大转折</p>
-<p>离2020年还有两个月的时候，我的身边多了<strong>一个人</strong>。</p>
-<p>超级激动，<strong>脱单了</strong>。</p>
-<p>多了一个以后让我更加努力继续奋斗的人。</p>
-<p><strong>希望以后可以和她一直在一起</strong></p>
-<p>想说的很多，但是表达有限，所以更多的事情，还是在以后的时间中让事实来证明吧</p>
-<p>顺便想了一下未来的打算，大三去努力插本，有一个更好的平台。也有更好的工作</p>
-<p>毕竟以后还是想在深圳发展，压力还是蛮大的说，只有努力才能让生活更加轻松些。</p>
-<p>只有做到了这些，才能给我爱的人，一个好的未来。（不以结婚为目的的谈恋爱都是刷流氓（引用去年虎神的年底总结台词））</p>
-<h3 id="尾声">尾声</h3>
-<p>不知不觉，写了怎么多。今年的年底总结就到这里吧。</p>
-<p>感谢这一年来，各位对我的帮助，对我包容。</p>
-<p>最后这里，祝你们元旦快乐</p>
-<p>在未来的时间里面，发现更加美好的自己。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Misc-亚萨西]]></title>
-        <id>https://Asolmn.github.io/post/misc-ya-sa-xi/</id>
-        <link href="https://Asolmn.github.io/post/misc-ya-sa-xi/">
-        </link>
-        <updated>2019-08-15T11:16:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>网络与信息安全领域转项赛，一道Misc题目</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>网络与信息安全领域转项赛，一道Misc题目</p>
-<!-- more -->
-<h5 id="网络与信息安全领域转项赛一如既往的自闭赛哈哈哈哈">网络与信息安全领域转项赛，一如既往的自闭赛哈哈哈哈</h5>
-<p>记录一道Misc题，下载文件<br>
-<img src="https://Asolmn.github.io/post-images/1565875411877.png" alt="" loading="lazy"><br>
-然后是一个压缩包，发现正常方法打不开，使用工具对其爆破</p>
-<p>工具地址：</p>
-<p>链接：https://pan.baidu.com/s/1uUbrbPBNNfRp-1YOuE75XQ<br>
-提取码：yd5r<br>
-<img src="https://Asolmn.github.io/post-images/1565875442890.png" alt="" loading="lazy"><br>
-<img src="https://Asolmn.github.io/post-images/1565875452834.png" alt="" loading="lazy"></p>
-<p>得到密码为<code>loli</code>，注意不用是要用winrar进行解压，使用360解压</p>
-<p><img src="https://Asolmn.github.io/post-images/1565875456963.png" alt="" loading="lazy"><br>
-然后输入刚刚破解出来的密码</p>
-<p>获得一张照片</p>
-<h6 id="图片如下">图片如下：</h6>
-<figure data-type="image" tabindex="1"><img src="https://Asolmn.github.io/post-images/1565868167344.jpg" alt="" loading="lazy"></figure>
-<p>右击属性，然后并没有发现有啥信息<br>
-<img src="https://Asolmn.github.io/post-images/1565868187803.png" alt="" loading="lazy"></p>
-<p>接着使用WinHex打开图片，然后一路查看，可以看到最后一部分有一连串类似加密字符。<br>
-<img src="https://Asolmn.github.io/post-images/1565868198013.png" alt="" loading="lazy"></p>
-<p>为Ook！加密类型，以.!?五个一组</p>
-<p>然后找一个在线解密网站</p>
-<p>网址在这:https://www.splitbrain.org/services/ook</p>
-<figure data-type="image" tabindex="2"><img src="https://Asolmn.github.io/post-images/1565868248932.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://Asolmn.github.io/post-images/1565868257123.png" alt="" loading="lazy"></figure>
-<h5 id="注意">注意</h5>
-<p>因为加密是以5个字符串为一组所以，最后两个字符不要带上，否则解密出来的东西是乱码的</p>
-<figure data-type="image" tabindex="4"><img src="https://Asolmn.github.io/post-images/1565868266386.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-</feed>
+</html>
