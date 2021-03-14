@@ -7,7 +7,7 @@
 <title>
     Asolmn
 </title>
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1615638607437">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1615721535718">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Asolmn.github.io">
-                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1615638607437" alt="">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1615721535718" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -115,7 +115,7 @@
                     <time class="post-time">2021-03-13</time>
                     
                         <a href="https://Asolmn.github.io/tag/jsdDPoFYZ/" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-other_4">
             #数据结构
         </a>
                         
@@ -129,7 +129,7 @@
 
 
 本文部分截图来自王道考研
-书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019
+书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019前言
 
 前言
 
@@ -733,6 +733,216 @@ LinkList List_HeadInsert(LinkList L){
     } 
 }
 
+链表-双链表
+定义
+
+单链表中，从表的任一节点出发，都可以找到其前驱结点，但需要O(n)O(n)O(n)的时间。那么可以在链表的每一个结点中设置两个指针，一个指向后继结点，另一个指向前驱结点，称为双链表
+
+
+代码实现
+
+双链表的实现
+typedef struct DNode{ // 定义双链表结点类型
+    ElemType data; //数据域
+    struct DNode *prior, *next; //前驱和后继指针
+}DNode, *DLinklist;
+
+带头节点的双链表
+// 双链表
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdbool.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+typedef struct DNode{
+    int data;
+    struct DNode *prior, *next;   
+}DNode, *DLinklist;
+
+bool InitDLinklist(DLinklist L){
+    L=(DNode *)malloc(sizeof(DNode)); // 分配一个头结点
+    if (L==NULL){
+        // 内存不足，分配失败
+        return false; 
+    }
+    L-&amp;gt;prior = NULL; // 头节点的prior永远指向NULL
+    L-&amp;gt;next = NULL; //头节点之后的结点暂时指向空
+    return true;
+}
+
+void testDLinklist(){
+    DLinklist L;
+    InitDLinklist(L);
+}
+
+int main(){
+    testDLinklist();
+
+    return 0;
+}
+
+只是在单链表的基础上，多了一个前驱指针。用来指向上一个结点，剩下基本一样。要注意的是，头结点因为是第一个结点，所它的前驱指针永远是指向NULL的。
+关于双链表的基本操作
+
+代码实现
+
+后插操作
+bool InsertNextDNode(DNode *p, DNode *s){
+    if (p==NULL || s==NULL){
+        // 非法参数
+        return false;
+    }
+    s-&amp;gt;next=p-&amp;gt;next; // 令p的后继结点等于s的后继结点
+    if (p-&amp;gt;next!=NULL){
+        // 判断是否为表尾，如果是表尾，那么p的下一结点是NULL
+        p-&amp;gt;next-&amp;gt;prior = s; // 令p后继结点的前驱结点等s
+    }
+    s-&amp;gt;prior = p; // s的前驱结点为p
+    p-&amp;gt;next = s; // p的后继结点为s
+    return true;
+}
+
+例如p结点的下一结点为k，这时要在p后面插入结点s。首先将p的下一个结点，也就是k，变成s的下一结点。在令k的前驱结点指向s，s的前驱结点指向p，p的下一个结点指向s。这就完成了在原先的p和k中间位置插入了结点s。
+删除操作
+bool DeleteNextDNode(DNode *p){
+    /* 删除p结点的后继结点 */
+    if (p==NULL){
+        // 验证非法参数
+        return false;
+    }
+    DNode *q = p-&amp;gt;next; // 找到p的后继结点q
+    if (q=NULL){
+        // p没有后继结点
+        return false; 
+    }
+    p-&amp;gt;next = q-&amp;gt;next; // 令p的后继结点等于q的后继结点
+    if (q-&amp;gt;next!=NULL){ 
+        // 判断q是不是最后一个结点
+        q-&amp;gt;next-&amp;gt;prior = p; // q的后继结点的前驱结点等于p
+    }
+    free(q);
+    return true;
+}
+
+销毁一个双链表
+void DeleteDLinklist(DLinklist L){
+    /* 销毁一个双链表 */
+    while (L-&amp;gt;next != NUll){
+        DeleteDLinklist(L);
+    }
+    free(L);
+    L = NULL;   
+}
+
+遍历操作
+void PrintDLinklist(DNode *p){
+    /* 遍历一个双链表 */
+    while (p!=NULL){
+        printf(&amp;quot;%d&amp;quot;,p-&amp;gt;data);
+        p = p-&amp;gt;next;
+    }
+}
+
+没啥逻辑可说的，就是给定一个结点，然后对结点进行判断是否为NULL，满足循环条件进入循环，打印结点数据，然后将p指向给定结点的下一个结点，时间复杂度为O(n)O(n)O(n)
+链表-循环链表
+定义
+
+单链表最后一个结点的指针为空指针，循环链表就是将这个空指针指向了头结点。使整个链表形成了一个环，首尾相接。
+
+
+代码实现
+
+循环单链表的实现
+// 循环链表
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;stdbool.h&amp;gt;
+
+typedef struct LNode{ // 定义一个单链表结点类型
+    int data;
+    struct LNode *next;
+}LNode, *LinkList;
+
+bool InitList(LinkList L){
+    /* 初始化一个循环单链表 */
+    L = (LNode *)malloc(sizeof(LNode)); // 分配一个头结点
+    if (L==NULL){
+        return false; 
+    }
+    L-&amp;gt;next = L; // 将头节点的后继结点指向头结点
+    return true;
+}
+
+int main(){
+    
+    LinkList L;
+    InitList(L);
+
+    return 0;
+}
+
+循环双链表的实现
+typedef struct DNode{
+    int data;
+    struct DNode *prior, *next;
+}DNode, *DLinkList;
+
+bool InitDLinkList(DLinkList L){
+    /* 初始化循环链表 */
+    L = (DNode *)malloc(sizeof(DNode));
+    if (L==NULL){
+        return false;
+    }
+    L-&amp;gt;prior = L; // 头结点的前驱结点指向头结点
+    L-&amp;gt;next = L; // 头结点的后继结点指向头结点
+}
+
+int main(){
+    
+    DLinkList L;
+    InitDLinkList(L);
+
+    return 0;
+}
+
+链表-静态链表
+定义
+
+设置一个游标，游标是数组中指示数组单元地址的下标值。它指示表中下一个元素在数组中的存储地址（数组下标）。虽然是用数组的方式存储表中的元素，但是插入和删除操作，并不需要移动表中元素，只需要修改游标。
+
+
+代码实现
+
+静态链表的实现
+// 静态链表
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+#define MaxSize 10 // 静态链表的最大长度
+
+typedef struct SNode{
+    int data; // 存储的数据元素
+    int next; // 下一个元素的数组下标
+}SNode, SLinkList[MaxSize];
+
+void InitSLinkList(SLinkList L){
+    L = (SNode *)malloc(MaxSize*sizeof(SNode)); // 申请一片地址
+    for (int i=0; i&amp;lt;MaxSize; i++){
+        L[i].data = 0; // 初始化每一个数组元素
+        L[i].next = i+1; //初始化每一个游标
+    }
+    L[MaxSize-1].next = -1; // 设置最后一个游标为-1代表表尾
+}
+
+void testSLinkList(){
+    SLinkList L;
+    InitSLinkList(L);
+}
+
+int main(){
+    testSLinkList();
+    return 0;
+}
+
 
                                         </div>
                                         
@@ -750,6 +960,16 @@ LinkList List_HeadInsert(LinkList L){
                 <div class="post-info">
                     <time class="post-time">2020-05-02</time>
                     
+                        <a href="https://Asolmn.github.io/tag/M2aD0IKbL/" class="post-tag i-tag
+                            i-tag-primary">
+            #Vue
+        </a>
+                        
+                        <a href="https://Asolmn.github.io/tag/0brIaQs2Uu/" class="post-tag i-tag
+                            i-tag-warning">
+            #Javascript
+        </a>
+                        
                 </div>
                 <div class="post-article">
                     
@@ -774,6 +994,16 @@ LinkList List_HeadInsert(LinkList L){
                 <div class="post-info">
                     <time class="post-time">2020-04-30</time>
                     
+                        <a href="https://Asolmn.github.io/tag/M2aD0IKbL/" class="post-tag i-tag
+                            i-tag-info">
+            #Vue
+        </a>
+                        
+                        <a href="https://Asolmn.github.io/tag/0brIaQs2Uu/" class="post-tag i-tag
+                            i-tag-banana">
+            #Javascript
+        </a>
+                        
                 </div>
                 <div class="post-article">
                     
@@ -792,12 +1022,22 @@ LinkList List_HeadInsert(LinkList L){
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://Asolmn.github.io/post/vuejs-xiao-ji-1/">
-                        Vue.js小记-1
+                        Vue的小笔记
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2020-03-27</time>
                     
+                        <a href="https://Asolmn.github.io/tag/M2aD0IKbL/" class="post-tag i-tag
+                            i-tag-info">
+            #Vue
+        </a>
+                        
+                        <a href="https://Asolmn.github.io/tag/0brIaQs2Uu/" class="post-tag i-tag
+                            i-tag-">
+            #Javascript
+        </a>
+                        
                 </div>
                 <div class="post-article">
                     
@@ -822,6 +1062,11 @@ LinkList List_HeadInsert(LinkList L){
                 <div class="post-info">
                     <time class="post-time">2020-03-24</time>
                     
+                        <a href="https://Asolmn.github.io/tag/Qk0XE99rj/" class="post-tag i-tag
+                            i-tag-other_4">
+            #Ajax
+        </a>
+                        
                 </div>
                 <div class="post-article">
                     
@@ -846,6 +1091,11 @@ LinkList List_HeadInsert(LinkList L){
                 <div class="post-info">
                     <time class="post-time">2020-03-22</time>
                     
+                        <a href="https://Asolmn.github.io/tag/qgjbWMsg1/" class="post-tag i-tag
+                            i-tag-">
+            #HTML
+        </a>
+                        
                 </div>
                 <div class="post-article">
                     
@@ -895,7 +1145,7 @@ LinkList List_HeadInsert(LinkList L){
                     <time class="post-time">2020-01-27</time>
                     
                         <a href="https://Asolmn.github.io/tag/FS2dWeAVH/" class="post-tag i-tag
-                            i-tag-primary">
+                            i-tag-info">
             #Python
         </a>
                         
@@ -924,7 +1174,7 @@ LinkList List_HeadInsert(LinkList L){
                     <time class="post-time">2019-12-31</time>
                     
                         <a href="https://Asolmn.github.io/tag/HAEId3lPR/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-other_1">
             #杂记
         </a>
                         
@@ -953,12 +1203,12 @@ LinkList List_HeadInsert(LinkList L){
                     <time class="post-time">2019-08-15</time>
                     
                         <a href="https://Asolmn.github.io/tag/7jhQ0ZYzo/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-success">
             #CTF
         </a>
                         
                         <a href="https://Asolmn.github.io/tag/0K_2m4i87/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-warning">
             #Misc
         </a>
                         
@@ -995,7 +1245,7 @@ LinkList List_HeadInsert(LinkList L){
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1615638607437)">
+        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1615721535718)">
         </div>
         <h1 class="id_card-title">
             Asolmn
