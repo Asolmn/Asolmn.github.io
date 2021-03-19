@@ -1,0 +1,456 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    数据结构-栈 | Asolmn
+</title>
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1616136139728">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://Asolmn.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://Asolmn.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://Asolmn.github.io">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1616136139728" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Asolmn
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/friend" class="menu">
+                                    友链
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            数据结构-栈
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-03-19</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h3 id="栈">栈</h3>
+<hr>
+<blockquote>
+<p>本文部分截图来自<a href="https://www.bilibili.com/video/BV1b7411N798?p=15&amp;spm_id_from=pageDriver">王道考研</a></p>
+<p>书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019前言</p>
+</blockquote>
+<h4 id="前言">前言</h4>
+<blockquote>
+<p>栈是一种特殊的表，这种表只能在表首进行插入和删除。所以表首对于栈有特殊意义，称为栈顶，表尾称为栈底，不含任何元素的栈称为空栈。可以简单的来说，栈的修改是按后进先出的原则进行，又称为后进先出（Last In First Out）表，简称LIFO表。</p>
+</blockquote>
+<p>假社一个栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>中的元素为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo separator="true">,</mo><mi>a</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>a</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">a(n),a(n-1),...,a(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，则称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">a(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>为栈底元素，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>为栈顶元素。栈中元素按照<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>(</mo><mn>1</mn><mo>)</mo><mo separator="true">,</mo><mi>a</mi><mo>(</mo><mn>2</mn><mo>)</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>a</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a(1),a(2)...,a(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>的顺序进栈，第一个进栈的是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">a(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，接着依次往后，任何时候，出栈的都是栈顶元素<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个不同的元素进栈，出栈元素不同排列的个数则为</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac><msubsup><mi>C</mi><mrow><mn>2</mn><mi>n</mi></mrow><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">\frac{1}{n+1}C_{2n}^n
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.09077em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>这个公式称为卡特兰（<strong>Catalan</strong>）数</p>
+<ul>
+<li><code>InitStack(&amp;S)</code>：初始化栈，构造一个空栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>，分配内存空间。</li>
+<li>StackFree(&amp;S)`：销毁栈，销毁并释放栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>所占用的内存空间</li>
+<li><code>Push(&amp;S,x)</code>：进栈，若栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>未满，则将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>加入使之成为新栈顶。</li>
+<li><code>Pop(&amp;S,&amp;x)</code>：出栈，若栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>非空，则弹出栈顶元素，并用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>返回。</li>
+<li><code>StackTop(&amp;S,&amp;x)</code>：读入栈顶元素，若栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>非空，则用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>返回栈顶元素</li>
+<li><code>StackEmpty(&amp;S)</code>：判断一个栈<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>是否为空，若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>为空，则返回<code>True</code>，否则<code>False</code></li>
+</ul>
+<h4 id="栈的顺序存储">栈的顺序存储</h4>
+<blockquote>
+<p>栈是一个特殊的表，所以可以使用数组来实现栈，用一个数组data存储栈元素，栈底固定在数组的底部，即data[0]为最早的入栈元素</p>
+</blockquote>
+<ul>
+<li>代码实现</li>
+</ul>
+<h5 id="栈的顺序存储实现">栈的顺序存储实现</h5>
+<pre><code class="language-c">// 栈-顺序存储
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct astack{
+    int top, //栈顶
+        maxtop; // 栈空间上界
+    int *data; // 存储栈元素的数组
+}Astack;
+
+typedef struct astack *Stack; //栈指针类型
+
+Stack StackInit(int size){
+    Stack S = (Stack)malloc(sizeof(*S)); // 创建一个空栈
+    S-&gt;data = (int *)malloc(size*sizeof(int)); //为存储栈元素的数组分配内存空间
+    S-&gt;maxtop = size; // 栈空间上限为size
+    S-&gt;top = -1; // 初始化栈顶指针
+    return S;
+}
+
+void testStack(){
+    Stack S;
+    S = StackInit(10);
+}
+
+int main(){
+    testStack();
+
+    return 0;
+}
+</code></pre>
+<p>创建一个size大小的栈，因为刚开始的时候，<code>data[0]</code>还没存放数据，所以<code>S-&gt;top</code>初始化不能等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，令它等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span></p>
+<h5 id="栈顺序存储的基本操作">栈顺序存储的基本操作</h5>
+<p><strong>判断非空</strong></p>
+<pre><code class="language-c">int StackEmpty(Stack S){
+    /* 是否为空栈 */
+    return S-&gt;top &lt; 0; // 如果栈顶小于0，证明还没存储元素
+}
+
+</code></pre>
+<p><strong>进栈操作</strong></p>
+<pre><code class="language-c">void Push(Stack S, int x){
+    /* 进栈操作 */
+    if (StackFull(S)){
+        // 判断是否栈满
+        exit(1);
+    }
+    S-&gt;top = S-&gt;top+1; // 栈顶加1
+    S-&gt;data[S-&gt;top] = x; // 添加一个元素
+}
+</code></pre>
+<p>先判断栈顶指针是否已经达到了栈的最大容量，如果是返回<code>False</code>。因为入栈了一个元素，所以栈顶指针加1，再令当前栈顶指针的位置等于插入元素<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>。</p>
+<p><strong>出栈操作</strong></p>
+<pre><code class="language-c">int Pop(Stack S){
+    /* 出栈操作 */
+    if(StackEmpty(S)){
+        exit(1);
+    }
+    int x = S-&gt;data[S-&gt;top]; //返回出栈的元素
+    S-&gt;top = S-&gt;top-1; // 栈顶减一
+    return x;
+}
+</code></pre>
+<p>令栈顶指针<code>top</code>减去一位，使得逻辑上进行一个出栈操作，但实际数据还是遗留在内存中。</p>
+<p><strong>读栈顶元素</strong></p>
+<pre><code class="language-c">int StackTop(Stack S){
+    /* 读取栈顶 */
+    if (StackEmpty(S)){
+        exit(1);
+    }
+    return S-&gt;data[S-&gt;top];
+}
+</code></pre>
+<p>因为数组是动态分配的，所以需要写一个释放内存的函数</p>
+<pre><code class="language-c">void StackFree(Stack S){
+    free(S-&gt;data);
+    free(S);
+}
+</code></pre>
+<p><strong>打印栈</strong></p>
+<pre><code class="language-c">void StackPrint(Stack S){
+    /* 打印栈 */
+    for (int i=S-&gt;top; i&gt;=0; i--){
+        // 因为栈后进先出，所以要从栈顶开始打印，一直到栈底
+        printf(&quot;%d\n&quot;,S-&gt;data[i]);
+    }
+}
+</code></pre>
+<p>在同时使用过多个栈的情况，为了不会栈溢出，通常要给栈分配一个较大的栈空间，但是各个栈在算法运行中，所使用的最大空间很难估计。所以可以使用共享栈来提高栈空间的利用率。</p>
+<p>例如两个栈使用同一个数组<code>data[0:n]</code>，那么利用栈底不变的特性，一个栈底设为0，另一个栈底设为n，分别各自往数组中间延申。这样每一个栈最大的可用空间为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>n</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{n}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>。</p>
+<h4 id="栈的链式存储">栈的链式存储</h4>
+<blockquote>
+<p>如果要用到多个栈的时候，可以使用链表作为栈的存储结构，也就是栈的链式存储，就是用指针来实现栈。这样方式使栈有着动态大小，这种实现方式也被称为链栈</p>
+</blockquote>
+<ul>
+<li>代码实现</li>
+</ul>
+<h5 id="栈的链式存储实现">栈的链式存储实现</h5>
+<pre><code class="language-c">// 栈-链式存储
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdbool.h&gt;
+
+typedef struct snode{ // 栈结构
+    int data; // 栈元素
+    struct snode *next; // 下一结点指针
+}StackNode;
+
+typedef StackNode *SLink; // 栈结点指针类型
+
+typedef struct lstack{ // 栈结构
+    SLink top; // 栈顶指针
+}Lstack;
+
+typedef Lstack *Stack;
+
+SLink NewStackNode(){
+    /* 创建新结点 */
+    return (SLink)malloc(sizeof(StackNode));
+}
+
+Stack StackInit(){
+    /* 初始化栈 */
+    Stack S = (Stack)malloc(sizeof(*S));
+    S-&gt;top = NULL; // top置为空指针
+    return S;
+}
+
+void testStack(){
+    Stack S;
+    S = StackInit();
+}
+
+int main(){
+    testStack();
+    return 0;
+}
+
+</code></pre>
+<p>首先创建一个栈结点的类型，<code>data</code>存储栈元素，<code>next</code>指向下一个结点的指针。使用<code>typedef</code>创建一个<code>snode</code>类型的栈结点指针类型<code>SLink</code>。</p>
+<p>再创建一个链栈<code>Stack</code>，其中结构只有一个栈顶指针，其指针的类型是栈结点指针类型<code>SLink</code>。</p>
+<h5 id="栈链式存储的基本操作">栈链式存储的基本操作</h5>
+<p><strong>判断非空</strong></p>
+<pre><code class="language-c">int StackEmpty(Stack S){
+    /* 判断释放为空栈 */
+    return S-&gt;top == NULL;
+}
+</code></pre>
+<p><strong>进栈操作</strong></p>
+<pre><code class="language-c">void Push(Stack S, int x){
+    SLink p = NewStackNode(); // 申请一个结点的内存空间
+    p-&gt;data = x; // 将栈元素存入
+    p-&gt;next = S-&gt;top; // 将新结点的下一个结点指针置空
+    S-&gt;top = p; // 栈顶结点下一个为p，使p为新的栈顶
+}
+</code></pre>
+<p>为新结点申请一块内存空间，同时类型设置为栈结点指针类型，将元素x存入<code>data</code>中，将新结点的下一个结点置为top的下一个结点。因为top的下一个结点是NULL，所以此时结点p的下一个结点也为NULL。这时结点p为栈的栈顶。</p>
+<p><strong>出栈操作</strong></p>
+<pre><code class="language-c">int Pop(Stack S){
+    /* 出栈操作 */
+    if (StackEmpty(S)){
+        // 判断栈是否为空栈
+        exit(1);
+    }
+    int x = S-&gt;top-&gt;data; // 返回出栈元素
+    SLink p = S-&gt;top; // 另p等于栈顶指针
+    S-&gt;top = p-&gt;next; // 将栈顶指针top，指向p的下一个结点。
+    free(p); // 释放p
+    return x;
+}
+</code></pre>
+<p>假设栈内结点为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>−</mo><mo>&gt;</mo><mi>q</mi><mo>−</mo><mo>&gt;</mo><mi>s</mi><mo>−</mo><mo>&gt;</mo><mi>N</mi><mi>u</mi><mi>l</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">k-&gt;q-&gt;s-&gt;Null</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>，这时执行出栈操作，这时候的栈顶为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>，定义一个变量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>，另它等于栈顶的<code>data</code>，将出栈元素赋值给x，再函数的结尾处返回。定义一个栈指针类型的结点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>，另它等于栈顶，所以这个时候栈内就变成这样<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>−</mo><mo>&gt;</mo><mi>q</mi><mo>−</mo><mo>&gt;</mo><mi>p</mi><mo>−</mo><mo>&gt;</mo><mi>N</mi><mi>u</mi><mi>l</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">k-&gt;q-&gt;p-&gt;Null</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>。将栈顶指向<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>的下一个结点，也就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>u</mi><mi>l</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Null</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>−</mo><mo>&gt;</mo><mi>q</mi><mo>−</mo><mo>&gt;</mo><mi>N</mi><mi>U</mi><mi>L</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">k-&gt;q-&gt;NULL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span></span></span></span>，最后将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>占用的结点内存释放。</p>
+<p><strong>读栈顶元素</strong></p>
+<pre><code class="language-c">int StackTop(Stack S){
+    /* 读取栈顶元素 */
+    if (StackEmpty(S)){
+        exit(1);
+    }
+    return S-&gt;top-&gt;data;
+}
+</code></pre>
+<p><strong>打印栈</strong></p>
+<pre><code class="language-c">int StackPrint(Stack S){
+    /* 打印栈 */
+    if (StackEmpty(S)){
+        // 判断非空
+        exit(1);
+    }
+    SLink p = NewStackNode(); // 创建一个结点
+    p = S-&gt;top; // 令p等于栈顶结点
+    while (p!=NULL){
+        printf(&quot;%d\n&quot;,p-&gt;data); // 
+        p = p-&gt;next;
+    }
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://Asolmn.github.io/post/shu-ju-jie-gou-xian-xing-biao/">
+                                <h3 class="post-title">
+                                    数据结构-线性表
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%A0%88">栈</a>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">栈的顺序存储</a>
+<ul>
+<li><a href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0">栈的顺序存储实现</a></li>
+<li><a href="#%E6%A0%88%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">栈顺序存储的基本操作</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8">栈的链式存储</a>
+<ul>
+<li><a href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0">栈的链式存储实现</a></li>
+<li><a href="#%E6%A0%88%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">栈链式存储的基本操作</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://Asolmn.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

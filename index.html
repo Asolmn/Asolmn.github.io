@@ -7,7 +7,7 @@
 <title>
     Asolmn
 </title>
-<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1615721535718">
+<link rel="shortcut icon" href="https://Asolmn.github.io/favicon.ico?v=1616136139728">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://Asolmn.github.io">
-                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1615721535718" alt="">
+                <img class="avatar" src="https://Asolmn.github.io/images/avatar.png?v=1616136139728" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -107,6 +107,256 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://Asolmn.github.io/post/shu-ju-jie-gou-zhan/">
+                        数据结构-栈
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-03-19</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            栈
+
+
+本文部分截图来自王道考研
+书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019前言
+
+前言
+
+栈是一种特殊的表，这种表只能在表首进行插入和删除。所以表首对于栈有特殊意义，称为栈顶，表尾称为栈底，不含任何元素的栈称为空栈。可以简单的来说，栈的修改是按后进先出的原则进行，又称为后进先出（Last In First Out）表，简称LIFO表。
+
+假社一个栈SSS中的元素为a(n),a(n−1),...,a(1)a(n),a(n-1),...,a(1)a(n),a(n−1),...,a(1)，则称a(1)a(1)a(1)为栈底元素，a(n)a(n)a(n)为栈顶元素。栈中元素按照a(1),a(2)...,a(n)a(1),a(2)...,a(n)a(1),a(2)...,a(n)的顺序进栈，第一个进栈的是a(1)a(1)a(1)，接着依次往后，任何时候，出栈的都是栈顶元素a(n)a(n)a(n)。当nnn个不同的元素进栈，出栈元素不同排列的个数则为
+1n+1C2nn\frac{1}{n+1}C_{2n}^n
+n+11​C2nn​
+这个公式称为卡特兰（Catalan）数
+
+InitStack(&amp;amp;S)：初始化栈，构造一个空栈SSS，分配内存空间。
+StackFree(&amp;amp;S)`：销毁栈，销毁并释放栈SSS所占用的内存空间
+Push(&amp;amp;S,x)：进栈，若栈SSS未满，则将xxx加入使之成为新栈顶。
+Pop(&amp;amp;S,&amp;amp;x)：出栈，若栈SSS非空，则弹出栈顶元素，并用xxx返回。
+StackTop(&amp;amp;S,&amp;amp;x)：读入栈顶元素，若栈SSS非空，则用xxx返回栈顶元素
+StackEmpty(&amp;amp;S)：判断一个栈SSS是否为空，若SSS为空，则返回True，否则False
+
+栈的顺序存储
+
+栈是一个特殊的表，所以可以使用数组来实现栈，用一个数组data存储栈元素，栈底固定在数组的底部，即data[0]为最早的入栈元素
+
+
+代码实现
+
+栈的顺序存储实现
+// 栈-顺序存储
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdbool.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+typedef struct astack{
+    int top, //栈顶
+        maxtop; // 栈空间上界
+    int *data; // 存储栈元素的数组
+}Astack;
+
+typedef struct astack *Stack; //栈指针类型
+
+Stack StackInit(int size){
+    Stack S = (Stack)malloc(sizeof(*S)); // 创建一个空栈
+    S-&amp;gt;data = (int *)malloc(size*sizeof(int)); //为存储栈元素的数组分配内存空间
+    S-&amp;gt;maxtop = size; // 栈空间上限为size
+    S-&amp;gt;top = -1; // 初始化栈顶指针
+    return S;
+}
+
+void testStack(){
+    Stack S;
+    S = StackInit(10);
+}
+
+int main(){
+    testStack();
+
+    return 0;
+}
+
+创建一个size大小的栈，因为刚开始的时候，data[0]还没存放数据，所以S-&amp;gt;top初始化不能等于000，令它等于−1-1−1
+栈顺序存储的基本操作
+判断非空
+int StackEmpty(Stack S){
+    /* 是否为空栈 */
+    return S-&amp;gt;top &amp;lt; 0; // 如果栈顶小于0，证明还没存储元素
+}
+
+
+进栈操作
+void Push(Stack S, int x){
+    /* 进栈操作 */
+    if (StackFull(S)){
+        // 判断是否栈满
+        exit(1);
+    }
+    S-&amp;gt;top = S-&amp;gt;top+1; // 栈顶加1
+    S-&amp;gt;data[S-&amp;gt;top] = x; // 添加一个元素
+}
+
+先判断栈顶指针是否已经达到了栈的最大容量，如果是返回False。因为入栈了一个元素，所以栈顶指针加1，再令当前栈顶指针的位置等于插入元素xxx。
+出栈操作
+int Pop(Stack S){
+    /* 出栈操作 */
+    if(StackEmpty(S)){
+        exit(1);
+    }
+    int x = S-&amp;gt;data[S-&amp;gt;top]; //返回出栈的元素
+    S-&amp;gt;top = S-&amp;gt;top-1; // 栈顶减一
+    return x;
+}
+
+令栈顶指针top减去一位，使得逻辑上进行一个出栈操作，但实际数据还是遗留在内存中。
+读栈顶元素
+int StackTop(Stack S){
+    /* 读取栈顶 */
+    if (StackEmpty(S)){
+        exit(1);
+    }
+    return S-&amp;gt;data[S-&amp;gt;top];
+}
+
+因为数组是动态分配的，所以需要写一个释放内存的函数
+void StackFree(Stack S){
+    free(S-&amp;gt;data);
+    free(S);
+}
+
+打印栈
+void StackPrint(Stack S){
+    /* 打印栈 */
+    for (int i=S-&amp;gt;top; i&amp;gt;=0; i--){
+        // 因为栈后进先出，所以要从栈顶开始打印，一直到栈底
+        printf(&amp;quot;%d\n&amp;quot;,S-&amp;gt;data[i]);
+    }
+}
+
+在同时使用过多个栈的情况，为了不会栈溢出，通常要给栈分配一个较大的栈空间，但是各个栈在算法运行中，所使用的最大空间很难估计。所以可以使用共享栈来提高栈空间的利用率。
+例如两个栈使用同一个数组data[0:n]，那么利用栈底不变的特性，一个栈底设为0，另一个栈底设为n，分别各自往数组中间延申。这样每一个栈最大的可用空间为n2\frac{n}{2}2n​。
+栈的链式存储
+
+如果要用到多个栈的时候，可以使用链表作为栈的存储结构，也就是栈的链式存储，就是用指针来实现栈。这样方式使栈有着动态大小，这种实现方式也被称为链栈
+
+
+代码实现
+
+栈的链式存储实现
+// 栈-链式存储
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;stdbool.h&amp;gt;
+
+typedef struct snode{ // 栈结构
+    int data; // 栈元素
+    struct snode *next; // 下一结点指针
+}StackNode;
+
+typedef StackNode *SLink; // 栈结点指针类型
+
+typedef struct lstack{ // 栈结构
+    SLink top; // 栈顶指针
+}Lstack;
+
+typedef Lstack *Stack;
+
+SLink NewStackNode(){
+    /* 创建新结点 */
+    return (SLink)malloc(sizeof(StackNode));
+}
+
+Stack StackInit(){
+    /* 初始化栈 */
+    Stack S = (Stack)malloc(sizeof(*S));
+    S-&amp;gt;top = NULL; // top置为空指针
+    return S;
+}
+
+void testStack(){
+    Stack S;
+    S = StackInit();
+}
+
+int main(){
+    testStack();
+    return 0;
+}
+
+
+首先创建一个栈结点的类型，data存储栈元素，next指向下一个结点的指针。使用typedef创建一个snode类型的栈结点指针类型SLink。
+再创建一个链栈Stack，其中结构只有一个栈顶指针，其指针的类型是栈结点指针类型SLink。
+栈链式存储的基本操作
+判断非空
+int StackEmpty(Stack S){
+    /* 判断释放为空栈 */
+    return S-&amp;gt;top == NULL;
+}
+
+进栈操作
+void Push(Stack S, int x){
+    SLink p = NewStackNode(); // 申请一个结点的内存空间
+    p-&amp;gt;data = x; // 将栈元素存入
+    p-&amp;gt;next = S-&amp;gt;top; // 将新结点的下一个结点指针置空
+    S-&amp;gt;top = p; // 栈顶结点下一个为p，使p为新的栈顶
+}
+
+为新结点申请一块内存空间，同时类型设置为栈结点指针类型，将元素x存入data中，将新结点的下一个结点置为top的下一个结点。因为top的下一个结点是NULL，所以此时结点p的下一个结点也为NULL。这时结点p为栈的栈顶。
+出栈操作
+int Pop(Stack S){
+    /* 出栈操作 */
+    if (StackEmpty(S)){
+        // 判断栈是否为空栈
+        exit(1);
+    }
+    int x = S-&amp;gt;top-&amp;gt;data; // 返回出栈元素
+    SLink p = S-&amp;gt;top; // 另p等于栈顶指针
+    S-&amp;gt;top = p-&amp;gt;next; // 将栈顶指针top，指向p的下一个结点。
+    free(p); // 释放p
+    return x;
+}
+
+假设栈内结点为k−&amp;gt;q−&amp;gt;s−&amp;gt;Nullk-&amp;gt;q-&amp;gt;s-&amp;gt;Nullk−&amp;gt;q−&amp;gt;s−&amp;gt;Null，这时执行出栈操作，这时候的栈顶为sss，定义一个变量xxx，另它等于栈顶的data，将出栈元素赋值给x，再函数的结尾处返回。定义一个栈指针类型的结点ppp，另它等于栈顶，所以这个时候栈内就变成这样k−&amp;gt;q−&amp;gt;p−&amp;gt;Nullk-&amp;gt;q-&amp;gt;p-&amp;gt;Nullk−&amp;gt;q−&amp;gt;p−&amp;gt;Null。将栈顶指向ppp的下一个结点，也就是NullNullNull,k−&amp;gt;q−&amp;gt;NULLk-&amp;gt;q-&amp;gt;NULLk−&amp;gt;q−&amp;gt;NULL，最后将ppp占用的结点内存释放。
+读栈顶元素
+int StackTop(Stack S){
+    /* 读取栈顶元素 */
+    if (StackEmpty(S)){
+        exit(1);
+    }
+    return S-&amp;gt;top-&amp;gt;data;
+}
+
+打印栈
+int StackPrint(Stack S){
+    /* 打印栈 */
+    if (StackEmpty(S)){
+        // 判断非空
+        exit(1);
+    }
+    SLink p = NewStackNode(); // 创建一个结点
+    p = S-&amp;gt;top; // 令p等于栈顶结点
+    while (p!=NULL){
+        printf(&amp;quot;%d\n&amp;quot;,p-&amp;gt;data); // 
+        p = p-&amp;gt;next;
+    }
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/shu-ju-jie-gou-zhan/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://Asolmn.github.io/post/shu-ju-jie-gou-xian-xing-biao/">
                         数据结构-线性表
                     </a>
@@ -115,7 +365,7 @@
                     <time class="post-time">2021-03-13</time>
                     
                         <a href="https://Asolmn.github.io/tag/jsdDPoFYZ/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-other_4">
             #数据结构
         </a>
                         
@@ -961,12 +1211,12 @@ int main(){
                     <time class="post-time">2020-05-02</time>
                     
                         <a href="https://Asolmn.github.io/tag/M2aD0IKbL/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_2">
             #Vue
         </a>
                         
                         <a href="https://Asolmn.github.io/tag/0brIaQs2Uu/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-info">
             #Javascript
         </a>
                         
@@ -995,12 +1245,12 @@ int main(){
                     <time class="post-time">2020-04-30</time>
                     
                         <a href="https://Asolmn.github.io/tag/M2aD0IKbL/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-info">
             #Vue
         </a>
                         
                         <a href="https://Asolmn.github.io/tag/0brIaQs2Uu/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-warning">
             #Javascript
         </a>
                         
@@ -1029,12 +1279,12 @@ int main(){
                     <time class="post-time">2020-03-27</time>
                     
                         <a href="https://Asolmn.github.io/tag/M2aD0IKbL/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-warning">
             #Vue
         </a>
                         
                         <a href="https://Asolmn.github.io/tag/0brIaQs2Uu/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-error">
             #Javascript
         </a>
                         
@@ -1063,7 +1313,7 @@ int main(){
                     <time class="post-time">2020-03-24</time>
                     
                         <a href="https://Asolmn.github.io/tag/Qk0XE99rj/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-other_2">
             #Ajax
         </a>
                         
@@ -1092,7 +1342,7 @@ int main(){
                     <time class="post-time">2020-03-22</time>
                     
                         <a href="https://Asolmn.github.io/tag/qgjbWMsg1/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-info">
             #HTML
         </a>
                         
@@ -1145,7 +1395,7 @@ int main(){
                     <time class="post-time">2020-01-27</time>
                     
                         <a href="https://Asolmn.github.io/tag/FS2dWeAVH/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-warning">
             #Python
         </a>
                         
@@ -1174,7 +1424,7 @@ int main(){
                     <time class="post-time">2019-12-31</time>
                     
                         <a href="https://Asolmn.github.io/tag/HAEId3lPR/" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-">
             #杂记
         </a>
                         
@@ -1189,40 +1439,6 @@ int main(){
                                     </div>
                                     
                                             <a class="btn btn-text" href="https://Asolmn.github.io/post/ji-du-guo-de-2019/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Asolmn.github.io/post/misc-ya-sa-xi/">
-                        Misc-亚萨西
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-08-15</time>
-                    
-                        <a href="https://Asolmn.github.io/tag/7jhQ0ZYzo/" class="post-tag i-tag
-                            i-tag-other_4">
-            #CTF
-        </a>
-                        
-                        <a href="https://Asolmn.github.io/tag/0K_2m4i87/" class="post-tag i-tag
-                            i-tag-primary">
-            #Misc
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                    <div class="post-content-abstract">
-                                        <p>网络与信息安全领域转项赛，一道Misc题目</p>
-
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://Asolmn.github.io/post/misc-ya-sa-xi/">Read More ~</a>
                             </div>
                 </div>
             </article>
@@ -1245,7 +1461,7 @@ int main(){
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1615721535718)">
+        <div class="id_card-avatar" style="background-image: url(https://Asolmn.github.io/images/avatar.png?v=1616136139728)">
         </div>
         <h1 class="id_card-title">
             Asolmn
