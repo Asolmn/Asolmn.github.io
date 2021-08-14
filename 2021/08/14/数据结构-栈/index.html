@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="栈  本文部分截图来自王道考研 书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019前言  前言 栈是一种特殊的表，这种表只能在表首进行插入和删除。所以表首对于栈有特殊意义，称为栈顶，表尾称为栈底，不含任何元素的栈称为空栈。可以简单的来说，栈的修改是按后进先出的原则进行，又称为后进先出（Last In First Out）表，简称LIFO表。  假社一个栈$S$中的元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈">
+<meta property="og:url" content="https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/index.html">
+<meta property="og:site_name" content="Asolmn">
+<meta property="og:description" content="栈  本文部分截图来自王道考研 书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019前言  前言 栈是一种特殊的表，这种表只能在表首进行插入和删除。所以表首对于栈有特殊意义，称为栈顶，表尾称为栈底，不含任何元素的栈称为空栈。可以简单的来说，栈的修改是按后进先出的原则进行，又称为后进先出（Last In First Out）表，简称LIFO表。  假社一个栈$S$中的元">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-14T13:27:24.761Z">
+<meta property="article:modified_time" content="2021-08-14T13:27:45.605Z">
+<meta property="article:author" content="Asolmn">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>栈</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">home</a></li>
+         
+          <li><a href="/archives/">articles</a></li>
+         
+          <li><a href="/friends/">friends</a></li>
+         
+          <li><a href="/about/">about</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&text=栈"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&is_video=false&description=栈"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=栈&body=Check out this article: https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&name=栈&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">栈的顺序存储</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.0.2.1.</span> <span class="toc-text">栈的顺序存储实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.2.2.</span> <span class="toc-text">栈顺序存储的基本操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">栈的链式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.0.3.1.</span> <span class="toc-text">栈的链式存储实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.3.2.</span> <span class="toc-text">栈链式存储的基本操作</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        栈
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Asolmn</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2021-08-14T13:27:24.761Z" itemprop="datePublished">2021-08-14</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><hr>
+<blockquote>
+<p>本文部分截图来自<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1b7411N798?p=15&spm_id_from=pageDriver">王道考研</a></p>
+<p>书籍参考：[1]王晓东.数据结构（语言描述）[M].北京：电子工业出版社.2019前言</p>
+</blockquote>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>栈是一种特殊的表，这种表只能在表首进行插入和删除。所以表首对于栈有特殊意义，称为栈顶，表尾称为栈底，不含任何元素的栈称为空栈。可以简单的来说，栈的修改是按后进先出的原则进行，又称为后进先出（Last In First Out）表，简称LIFO表。</p>
+</blockquote>
+<p>假社一个栈$S$中的元素为$a(n),a(n-1),…,a(1)$，则称$a(1)$为栈底元素，$a(n)$为栈顶元素。栈中元素按照$a(1),a(2)…,a(n)$的顺序进栈，第一个进栈的是$a(1)$，接着依次往后，任何时候，出栈的都是栈顶元素$a(n)$。当$n$个不同的元素进栈，出栈元素不同排列的个数则为<br>$$<br>\frac{1}{n+1}C_{2n}^n<br>$$<br>这个公式称为卡特兰（<strong>Catalan</strong>）数</p>
+<ul>
+<li><code>InitStack(&amp;S)</code>：初始化栈，构造一个空栈$S$，分配内存空间。</li>
+<li>StackFree(&amp;S)`：销毁栈，销毁并释放栈$S$所占用的内存空间</li>
+<li><code>Push(&amp;S,x)</code>：进栈，若栈$S$未满，则将$x$加入使之成为新栈顶。</li>
+<li><code>Pop(&amp;S,&amp;x)</code>：出栈，若栈$S$非空，则弹出栈顶元素，并用$x$返回。</li>
+<li><code>StackTop(&amp;S,&amp;x)</code>：读入栈顶元素，若栈$S$非空，则用$x$返回栈顶元素</li>
+<li><code>StackEmpty(&amp;S)</code>：判断一个栈$S$是否为空，若$S$为空，则返回<code>True</code>，否则<code>False</code></li>
+</ul>
+<h4 id="栈的顺序存储"><a href="#栈的顺序存储" class="headerlink" title="栈的顺序存储"></a>栈的顺序存储</h4><blockquote>
+<p>栈是一个特殊的表，所以可以使用数组来实现栈，用一个数组data存储栈元素，栈底固定在数组的底部，即data[0]为最早的入栈元素</p>
+</blockquote>
+<ul>
+<li>代码实现</li>
+</ul>
+<h5 id="栈的顺序存储实现"><a href="#栈的顺序存储实现" class="headerlink" title="栈的顺序存储实现"></a>栈的顺序存储实现</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 栈-顺序存储</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">astack</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> top, <span class="comment">//栈顶</span></span><br><span class="line">        maxtop; <span class="comment">// 栈空间上界</span></span><br><span class="line">    <span class="keyword">int</span> *data; <span class="comment">// 存储栈元素的数组</span></span><br><span class="line">&#125;Astack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">astack</span> *<span class="title">Stack</span>;</span> <span class="comment">//栈指针类型</span></span><br><span class="line"></span><br><span class="line"><span class="function">Stack <span class="title">StackInit</span><span class="params">(<span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">    Stack S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(*S)); <span class="comment">// 创建一个空栈</span></span><br><span class="line">    S-&gt;data = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(size*<span class="keyword">sizeof</span>(<span class="keyword">int</span>)); <span class="comment">//为存储栈元素的数组分配内存空间</span></span><br><span class="line">    S-&gt;maxtop = size; <span class="comment">// 栈空间上限为size</span></span><br><span class="line">    S-&gt;top = <span class="number">-1</span>; <span class="comment">// 初始化栈顶指针</span></span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testStack</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Stack S;</span><br><span class="line">    S = StackInit(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    testStack();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个size大小的栈，因为刚开始的时候，<code>data[0]</code>还没存放数据，所以<code>S-&gt;top</code>初始化不能等于$0$，令它等于$-1$</p>
+<h5 id="栈顺序存储的基本操作"><a href="#栈顺序存储的基本操作" class="headerlink" title="栈顺序存储的基本操作"></a>栈顺序存储的基本操作</h5><p><strong>判断非空</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackEmpty</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 是否为空栈 */</span></span><br><span class="line">    <span class="keyword">return</span> S-&gt;top &lt; <span class="number">0</span>; <span class="comment">// 如果栈顶小于0，证明还没存储元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>进栈操作</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(Stack S, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 进栈操作 */</span></span><br><span class="line">    <span class="keyword">if</span> (StackFull(S))&#123;</span><br><span class="line">        <span class="comment">// 判断是否栈满</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    S-&gt;top = S-&gt;top+<span class="number">1</span>; <span class="comment">// 栈顶加1</span></span><br><span class="line">    S-&gt;data[S-&gt;top] = x; <span class="comment">// 添加一个元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先判断栈顶指针是否已经达到了栈的最大容量，如果是返回<code>False</code>。因为入栈了一个元素，所以栈顶指针加1，再令当前栈顶指针的位置等于插入元素$x$。</p>
+<p><strong>出栈操作</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Pop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 出栈操作 */</span></span><br><span class="line">    <span class="keyword">if</span>(StackEmpty(S))&#123;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> x = S-&gt;data[S-&gt;top]; <span class="comment">//返回出栈的元素</span></span><br><span class="line">    S-&gt;top = S-&gt;top<span class="number">-1</span>; <span class="comment">// 栈顶减一</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>令栈顶指针<code>top</code>减去一位，使得逻辑上进行一个出栈操作，但实际数据还是遗留在内存中。</p>
+<p><strong>读栈顶元素</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackTop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 读取栈顶 */</span></span><br><span class="line">    <span class="keyword">if</span> (StackEmpty(S))&#123;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> S-&gt;data[S-&gt;top];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为数组是动态分配的，所以需要写一个释放内存的函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">StackFree</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="built_in">free</span>(S-&gt;data);</span><br><span class="line">    <span class="built_in">free</span>(S);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>打印栈</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">StackPrint</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 打印栈 */</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=S-&gt;top; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="comment">// 因为栈后进先出，所以要从栈顶开始打印，一直到栈底</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,S-&gt;data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在同时使用过多个栈的情况，为了不会栈溢出，通常要给栈分配一个较大的栈空间，但是各个栈在算法运行中，所使用的最大空间很难估计。所以可以使用共享栈来提高栈空间的利用率。</p>
+<p>例如两个栈使用同一个数组<code>data[0:n]</code>，那么利用栈底不变的特性，一个栈底设为0，另一个栈底设为n，分别各自往数组中间延申。这样每一个栈最大的可用空间为$\frac{n}{2}$。</p>
+<h4 id="栈的链式存储"><a href="#栈的链式存储" class="headerlink" title="栈的链式存储"></a>栈的链式存储</h4><blockquote>
+<p>如果要用到多个栈的时候，可以使用链表作为栈的存储结构，也就是栈的链式存储，就是用指针来实现栈。这样方式使栈有着动态大小，这种实现方式也被称为链栈</p>
+</blockquote>
+<ul>
+<li>代码实现</li>
+</ul>
+<h5 id="栈的链式存储实现"><a href="#栈的链式存储实现" class="headerlink" title="栈的链式存储实现"></a>栈的链式存储实现</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 栈-链式存储</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">snode</span>&#123;</span> <span class="comment">// 栈结构</span></span><br><span class="line">    <span class="keyword">int</span> data; <span class="comment">// 栈元素</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">snode</span> *<span class="title">next</span>;</span> <span class="comment">// 下一结点指针</span></span><br><span class="line">&#125;StackNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> StackNode *SLink; <span class="comment">// 栈结点指针类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">lstack</span>&#123;</span> <span class="comment">// 栈结构</span></span><br><span class="line">    SLink top; <span class="comment">// 栈顶指针</span></span><br><span class="line">&#125;Lstack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> Lstack *Stack;</span><br><span class="line"></span><br><span class="line"><span class="function">SLink <span class="title">NewStackNode</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 创建新结点 */</span></span><br><span class="line">    <span class="keyword">return</span> (SLink)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(StackNode));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Stack <span class="title">StackInit</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 初始化栈 */</span></span><br><span class="line">    Stack S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(*S));</span><br><span class="line">    S-&gt;top = <span class="literal">NULL</span>; <span class="comment">// top置为空指针</span></span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testStack</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Stack S;</span><br><span class="line">    S = StackInit();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    testStack();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>首先创建一个栈结点的类型，<code>data</code>存储栈元素，<code>next</code>指向下一个结点的指针。使用<code>typedef</code>创建一个<code>snode</code>类型的栈结点指针类型<code>SLink</code>。</p>
+<p>再创建一个链栈<code>Stack</code>，其中结构只有一个栈顶指针，其指针的类型是栈结点指针类型<code>SLink</code>。</p>
+<h5 id="栈链式存储的基本操作"><a href="#栈链式存储的基本操作" class="headerlink" title="栈链式存储的基本操作"></a>栈链式存储的基本操作</h5><p><strong>判断非空</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackEmpty</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 判断释放为空栈 */</span></span><br><span class="line">    <span class="keyword">return</span> S-&gt;top == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>进栈操作</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(Stack S, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    SLink p = NewStackNode(); <span class="comment">// 申请一个结点的内存空间</span></span><br><span class="line">    p-&gt;data = x; <span class="comment">// 将栈元素存入</span></span><br><span class="line">    p-&gt;next = S-&gt;top; <span class="comment">// 将新结点的下一个结点指针置空</span></span><br><span class="line">    S-&gt;top = p; <span class="comment">// 栈顶结点下一个为p，使p为新的栈顶</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为新结点申请一块内存空间，同时类型设置为栈结点指针类型，将元素x存入<code>data</code>中，将新结点的下一个结点置为top的下一个结点。因为top的下一个结点是NULL，所以此时结点p的下一个结点也为NULL。这时结点p为栈的栈顶。</p>
+<p><strong>出栈操作</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Pop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 出栈操作 */</span></span><br><span class="line">    <span class="keyword">if</span> (StackEmpty(S))&#123;</span><br><span class="line">        <span class="comment">// 判断栈是否为空栈</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> x = S-&gt;top-&gt;data; <span class="comment">// 返回出栈元素</span></span><br><span class="line">    SLink p = S-&gt;top; <span class="comment">// 另p等于栈顶指针</span></span><br><span class="line">    S-&gt;top = p-&gt;next; <span class="comment">// 将栈顶指针top，指向p的下一个结点。</span></span><br><span class="line">    <span class="built_in">free</span>(p); <span class="comment">// 释放p</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设栈内结点为$k-&gt;q-&gt;s-&gt;Null$，这时执行出栈操作，这时候的栈顶为$s$，定义一个变量$x$，另它等于栈顶的<code>data</code>，将出栈元素赋值给x，再函数的结尾处返回。定义一个栈指针类型的结点$p$，另它等于栈顶，所以这个时候栈内就变成这样$k-&gt;q-&gt;p-&gt;Null$。将栈顶指向$p$的下一个结点，也就是$Null$,$k-&gt;q-&gt;NULL$，最后将$p$占用的结点内存释放。</p>
+<p><strong>读栈顶元素</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackTop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 读取栈顶元素 */</span></span><br><span class="line">    <span class="keyword">if</span> (StackEmpty(S))&#123;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> S-&gt;top-&gt;data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>打印栈</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">StackPrint</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="comment">/* 打印栈 */</span></span><br><span class="line">    <span class="keyword">if</span> (StackEmpty(S))&#123;</span><br><span class="line">        <span class="comment">// 判断非空</span></span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    SLink p = NewStackNode(); <span class="comment">// 创建一个结点</span></span><br><span class="line">    p = S-&gt;top; <span class="comment">// 令p等于栈顶结点</span></span><br><span class="line">    <span class="keyword">while</span> (p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,p-&gt;data); <span class="comment">// </span></span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">home</a></li>
+         
+          <li><a href="/archives/">articles</a></li>
+         
+          <li><a href="/friends/">friends</a></li>
+         
+          <li><a href="/about/">about</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">栈的顺序存储</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.0.2.1.</span> <span class="toc-text">栈的顺序存储实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.2.2.</span> <span class="toc-text">栈顺序存储的基本操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">栈的链式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.0.3.1.</span> <span class="toc-text">栈的链式存储实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.3.2.</span> <span class="toc-text">栈链式存储的基本操作</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&text=栈"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&is_video=false&description=栈"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=栈&body=Check out this article: https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&title=栈"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://asolmn.github.io/2021/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/&name=栈&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Asolmn
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">home</a></li>
+         
+          <li><a href="/archives/">articles</a></li>
+         
+          <li><a href="/friends/">friends</a></li>
+         
+          <li><a href="/about/">about</a></li>
+         
+          <li><a href="/search/">search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-37473492-6', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
